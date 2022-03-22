@@ -5,6 +5,7 @@ using UnityEngine;
 public class AleskyController : MonoBehaviour
 {
     //Estados do personagem
+    [Space]
     [Header("Player States")]
     private bool _idle = false;
     public bool _crouching = false;
@@ -13,7 +14,7 @@ public class AleskyController : MonoBehaviour
     private bool _holdingThrow = false;
 
     [Space]
-    [Header("Player")]
+    [Header("Player info")]
     [SerializeField] private Transform player;
     private Vector3 dir;
     private Rigidbody rb;
@@ -74,7 +75,7 @@ public class AleskyController : MonoBehaviour
         {
             speed = speedMultiplier;
         }
-        else speed = 10.0f;
+        else speed = 6.0f;
     }
 
     private void CheckPlayerState()
