@@ -75,7 +75,7 @@ public class AleskyController : MonoBehaviour
         {
             speed = speedMultiplier;
         }
-        else speed = 6.0f;
+        else speed = 3.0f;
     }
 
     private void CheckPlayerState()
@@ -91,9 +91,17 @@ public class AleskyController : MonoBehaviour
             _idle = false;
         }
 
+        //Crouch Verefy
         if (!Input.GetKey(KeyCode.LeftControl))
         {
             _crouching = false;
+            camPivot.position = new Vector3(camPivot.position.x, 4.5f, camPivot.position.z);
+        }
+        else
+        {
+            _crouching = true;
+            camPivot.position = new Vector3(camPivot.position.x, 2.0f, camPivot.position.z);
+            //camPivot.position = Vector3.Lerp(camPivot.position, new Vector3(0, 2.0f, 0), 100 * Time.deltaTime);
         }
     }
 
@@ -104,7 +112,10 @@ public class AleskyController : MonoBehaviour
             anim.SetBool("isWalking", true);
             anim.SetBool("isCrouch", true);
             anim.SetBool("isIdle", false);
+
+            speed = speedMultiplier;
         }
+
         else if (_walking && !_crouching)
         {
             anim.SetBool("isWalking", true);
@@ -125,6 +136,8 @@ public class AleskyController : MonoBehaviour
             anim.SetBool("isWalking", false);
             anim.SetBool("isCrouch", false);
             anim.SetBool("isIdle", true);
+
+            speed = 3.0f;
         }
     }
 }
