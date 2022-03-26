@@ -6,13 +6,14 @@ public class AleskyController : MonoBehaviour
 {
     //Estados do personagem
     [Space]
-    [Header("Player States")]
-    private bool _idle = false;
-    public bool _crouching = false;
-    public bool _walking = false;
-    private bool _throwing = false;
-    private bool _holdingThrow = false;
-    private bool _sprinting = false;
+    [Header ("Player States")]
+
+    private static bool _idle = false;
+    public static bool _crouching = false;
+    public static bool _walking = false;
+    private static bool _throwing = false;
+    private static bool _holdingThrow = false;
+    public static bool _sprinting = false;
 
     [Space]
     [Header("Player info")]
@@ -28,6 +29,7 @@ public class AleskyController : MonoBehaviour
 
     [SerializeField] private Transform camPivot;
     [SerializeField] private Transform cam;
+    [SerializeField] private Transform headHeight;
 
 
     //Animator
@@ -44,6 +46,8 @@ public class AleskyController : MonoBehaviour
 
     void Update()
     {
+        camPivot.position = new Vector3(headHeight.position.x, headHeight.position.y - 2.0f, headHeight.position.z);
+
         Movement();
 
         CheckPlayerState();
@@ -65,26 +69,18 @@ public class AleskyController : MonoBehaviour
         player.Rotate(0, rX, 0, Space.World);
         cam.rotation = Quaternion.Lerp(cam.rotation, Quaternion.Euler(rY * 2, player.eulerAngles.y, 0), 100 * Time.deltaTime);
 
-        //Crouch
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            _crouching = true;
-            if(_crouching && _walking)
-            {
-                camPivot.position = new Vector3(camPivot.position.x, 3.0f, camPivot.position.z);
-            }
-            else
-            {
-                camPivot.position = new Vector3(camPivot.position.x, 4.5f, camPivot.position.z);
-            }
-        }
-
         //Sprint
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = speedMultiplier;
+            speed = 8.0f;
+            _sprinting = true;
         }
-        else speed = 3.0f;
+        else 
+        { 
+            speed = 3.0f;
+            _sprinting = false;
+        }
+
     }
 
     private void CheckPlayerState()
@@ -104,14 +100,26 @@ public class AleskyController : MonoBehaviour
         if (!Input.GetKey(KeyCode.LeftControl))
         {
             _crouching = false;
-            camPivot.position = new Vector3(camPivot.position.x, 4.5f, camPivot.position.z);
+            //if(!_walking) camPivot.position = new Vector3(camPivot.position.x, 4.5f, camPivot.position.z);
         }
         else
         {
             _crouching = true;
-            camPivot.position = new Vector3(camPivot.position.x, 2.0f, camPivot.position.z);
-            //camPivot.position = Vector3.Lerp(camPivot.position, new Vector3(0, 2.0f, 0), 100 * Time.deltaTime);
+            //camPivot.position = new Vector3(camPivot.position.x, 2.0f, camPivot.position.z);
         }
+
+        //Throw object Verefy
+        if (Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.Mouse1))
+        {
+            _holdingThrow = true;
+        }
+        else _holdingThrow = false;
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            _throwing = true;
+        }
+        else _throwing = false;
     }
 
     private void CheckAnimationWalking()
@@ -146,6 +154,21 @@ public class AleskyController : MonoBehaviour
             anim.SetBool("isIdle", true);
 
             speed = 3.0f;
+        }
+
+        if (_throwing && _crouching)
+        {
+            anim.SetBool("isCrouch", true);
+            anim.SetBool("isThrowing", true);
+        }
+        else if (_throwing)
+        {
+            anim.SetBool("isThrowing", true);
+            anim.SetBool("isIdle", true);
+        }
+        else
+        {
+            anim.SetBool("isThrowing", false);
         }
     }
 }
