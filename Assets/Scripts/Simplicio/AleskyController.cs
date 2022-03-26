@@ -12,6 +12,7 @@ public class AleskyController : MonoBehaviour
     public bool _walking = false;
     private bool _throwing = false;
     private bool _holdingThrow = false;
+    private bool _sprinting = false;
 
     [Space]
     [Header("Player info")]
@@ -68,6 +69,14 @@ public class AleskyController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             _crouching = true;
+            if(_crouching && _walking)
+            {
+                camPivot.position = new Vector3(camPivot.position.x, 3.0f, camPivot.position.z);
+            }
+            else
+            {
+                camPivot.position = new Vector3(camPivot.position.x, 4.5f, camPivot.position.z);
+            }
         }
 
         //Sprint
@@ -115,7 +124,6 @@ public class AleskyController : MonoBehaviour
 
             speed = speedMultiplier;
         }
-
         else if (_walking && !_crouching)
         {
             anim.SetBool("isWalking", true);
