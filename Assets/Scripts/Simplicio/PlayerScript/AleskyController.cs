@@ -31,7 +31,6 @@ public class AleskyController : MonoBehaviour
     [SerializeField] private Transform cam;
     [SerializeField] private Transform headHeight;
 
-
     //Animator
     public Animator anim;
 
@@ -42,6 +41,7 @@ public class AleskyController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        
     }
 
     void Update()
