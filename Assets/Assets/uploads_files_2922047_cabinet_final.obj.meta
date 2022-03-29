@@ -1,0 +1,197 @@
+fileFormatVersion: 2
+guid: 680c1c71645a82b43ae41af212907d96
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blanket02_Plane.002_NoneMat
+    second: {fileID: 2100000, guid: 73e630126c29ab047a69483c314a2e2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cabinet1.001_Cabinet1.001_MetalStainlessSteelBrushedElongated005_3K.004Mat
+    second: {fileID: 2100000, guid: 6106471e4ffea6a42a2a80095f2f5fae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cabinet1.001_Cabinet1.001_MetalStainlessSteelBrushedElongated005_3K.005Mat
+    second: {fileID: 2100000, guid: c9b9795803f681841afe9df9ae7a851d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cabinet1.001_Cabinet1.001_MetalStainlessSteelBrushedElongated005_3K.007Mat
+    second: {fileID: 2100000, guid: f12a6632186e5094e90ede70ae298043, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cabinet1.001_Cabinet1.001_WoodMat
+    second: {fileID: 2100000, guid: 2c91dc14a3b887243b1f33009852039d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cabinet1.002_Cabinet1.002_Cabinet_materialMat
+    second: {fileID: 2100000, guid: 915eb486dcf8d0b4898b4f75addb56e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cabinet1_Cabinet1_WoodMat
+    second: {fileID: 2100000, guid: b14af843eba2a6c42a32f40b16407b2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube.001_Cube.003_MetalStainlessSteelBrushedElongated005_3K.006Mat
+    second: {fileID: 2100000, guid: e3b6d05e3db27934d88ecdeb4cf0543f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cylinder_Cylinder_Material.002Mat
+    second: {fileID: 2100000, guid: f3eaf363f55a80c44aa43dc9522dda68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plane_Plane.001_FabricUpholsteryBrightAnglePattern001_2KMat
+    second: {fileID: 2100000, guid: 0be71fb1e6fb30a4987a19a6d99cb60b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scene_Cube_Material.004Mat
+    second: {fileID: 2100000, guid: 5df9b83c4d5ee2147a3d40b486f6e488, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_Cylinder.001_Material.001Mat
+    second: {fileID: 2100000, guid: a371d50c3361c79459bb374a064b8266, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plant01_Cube.007_Material.003Mat
+    second: {fileID: 2100000, guid: a59e8491cb21c08409f0b39b4234159d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plant02_Cube.002_Material.003Mat
+    second: {fileID: 2100000, guid: 4a471298cd11a7e478ed80159c7e7749, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plant03_Cube.001_Material.003Mat
+    second: {fileID: 2100000, guid: 75c7ad3a599702146850079477dbdcc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plant04_Cube.004_Material.003Mat
+    second: {fileID: 2100000, guid: 7a39bf422f81e684dbb54fbcafd7fbc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plant05_Cube.005_Material.003Mat
+    second: {fileID: 2100000, guid: bf3a136ff28e3b941906fab02c3544b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plant06_Cube.006_Material.003Mat
+    second: {fileID: 2100000, guid: 8845070347d55c849a6b16fad55043e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: soil_Cylinder.002_GroundDirtForest014_3KMat
+    second: {fileID: 2100000, guid: 701750f468f1d3640b1660a425e9fc02, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

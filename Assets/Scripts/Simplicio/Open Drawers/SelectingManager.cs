@@ -37,7 +37,7 @@ public class SelectingManager : MonoBehaviour
             Transform selection = hit.transform;
             //if (inDebug) Debug.Log("Selected distance:" + selection.tag);
 
-            if (hit.collider.tag == DrawersTag)
+            if (selection.tag == DrawersTag)
             {
                 //Logic to open and close
                 float dist = Vector3.Distance(Player.position, selection.position);
@@ -46,8 +46,8 @@ public class SelectingManager : MonoBehaviour
 
                 if (dist < CanOpenRadius)
                 {
-                    anim = hit.collider.gameObject.GetComponentInChildren<Animator>();
                     //Caso precisse de timer, por a funçao como async e dar task.delay(x segundos)
+                    anim = selection.GetComponentInChildren<Animator>();
                     OpenDrawer();
                 }
             }
@@ -70,5 +70,4 @@ public class SelectingManager : MonoBehaviour
         if (_isOpen) PanelText.text = CloseText;
         else PanelText.text = OpenText;
     }
-
 }
