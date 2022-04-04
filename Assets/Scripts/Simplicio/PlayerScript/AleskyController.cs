@@ -25,6 +25,7 @@ public class AleskyController : MonoBehaviour
     private float rX;
     private float speed = 10; //Dont touch this
     [SerializeField] private float speedMultiplier = 20.0f;
+    private bool canSprint = true;
 
 
     [SerializeField] private Transform camPivot;
@@ -70,7 +71,7 @@ public class AleskyController : MonoBehaviour
         cam.rotation = Quaternion.Lerp(cam.rotation, Quaternion.Euler(rY * 2, player.eulerAngles.y, 0), 100 * Time.deltaTime);
 
         //Sprint
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && canSprint)
         {
             speed = 8.0f;
             _sprinting = true;
@@ -170,5 +171,15 @@ public class AleskyController : MonoBehaviour
         {
             anim.SetBool("isThrowing", false);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        canSprint = false;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        canSprint = true;
     }
 }
