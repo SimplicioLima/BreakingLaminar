@@ -37,7 +37,7 @@ public class Launch : MonoBehaviour
     {
         grenade = Instantiate(grenadePref);
 
-        Physics.IgnoreCollision(grenade.GetComponent<Collider>(), grenadeSpawn.parent.GetComponent<Collider>());
+        //Physics.IgnoreCollision(grenade.GetComponent<Collider>(), grenadeSpawn.parent.GetComponent<Collider>());
 
         grenade.transform.position = grenadeSpawn.position;
         Vector3 rotation = grenade.transform.rotation.eulerAngles;
@@ -68,10 +68,11 @@ public class Launch : MonoBehaviour
         //Destroy(gameObject);
     }
 
-    /*
+    
     private void OnCollisionEnter(Collision collision)
     {
-        
+        // posteriormente adicionar o if sticky bomb -> else (objeto normal) dont do anything
+        this.GetComponent<Rigidbody>().isKinematic = true; // to stick
     }
-    */
+    
 }
