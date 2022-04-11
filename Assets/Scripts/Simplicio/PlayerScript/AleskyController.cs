@@ -65,7 +65,7 @@ public class AleskyController : MonoBehaviour
         dir = player.TransformVector(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized);
 
         rX = Mathf.Lerp(rX, Input.GetAxisRaw("Mouse X") * 2, 100 * Time.deltaTime);
-        rY = Mathf.Clamp(rY - (Input.GetAxisRaw("Mouse Y") * 2 * 100 * Time.deltaTime), -40, 40); // Valor max de movimento y do mouse 
+        rY = Mathf.Clamp(rY - (Input.GetAxisRaw("Mouse Y") * 2 * 65 * Time.deltaTime), -35, 35); // Valor max de movimento y do mouse 
 
         player.Rotate(0, rX, 0, Space.World);
         cam.rotation = Quaternion.Lerp(cam.rotation, Quaternion.Euler(rY * 2, player.eulerAngles.y, 0), 100 * Time.deltaTime);

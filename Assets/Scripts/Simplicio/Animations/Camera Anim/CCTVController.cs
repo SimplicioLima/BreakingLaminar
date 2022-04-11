@@ -12,8 +12,6 @@ public class CCTVController : MonoBehaviour
     [SerializeField] private List<MeshRenderer> screens = new List<MeshRenderer>(); //screens
     [SerializeField] private Material noSignal;
 
-    float currCountdownValue;
-
     public static bool camerasOn = true;
     private bool enterOnce = false;
 
@@ -43,7 +41,6 @@ public class CCTVController : MonoBehaviour
         }
     }
 
-
     private void DeativateCam()
     {
         //Desativa o animator
@@ -62,16 +59,5 @@ public class CCTVController : MonoBehaviour
     {
         camerasOn = onOFF;
         return camerasOn;
-    }
-
-    public IEnumerator StartCountdown(float countdownValue = 1.5f)
-    {
-        currCountdownValue = countdownValue;
-        while (currCountdownValue > 0)
-        {
-            Debug.Log("Countdown: " + currCountdownValue);
-            yield return new WaitForSeconds(0.5f);
-            currCountdownValue--;
-        }
     }
 }
