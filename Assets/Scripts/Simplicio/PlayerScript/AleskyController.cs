@@ -23,8 +23,8 @@ public class AleskyController : MonoBehaviour
 
     private float rY;
     private float rX;
-    private float speed = 10; //Dont touch this
-    [SerializeField] private float speedMultiplier = 20.0f;
+    private float speed = 8; //Dont touch this
+    [SerializeField] private float speedMultiplier = 17.0f;
     private bool canSprint = true;
 
 
@@ -170,6 +170,11 @@ public class AleskyController : MonoBehaviour
         else
         {
             anim.SetBool("isThrowing", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            anim.SetTrigger("isOpening");
         }
     }
 

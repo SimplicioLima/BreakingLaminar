@@ -34,7 +34,7 @@ public class KeyControledOpenDoor : MonoBehaviour
 
     void Update()
     {
-        if (canOpen)
+        if (canOpen && _triggerMessage)
         {
             OpenDoor();
         }
