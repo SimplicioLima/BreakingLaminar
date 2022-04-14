@@ -8,11 +8,11 @@ public class AleskyController : MonoBehaviour
     [Space]
     [Header ("Player States")]
 
-    private static bool _idle = false;
+    public static bool _idle = false;
     public static bool _crouching = false;
     public static bool _walking = false;
-    private static bool _throwing = false;
-    private static bool _holdingThrow = false;
+    public static bool _throwing = false;
+    public static bool _holdingThrow = false;
     public static bool _sprinting = false;
 
     [Space]
@@ -23,7 +23,7 @@ public class AleskyController : MonoBehaviour
 
     private float rY;
     private float rX;
-    private float speed = 8; //Dont touch this
+    private float speed = 5; //Dont touch this or line 76
     [SerializeField] private float speedMultiplier = 17.0f;
     private bool canSprint = true;
 
@@ -73,12 +73,12 @@ public class AleskyController : MonoBehaviour
         //Sprint
         if (Input.GetKey(KeyCode.LeftShift) && canSprint)
         {
-            speed = 8.0f;
+            speed = 5.0f; //alterar se mexer na variable speed;
             _sprinting = true;
         }
         else 
         { 
-            speed = 3.0f;
+            speed = 2.0f;
             _sprinting = false;
         }
 
@@ -176,6 +176,15 @@ public class AleskyController : MonoBehaviour
         {
             anim.SetTrigger("isOpening");
         }
+
+        //Walking
+        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)) anim.SetFloat("walk", 0.5f);
+        else if (Input.GetKeyDown(KeyCode.D) && !_sprinting) anim.SetFloat("walk", 0f);
+        else if (Input.GetKeyDown(KeyCode.A) && !_sprinting) anim.SetFloat("walk", 1);
+
+        //Running
+        anim.SetBool("isRunning", _sprinting);
+        
     }
 
     private void OnCollisionEnter(Collision collision)
