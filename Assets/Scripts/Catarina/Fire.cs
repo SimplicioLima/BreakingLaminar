@@ -8,13 +8,15 @@ public class Fire : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Camera fpsCamera;
     [SerializeField] private Transform spawnPrefab;
-    [SerializeField] private float force;
+    [SerializeField] private float force = 25000;
+    [SerializeField] private float speed = 3.2f;
     private Vector3 gravity = new Vector3(0, -9.8f, 0);
     private bool dontShoot = true;
 
     private void Start()
     {
-        force = (this.gameObject.GetComponent<Rigidbody>().mass * 9.8f ) * 3.2f;
+        //force = (projectilePrefab.GetComponent<Rigidbody>().mass * 9.8f) * speed;
+        projectilePrefab.GetComponent<Rigidbody>().AddForceAtPosition(gravity * speed, projectilePrefab.gameObject.transform.position);
     }
     // Update is called once per frame
     void Update()

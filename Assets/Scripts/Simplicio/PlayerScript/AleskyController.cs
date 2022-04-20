@@ -47,9 +47,9 @@ public class AleskyController : MonoBehaviour
 
     void Update()
     {
-        camPivot.position = new Vector3(headHeight.position.x, headHeight.position.y - 2.0f, headHeight.position.z);
+        camPivot.position = new Vector3(camPivot.position.x, headHeight.position.y - 1.50f, camPivot.position.z);
 
-        Movement();
+        //Movement();
 
         CheckPlayerState();
         CheckAnimationWalking();
