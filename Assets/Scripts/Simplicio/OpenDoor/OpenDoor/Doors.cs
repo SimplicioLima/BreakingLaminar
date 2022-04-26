@@ -5,20 +5,6 @@ using UnityEngine;
 
 public class Doors : MonoBehaviour
 {
-    private List<string> doors = new List<string>();
-    [SerializeField] private int Ndoors;
-
-    //Colocar o obj com a tag "DoorBell"
-    private bool _ActiveHoldPos = false;
-
-    //Set default pos para clicar no button
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform lockPosition;
-    [SerializeField] private Transform keyButton;
-
-    //Cam && Raycast
-    [SerializeField] private Transform cam;
-
     //States
     private static bool _isOpen = false;
 
@@ -34,63 +20,29 @@ public class Doors : MonoBehaviour
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        SetMessage();
-        //AddDoors(Ndoors);
     }
 
-    private void Update()
+    void Update()
     {
-        LookAndLockPos();
-
-        if (_ActiveHoldPos && Input.GetKeyDown(KeyCode.E))
-        {
-            player.position = lockPosition.position;
-            player.transform.forward = keyButton.right;
-            SetMessage();
-            _ActiveHoldPos = !_ActiveHoldPos;
-        }
-
-        if(_triggerMessage && Input.GetKeyDown(KeyCode.E))
-        {
-            OpenDoor();
-            SetMessage();
-        }
+        if (_triggerMessage) OpenDoor();
     }
 
-    private void AddDoors(int nDoors)
-    {
-        for (int i = 1; i < nDoors; i++)
-        {
-            doors.Add($"Door{i}");
-        }
-    }
 
-    private void LookAndLockPos()
-    {
-        SetMessage();
-        RaycastHit hit;
-        if (Physics.Raycast(cam.position, cam.forward, out hit, 3))
-        {
-            foreach (var item in doors)
-            {
-                if (hit.collider.gameObject.name == item)
-                {
-                    _ActiveHoldPos = true;
-                }
-            }
-        }
-    }
+    /// <summary>
+    /// Acresentar uma variavel static para tipo de som(intensidade) para show na ui
+    /// </summary>
 
     private void OpenDoor()
     {
-        _isOpen = !_isOpen;
-        anim.SetBool("isOpen", _isOpen);
-    }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _isOpen = !_isOpen;
+            anim.SetBool("isOpen", _isOpen);
+            //OpenClose.SetActive(false);
+            if (!_isOpen) OpenClose.SetActive(false);
+        }
 
-    private void SetMessage()
-    {
-        if (_isOpen) PanelText.text = CloseText;
-        else PanelText.text = OpenText;
+        SetMessage();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -99,6 +51,12 @@ public class Doors : MonoBehaviour
         {
             OpenClose.SetActive(true);
             _triggerMessage = true;
+
+            //else
+            //{
+            //    OpenClose.SetActive(false);
+            //    _triggerMessage = false;
+            //}
         }
     }
 
@@ -112,4 +70,9 @@ public class Doors : MonoBehaviour
     }
 
 
+    private void SetMessage()
+    {
+        if (_isOpen) PanelText.text = CloseText;
+        else PanelText.text = OpenText;
+    }
 }
