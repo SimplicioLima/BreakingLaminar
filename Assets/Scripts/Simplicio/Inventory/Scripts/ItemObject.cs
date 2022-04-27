@@ -43,4 +43,9 @@ public class ItemObject : MonoBehaviour
         }
         return true;
     }
+
+    private void OnDestroy()
+    {
+        Destroy(gameObject);
+    }
 }

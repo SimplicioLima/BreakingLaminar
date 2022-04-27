@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickupObject : MonoBehaviour
 {
-    public bool inDebug = true;
+    public bool inDebug = false;
     private bool _islookAt = false;
     private ItemObject _lookAtTarget;
     private Vector3 _TargetPosition;

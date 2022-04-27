@@ -16,3 +16,4 @@ MonoBehaviour:
   displayName: Spanner
   icon: {fileID: 21300000, guid: 464c9390f00e7144cb488b47043b0521, type: 3}
   prefab: {fileID: 1247883962719155012, guid: 4453e9d154fde3b4ab67441c9448a789, type: 3}
+  canThrow: 1

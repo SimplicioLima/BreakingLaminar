@@ -14,6 +14,8 @@ public class InventorySystem : MonoBehaviour
     public delegate void OnInventoryInventoryChanged(); //declaro delegate
     public event OnInventoryInventoryChanged onInventoryChangedEvent; //crio evento
 
+    public List<InventoryItem> slotItem;
+
     private void Awake()
     {
         if (current != null && current != this)

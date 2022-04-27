@@ -59,6 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referenceItem: {fileID: 11400000, guid: 576c54641b11c594881e9a60b28f2485, type: 2}
+  requirements: []
+  removeRequirementsOnPickup: 0
 --- !u!1 &5463879796053851538
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class Fire : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Camera fpsCamera;
     [SerializeField] private Transform spawnPrefab;
+
     [SerializeField] private float force = 25000;
     [SerializeField] private float speed = 3.2f;
     private Vector3 gravity = new Vector3(0, -9.8f, 0);
@@ -24,7 +25,7 @@ public class Fire : MonoBehaviour
         if(dontShoot) Shoot();
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
