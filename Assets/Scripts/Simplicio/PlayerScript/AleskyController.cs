@@ -57,7 +57,7 @@ public class AleskyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+        //rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
     }
 
     private void Movement()

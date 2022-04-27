@@ -12,12 +12,10 @@ public class PickupObject : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (_islookAt && Input.GetKeyDown(KeyCode.R))
         {
-            if (_islookAt)
-            {
-                _lookAtTarget.OnHandlePickupItem();
-            }
+            _lookAtTarget.OnHandlePickupItem();
+            _islookAt = false;
         }
     }
 
