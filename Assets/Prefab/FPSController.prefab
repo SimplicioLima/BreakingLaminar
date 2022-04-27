@@ -272,7 +272,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2682242592885371344, guid: 73f1ee8fa7b148048b5f6ed0a21ebe86, type: 3}
   fpsCamera: {fileID: 3121132544451047644}
   spawnPrefab: {fileID: 3121132544175767317}
-  force: 2352
+  force: 8000
+  speed: 500
 --- !u!136 &2532115306726103147
 CapsuleCollider:
   m_ObjectHideFlags: 0

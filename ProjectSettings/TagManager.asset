@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - DoorBell
   - Collectible
+  - Fire
+  - Wall
   layers:
   - Default
   - TransparentFX
