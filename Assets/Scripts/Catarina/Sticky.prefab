@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 3578488973745350571}
   - component: {fileID: -750717255192516048}
   - component: {fileID: -736406695838194309}
+  - component: {fileID: 4580478408487482160}
   m_Layer: 6
   m_Name: Sticky
-  m_TagString: Untagged
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,3 +126,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e9d598f0c36934abe4e05fe3dc5df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4580478408487482160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2682242592885371344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0b6e1241f43c240a42c07ce8dead31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referenceItem: {fileID: 11400000, guid: fe44e058165063a42a382634786c92bf, type: 2}
+  requirements:
+  - itemData: {fileID: 11400000, guid: 576c54641b11c594881e9a60b28f2485, type: 2}
+    amount: 2
+  - itemData: {fileID: 11400000, guid: 7d5ec794c1dc7df498ebbfa7a1e43309, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: 6cac19f02715bac439a9b0176c37121f, type: 2}
+    amount: 1
+  removeRequirementsOnPickup: 1
