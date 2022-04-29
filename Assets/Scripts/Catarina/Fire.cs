@@ -5,21 +5,15 @@ using System.Threading.Tasks;
 
 public class Fire : MonoBehaviour
 {
-    [SerializeField] private GameObject projectilePrefab;
+    //Debuging
+    [SerializeField] private bool inDebug = true;
+    //private GameObject projectilePrefab;
     [SerializeField] private Camera fpsCamera;
     [SerializeField] private Transform spawnPrefab;
 
-    [SerializeField] private float force = 25000;
-    [SerializeField] private float speed = 3.2f;
-    private Vector3 gravity = new Vector3(0, -9.8f, 0);
+    [SerializeField] private float force = 8000;
     private bool dontShoot = true;
 
-    private void Start()
-    {
-        //force = (projectilePrefab.GetComponent<Rigidbody>().mass * 9.8f) * speed;
-        projectilePrefab.GetComponent<Rigidbody>().AddForceAtPosition(gravity * speed, projectilePrefab.gameObject.transform.position);
-    }
-    // Update is called once per frame
     void Update()
     {
         if(dontShoot) Shoot();
@@ -27,12 +21,15 @@ public class Fire : MonoBehaviour
 
     public void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (GameManager.current.CanShoot() && Input.GetKeyDown(KeyCode.F))
         {
-            GameObject projectile = (GameObject)Instantiate(projectilePrefab, spawnPrefab.position, fpsCamera.transform.rotation);
+            GameObject projectilePrefab = GameManager.current.ChangeFireObject();
+            projectilePrefab.GetComponent<Rigidbody>().isKinematic = false;
+            projectilePrefab.GetComponent<Rigidbody>().useGravity = true;
+            GameObject projectile = Instantiate(projectilePrefab, spawnPrefab.position, fpsCamera.transform.rotation);
             projectile.GetComponent<Rigidbody>().AddForce(fpsCamera.transform.forward * force, ForceMode.Force);
-            /*GameObject projectile = (GameObject) Instantiate(projectilePrefab, fpsCamera.transform.position + new Vector3(1.2f,0,1.2f), fpsCamera.transform.rotation)*/
-            //projectile.GetComponent<Rigidbody>().AddForce(fpsCamera.transform.forward * 1800);
+
+            GameManager.current.RemoveFireObjFromInv();
         }
     }
 

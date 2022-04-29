@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform rightHandPos;
     private GameObject currentHand;
     private int id = 0;
+    private bool _hasThrowObj = false;
 
     void Start()
     {
@@ -51,14 +52,45 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && InventorySystem.current.slotItem.Count > 0) OnClickObjectToThrow();
     }
 
+    #region Inventory
+
+    public bool CanShoot()
+    {
+        if (currentHand != null && currentHand.gameObject != null) return true;
+        return false;
+    }
+
+    public GameObject ChangeFireObject()
+    {
+        return InventorySystem.current.slotItem[id].data.prefab;
+    }
+
+    public void RemoveFireObjFromInv()
+    {
+        currentHand = null;
+        Destroy(rightHandPos.transform.GetChild(0).gameObject);
+        foreach (var item in InventorySystem.current.inventory)
+        {
+            if (item.data.prefab == InventorySystem.current.slotItem[id].data.prefab)
+            {
+                InventorySystem.current.Remove(item.data);
+                _hasThrowObj = true;
+                break;
+            }
+        }
+    }
+
+    //Obj from inv to Hand
     public void OnClickObjectToThrow()
     {
         if (currentHand == null)
         {
             id = 0;
             HasHandObj(InventorySystem.current.slotItem[0]);
-            //InventoryManager.slotItem[0].RemoveFromStack();
-            //InventoryManager.slotItem.RemoveAt(0);
+            if (_hasThrowObj)
+            {
+                _hasThrowObj = false;
+            }
         }
         else if (currentHand != null && id < InventorySystem.current.slotItem.Count)
         {
@@ -67,8 +99,10 @@ public class GameManager : MonoBehaviour
             if (id >= InventorySystem.current.slotItem.Count) id = 0;
 
             HasHandObj(InventorySystem.current.slotItem[id]);
-            //InventoryManager.slotItem[id].RemoveFromStack();
-            //InventoryManager.slotItem.RemoveAt(id);
+            if (_hasThrowObj)
+            {
+                _hasThrowObj = false;
+            }
         }
     }
 
@@ -79,22 +113,13 @@ public class GameManager : MonoBehaviour
         currentHand = null;
         currentHand = Instantiate(item.data.prefab);  //transform o obj do inv;
         currentHand.transform.SetParent(rightHandPos.transform, true);
+        currentHand.GetComponent<Collider>().isTrigger = false;
+        currentHand.GetComponent<Rigidbody>().useGravity = false;
 
         currentHand.transform.position = rightHandPos.position;
         currentHand.transform.parent = rightHandPos;
         currentHand.transform.localEulerAngles = Vector3.one;
         currentHand.GetComponent<Rigidbody>().isKinematic = true;
-    }
-
-    public void CctvDeativate()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            cctvOn = !cctvOn;
-            CCTVController.ChangeValue(cctvOn);
-
-            if (inDebug) Debug.Log("CCTVController.camerasOn :" + CCTVController.camerasOn);
-        }
     }
 
     public void ActivateInv()
@@ -113,5 +138,16 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    public void CctvDeativate()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            cctvOn = !cctvOn;
+            CCTVController.ChangeValue(cctvOn);
+
+            if (inDebug) Debug.Log("CCTVController.camerasOn :" + CCTVController.camerasOn);
+        }
+    }
 }

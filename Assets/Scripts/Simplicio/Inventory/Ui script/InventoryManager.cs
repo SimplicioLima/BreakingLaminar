@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -21,22 +22,29 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isActive)
+        if (_isActive || Input.GetKeyDown(KeyCode.Q))
         {
             OnUpdateInventory();
         }
-        
+    }
+
+    private async void UpdateInv()
+    {
+        if (InventorySystem.current.slotItem.Count > 0)
+        {
+            await Task.Delay(500);
+            OnUpdateInventory();
+        }
     }
 
     private void OnUpdateInventory()
     {
         foreach (Transform t in _parentSlot.transform)
         {
-            //if (inDebug) Debug.Log(t.name);
             Destroy(t.gameObject);
         }
-        InventorySystem.current.slotItem = null;
-        InventorySystem.current.slotItem = new List<InventoryItem>();
+        InventorySystem.current.slotItem.Clear();
+        //InventorySystem.current.slotItem = new List<InventoryItem>();
         DrawInventory();
     }
 
