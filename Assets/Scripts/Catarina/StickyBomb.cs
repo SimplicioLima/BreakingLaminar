@@ -13,17 +13,16 @@ public class StickyBomb : MonoBehaviour
         this.gameObject.GetComponent<Collider>().isTrigger = true;
 
         if(collision.transform.tag == "Enemy")
-        {
+        { 
+            /*
             while(samePosition == true)
             {
                 gameObject.transform.Translate(collision.transform.forward);
-            }
+            }*/
             
-            if(Input.GetKeyDown(KeyCode.G))
-            {
-                SimpleMovement.move = false;
-                StartCoroutine(SetFalse()); 
-            }
+            //if(Input.GetKeyDown(KeyCode.G))
+            SimpleMovement.move = false;
+            StartCoroutine(SetFalse());
             
         }
     }
