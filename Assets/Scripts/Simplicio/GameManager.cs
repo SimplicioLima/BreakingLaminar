@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
         {
             current = this;
         }
-        DontDestroyOnLoad(gameObject);
+        
+        DontDestroyOnLoad(this.gameObject);
 
         //Inventory
         _invCanvas.SetActive(false);

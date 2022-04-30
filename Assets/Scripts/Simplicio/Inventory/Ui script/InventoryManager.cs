@@ -18,6 +18,7 @@ public class InventoryManager : MonoBehaviour
         InventorySystem.current.onInventoryChangedEvent += OnUpdateInventory;
         
         _invCanvas.SetActive(false);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
