@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AleskyController : MonoBehaviour
 {
@@ -42,7 +43,6 @@ public class AleskyController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        
     }
 
     void Update()
@@ -196,4 +196,5 @@ public class AleskyController : MonoBehaviour
     {
         canSprint = true;
     }
+
 }
