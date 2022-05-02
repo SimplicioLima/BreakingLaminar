@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             current = this;
         }
         
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
 
         //Inventory
         _invCanvas.SetActive(false);

@@ -4,8 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Climb : MonoBehaviour
 {
-    public GameObject interactUI;
-    bool activeUI;
+    [SerializeField] private GameObject UiGoUp;
+    [SerializeField] private GameObject UiGoDown;
+
+    private bool activeUI;
+
+    [Header("Can i? :")]
+    public bool goUp = false;
+    [SerializeField] private int UpperLevel = 0;
+    public bool goDown = false;
+    [SerializeField] private int LowerLevel = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +26,25 @@ public class Climb : MonoBehaviour
     {
         if(activeUI)
         {
-            if(Input.GetKeyDown(KeyCode.Q))
+            //Go up
+            if (goUp && Input.GetKeyDown(KeyCode.Alpha1))
             {
-                SceneManager.LoadScene(1);
+                if (UpperLevel != SceneManager.sceneCountInBuildSettings)
+                {
+                    if (goUp) UiGoUp.SetActive(false);
+                    if (goDown) UiGoDown.SetActive(false);
+                    SceneManager.LoadScene(UpperLevel);
+                }
+            }
+            //Go down
+            if (goDown &&Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if (UpperLevel != SceneManager.sceneCountInBuildSettings)
+                {
+                    if (goUp) UiGoUp.SetActive(false);
+                    if (goDown) UiGoDown.SetActive(false);
+                    SceneManager.LoadScene(LowerLevel);
+                }
             }
         }
     }
@@ -29,7 +54,8 @@ public class Climb : MonoBehaviour
         if(collider.transform.tag == "Player")
         {
             activeUI = true;
-            interactUI.SetActive(true);
+            if (goUp) UiGoUp.SetActive(true);
+            if (goDown) UiGoDown.SetActive(true);
         }
     }
 
@@ -38,7 +64,8 @@ public class Climb : MonoBehaviour
         if (collider.tag == "Player")
         {
             activeUI = false;
-            interactUI.SetActive(false);
+            if (goUp) UiGoUp.SetActive(false);
+            if (goDown) UiGoDown.SetActive(false);
         }
     }
 }
