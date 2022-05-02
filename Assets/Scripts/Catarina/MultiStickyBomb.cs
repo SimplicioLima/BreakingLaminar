@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MultiStickyBomb : MonoBehaviour
 {
-    public float radius = 20f;
+    public float radius = 2f;
 
     void Start()
     {
@@ -13,15 +13,7 @@ public class MultiStickyBomb : MonoBehaviour
 
     void Update()
     {
-        Collider[] robotColliders = Physics.OverlapSphere(transform.position, radius);
-
-        foreach (var hitCollider in robotColliders)
-        {
-            if(hitCollider.tag == "Enemy")
-            {
-                SetFalse();
-            }
-        }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,10 +23,15 @@ public class MultiStickyBomb : MonoBehaviour
         this.GetComponent<Rigidbody>().isKinematic = true; // to stick
         this.gameObject.GetComponent<Collider>().isTrigger = true;
 
-        if(collision.transform.tag == "Enemy")
-        { 
-            SimpleMovement.move = false;
-            StartCoroutine(SetFalse());
+        Collider[] robotColliders = Physics.OverlapSphere(transform.position, radius);
+
+        foreach (var hitCollider in robotColliders)
+        {
+            if(hitCollider.tag == "Enemy")
+            {
+                SimpleMovement.move = false;
+                StartCoroutine(SetFalse());
+            }
         }
     }
 
