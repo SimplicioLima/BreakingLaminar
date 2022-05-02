@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class DontDestroyCanvas : MonoBehaviour
 {
     //Para evitar a perda dos obj
-    void Start()
+    void Awake()
     {
         if(SceneManager.sceneCount > 0) 
             DontDestroyOnLoad(gameObject);

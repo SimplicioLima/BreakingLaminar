@@ -50,14 +50,17 @@ public class GameManager : MonoBehaviour
 
     private void PickTrowableFromInv()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && InventorySystem.current.slotItem.Count > 0) OnClickObjectToThrow();
+        if (Input.GetKeyDown(KeyCode.Y)) OnClickObjectToThrow();
     }
 
     #region Inventory
 
     public bool CanShoot()
     {
-        if (currentHand != null && currentHand.gameObject != null) return true;
+        if (currentHand != null && currentHand.gameObject != null)
+        {
+            return true;
+        }
         return false;
     }
 
@@ -68,7 +71,6 @@ public class GameManager : MonoBehaviour
 
     public void RemoveFireObjFromInv()
     {
-        currentHand = null;
         Destroy(rightHandPos.transform.GetChild(0).gameObject);
         foreach (var item in InventorySystem.current.inventory)
         {
@@ -79,12 +81,13 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+        
     }
 
     //Obj from inv to Hand
     public void OnClickObjectToThrow()
     {
-        if (currentHand == null)
+        if (currentHand == null && InventorySystem.current.slotItem != null && InventorySystem.current.slotItem.Count > 0)
         {
             id = 0;
             HasHandObj(InventorySystem.current.slotItem[0]);
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour
                 _hasThrowObj = false;
             }
         }
-        else if (currentHand != null && id < InventorySystem.current.slotItem.Count)
+        else if (currentHand != null && InventorySystem.current.slotItem.Count > 0)
         {
             Destroy(rightHandPos.transform.GetChild(0).gameObject);
             id++;
@@ -110,8 +113,9 @@ public class GameManager : MonoBehaviour
     public void HasHandObj(InventoryItem item)
     {
         if (inDebug) Debug.Log(item.data.prefab);
-        //Rever
+        ///Rever
         currentHand = null;
+
         currentHand = Instantiate(item.data.prefab);  //transform o obj do inv;
         currentHand.transform.SetParent(rightHandPos.transform, true);
         currentHand.GetComponent<Collider>().isTrigger = false;

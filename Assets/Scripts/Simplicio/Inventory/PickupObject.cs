@@ -5,34 +5,26 @@ using UnityEngine;
 public class PickupObject : MonoBehaviour
 {
     public bool inDebug = false;
-    private bool _islookAt = false;
+    //private bool _islookAt = false;
     private ItemObject _lookAtTarget;
     private Vector3 _TargetPosition;
     public Camera cam;
+    [SerializeField] private int distance = 10;
 
     private void Update()
     {
-        if (_islookAt && Input.GetKeyDown(KeyCode.R))
+        RaycastHit hit;
+
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
-            _lookAtTarget.OnHandlePickupItem();
-            _islookAt = false;
+            if (hit.transform.tag == "Collectible")
+            {
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    _lookAtTarget = hit.collider.gameObject.GetComponent<ItemObject>();
+                    _lookAtTarget.OnHandlePickupItem();
+                }
+            }
         }
     }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "Collectible")
-        {
-            _lookAtTarget = other.gameObject.GetComponent<ItemObject>();
-            _islookAt = true;
-            if (inDebug) Debug.Log("Collides with " + other.name);
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        _islookAt = false;
-        _lookAtTarget = null;
-    }
-
 }

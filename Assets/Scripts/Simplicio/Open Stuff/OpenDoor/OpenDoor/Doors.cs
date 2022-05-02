@@ -6,69 +6,62 @@ using UnityEngine;
 public class Doors : MonoBehaviour
 {
     //States
-    private static bool _isOpen = false;
+    private bool _isOpen = false;
 
     [SerializeField] private Animator anim;
 
     [SerializeField] private GameObject OpenClose;
-    [SerializeField] private Text PanelText;
+    [SerializeField] private Camera cam;
+    [SerializeField] private int distance = 10;
 
+    [SerializeField] private Text PanelText;
     private string OpenText = "Press E to open";
     private string CloseText = "Press E to close";
-    private bool _triggerMessage = false;
+    [SerializeField] private List<Material> mat = new List<Material>();
 
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        OpenClose.SetActive(false);
+        
     }
 
     void Update()
     {
-        if (_triggerMessage) OpenDoor();
+        OpenDoor();
     }
-
-
-    /// <summary>
-    /// Acresentar uma variavel static para tipo de som(intensidade) para show na ui
-    /// </summary>
 
     private void OpenDoor()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        RaycastHit hit;
+        
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
-            _isOpen = !_isOpen;
-            anim.SetBool("isOpen", _isOpen);
-            //OpenClose.SetActive(false);
-            if (!_isOpen) OpenClose.SetActive(false);
+            if (hit.transform.position == this.gameObject.transform.position)
+            {
+                OpenClose.SetActive(true);
+                SetMessage();
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    _isOpen = !_isOpen;
+                    SetMessage();
+                    anim.SetBool("isOpen", _isOpen);
+                    if (_isOpen) gameObject.transform.GetComponent<MeshRenderer>().material = mat[1];
+                    else gameObject.transform.GetComponent<MeshRenderer>().material = mat[0];
+                }
+            }
+            else
+            {
+                SetMessage();
+                OpenClose.SetActive(false);
+            }
         }
-
-        SetMessage();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
+        else
         {
-            OpenClose.SetActive(true);
-            _triggerMessage = true;
-
-            //else
-            //{
-            //    OpenClose.SetActive(false);
-            //    _triggerMessage = false;
-            //}
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
+            SetMessage();
             OpenClose.SetActive(false);
-            _triggerMessage = false;
         }
     }
-
 
     private void SetMessage()
     {

@@ -6,11 +6,11 @@ TagManager:
   tags:
   - Drawer
   - Enemy
-  - DoorBell
   - Collectible
   - Fire
   - Wall
   - Portal
+  - Door
   layers:
   - Default
   - TransparentFX

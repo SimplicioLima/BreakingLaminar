@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7366125799143770949}
   - component: {fileID: 7366125799143770948}
   - component: {fileID: 7366125799143770971}
-  - component: {fileID: 7366125799143770970}
   - component: {fileID: 7366125799143770951}
   m_Layer: 0
   m_Name: Tool
@@ -114,19 +113,6 @@ MonoBehaviour:
   referenceItem: {fileID: 11400000, guid: 90c9bc615b9a9a746a883ea459f1c9cd, type: 2}
   requirements: []
   removeRequirementsOnPickup: 0
---- !u!65 &7366125799143770970
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7366125799143770969}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3273627, y: 0.16379364, z: 0.2922563}
-  m_Center: {x: 0.020221453, y: 0.032861814, z: -0.056185924}
 --- !u!54 &7366125799143770951
 Rigidbody:
   m_ObjectHideFlags: 0

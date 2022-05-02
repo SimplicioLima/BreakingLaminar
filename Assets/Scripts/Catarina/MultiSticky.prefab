@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2109000377689830684}
   - component: {fileID: 3694908913682161672}
   - component: {fileID: -5402952277922600749}
-  - component: {fileID: 9011964577561878810}
   - component: {fileID: 1323317805628340785}
   m_Layer: 0
   m_Name: MultiSticky
@@ -128,19 +127,6 @@ MonoBehaviour:
   referenceItem: {fileID: 11400000, guid: b84f573b95bf9b041a51be7d673c5cf0, type: 2}
   requirements: []
   removeRequirementsOnPickup: 0
---- !u!135 &9011964577561878810
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8764719670996784773}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.83
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1323317805628340785
 Rigidbody:
   m_ObjectHideFlags: 0

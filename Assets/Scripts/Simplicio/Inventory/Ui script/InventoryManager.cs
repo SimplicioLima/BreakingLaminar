@@ -25,13 +25,14 @@ public class InventoryManager : MonoBehaviour
     {
         if (_isActive || Input.GetKeyDown(KeyCode.Q))
         {
+            InventorySystem.current.slotItem.Clear();
             OnUpdateInventory();
         }
     }
 
     private async void UpdateInv()
     {
-        if (InventorySystem.current.slotItem.Count > 0)
+        if (InventorySystem.current.slotItem == null)
         {
             await Task.Delay(500);
             OnUpdateInventory();
@@ -44,7 +45,6 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
-        InventorySystem.current.slotItem.Clear();
         //InventorySystem.current.slotItem = new List<InventoryItem>();
         DrawInventory();
     }
