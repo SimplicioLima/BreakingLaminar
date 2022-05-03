@@ -78,7 +78,7 @@ public class Enigma1 : MonoBehaviour
     {
         foreach (var item in Cubes)
         {
-            if (item.gameObject.GetComponent<cubeInigma>().selected != item.gameObject.GetComponent<cubeInigma>().secretCode)
+            if (item.gameObject.GetComponent<cubeInigma>().selected != item.gameObject.GetComponent<cubeInigma>().secretCode && item.gameObject.GetComponent<cubeInigma>().secretCode == true)
             {
                 return false;
             }
@@ -103,6 +103,7 @@ public class Enigma1 : MonoBehaviour
     private void EndAnim()
     {
         ResetEnigma();
+        solved = false;
         anim.SetBool("isOpen", false);
     }
 }

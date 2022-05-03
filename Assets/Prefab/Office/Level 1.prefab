@@ -410,7 +410,6 @@ GameObject:
   - component: {fileID: 7869122395399380891}
   - component: {fileID: 2024457647087341235}
   - component: {fileID: 4897899259991528550}
-  - component: {fileID: 4112609598065302396}
   m_Layer: 0
   m_Name: Armazem_e_Zona_de_Acesso
   m_TagString: Untagged
@@ -481,22 +480,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &4112609598065302396
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890054033606601699}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &4112609598248678926
 GameObject:
   m_ObjectHideFlags: 0
