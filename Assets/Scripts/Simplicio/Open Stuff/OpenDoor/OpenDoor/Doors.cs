@@ -23,7 +23,7 @@ public class Doors : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         OpenClose.SetActive(false);
-        
+        cam = Camera.main;
     }
 
     void Update()

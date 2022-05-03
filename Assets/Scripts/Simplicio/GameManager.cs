@@ -149,9 +149,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            cctvOn = !cctvOn;
-            CCTVController.ChangeValue(cctvOn);
-
+            CCTVController.ChangeValue(false);
             if (inDebug) Debug.Log("CCTVController.camerasOn :" + CCTVController.camerasOn);
         }
     }

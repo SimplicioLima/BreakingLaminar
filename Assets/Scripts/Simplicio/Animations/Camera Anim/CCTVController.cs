@@ -14,6 +14,8 @@ public class CCTVController : MonoBehaviour
 
     public static bool camerasOn = true;
     private bool enterOnce = false;
+    private bool enterOnce2 = false;
+    public static bool AtivateCam = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,13 @@ public class CCTVController : MonoBehaviour
             DeativateCam();
             enterOnce = true;
         }
+        if (AtivateCam && !enterOnce2)
+        {
+            AtivateOnlyCams();
+            enterOnce2 = true;
+        }
     }
+
 
     private async void ShutDownCameras()
     {
@@ -52,6 +60,14 @@ public class CCTVController : MonoBehaviour
         foreach (var item in cctvs)
         {
             item.SetActive(false);
+        }
+    }
+
+    private void AtivateOnlyCams()
+    {
+        foreach (var item in cctvs)
+        {
+            item.SetActive(true);
         }
     }
 
