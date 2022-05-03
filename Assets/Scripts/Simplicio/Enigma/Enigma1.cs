@@ -97,6 +97,7 @@ public class Enigma1 : MonoBehaviour
         foreach (var item in Cubes)
         {
             item.gameObject.GetComponent<MeshRenderer>().material = cubeColors[1];
+            item.gameObject.GetComponent<cubeInigma>().selected = false;
         }
     }
 
