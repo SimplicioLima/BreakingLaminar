@@ -45,15 +45,16 @@ public class Enigma1 : MonoBehaviour
                     {
                         if(hit.collider.gameObject.transform.position == item.transform.position)
                         {
-                            if (inDebug) Debug.Log("Enter on E" + cubeColors[0]);
-
-                            if (item.gameObject.GetComponentInChildren<MeshRenderer>().material == cubeColors[1])
-                                item.gameObject.GetComponentInChildren<MeshRenderer>().material = cubeColors[0];
-                            else if (item.gameObject.GetComponentInChildren<MeshRenderer>().material == cubeColors[0])
-                                item.gameObject.GetComponentInChildren<MeshRenderer>().material = cubeColors[1];
-                            else item.gameObject.GetComponentInChildren<MeshRenderer>().material = cubeColors[0];
-
-                            item.gameObject.GetComponent<cubeInigma>().selected = true;
+                            if (hit.collider.gameObject.GetComponent<cubeInigma>().selected == true)
+                            {
+                                hit.collider.gameObject.GetComponent<cubeInigma>().selected = false;
+                                hit.collider.gameObject.GetComponentInChildren<MeshRenderer>().material = cubeColors[1];
+                            }
+                            else
+                            {
+                                hit.collider.gameObject.GetComponent<cubeInigma>().selected = true;
+                                hit.collider.gameObject.GetComponentInChildren<MeshRenderer>().material = cubeColors[0];
+                            }
                         }
                     }
 
@@ -64,11 +65,11 @@ public class Enigma1 : MonoBehaviour
                         if (solved) anim.SetBool("isOpen", solved);
                     }
                     //Botao de resetar
-                    if (hit.collider.name == "Resetar")
-                    {
-                        EndAnim();
-                        anim.SetBool("isOpen", solved);
-                    }
+                    //if (hit.collider.name == "Resetar")
+                    //{
+                    //    EndAnim();
+                    //    anim.SetBool("isOpen", solved);
+                    //}
                 }
             }
         }
@@ -76,6 +77,23 @@ public class Enigma1 : MonoBehaviour
 
     private bool VerifyCondition()
     {
+        int countCode = 0;
+        int countSelected = 0;
+
+        for (int i = 0; i < Cubes.Count; i++)
+        {
+            if(Cubes[i].gameObject.GetComponent<cubeInigma>().selected == true)
+            {
+                countCode++;
+            }
+            if (Cubes[i].gameObject.GetComponent<cubeInigma>().secretCode == true)
+            {
+                countSelected++;
+            }
+        }
+
+        bool valueCorrect = (countCode == countSelected);
+
         foreach (var item in Cubes)
         {
             if (item.gameObject.GetComponent<cubeInigma>().selected != item.gameObject.GetComponent<cubeInigma>().secretCode && item.gameObject.GetComponent<cubeInigma>().secretCode == true)
@@ -84,12 +102,18 @@ public class Enigma1 : MonoBehaviour
             }
         }
 
-        foreach (var item in Cubes)
-        {
-            item.gameObject.GetComponent<MeshRenderer>().material = cubeColors[2];
-            item.gameObject.GetComponent<MeshCollider>().enabled = false;
+        if (valueCorrect)
+        { //Condiçao codigo certo
+
+            foreach (var item in Cubes)
+            {
+                item.gameObject.GetComponent<MeshRenderer>().material = cubeColors[2];
+                item.gameObject.GetComponent<MeshCollider>().enabled = false;
+            }
+
+            return true;
         }
-        return true;
+        return false;
     }
 
     private void ResetEnigma()

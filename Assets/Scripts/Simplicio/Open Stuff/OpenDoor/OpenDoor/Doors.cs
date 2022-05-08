@@ -18,10 +18,11 @@ public class Doors : MonoBehaviour
     private string OpenText = "Press E to open";
     private string CloseText = "Press E to close";
     [SerializeField] private List<Material> mat = new List<Material>();
+    [SerializeField] private List<GameObject> screens = new List<GameObject>();
 
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        //anim = GetComponentInChildren<Animator>();
         OpenClose.SetActive(false);
         cam = Camera.main;
     }
@@ -46,8 +47,16 @@ public class Doors : MonoBehaviour
                     _isOpen = !_isOpen;
                     SetMessage();
                     anim.SetBool("isOpen", _isOpen);
-                    if (_isOpen) gameObject.transform.GetComponent<MeshRenderer>().material = mat[1];
-                    else gameObject.transform.GetComponent<MeshRenderer>().material = mat[0];
+                    if (_isOpen)
+                    {
+                        screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
+                        screens[1].transform.GetComponent<MeshRenderer>().material = mat[1];
+                    }
+                    else
+                    {
+                        screens[0].transform.GetComponent<MeshRenderer>().material = mat[0];
+                        screens[1].transform.GetComponent<MeshRenderer>().material = mat[0];
+                    }
                 }
             }
             else

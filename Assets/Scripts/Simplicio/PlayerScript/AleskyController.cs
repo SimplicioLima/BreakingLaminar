@@ -29,7 +29,7 @@ public class AleskyController : MonoBehaviour
     private bool canSprint = true;
 
 
-    [SerializeField] private Transform camPivot;
+    //[SerializeField] private Transform camPivot;
     [SerializeField] private Transform cam;
     [SerializeField] private Transform headHeight;
 
@@ -47,7 +47,10 @@ public class AleskyController : MonoBehaviour
 
     void Update()
     {
-        camPivot.position = new Vector3(camPivot.position.x, headHeight.position.y - 1.50f, camPivot.position.z);
+        float x = headHeight.position.x + headHeight.forward.x;
+        float z = headHeight.position.z + headHeight.forward.z;
+
+        cam.position = new Vector3(x, headHeight.position.y, z);
 
         //Movement();
 
