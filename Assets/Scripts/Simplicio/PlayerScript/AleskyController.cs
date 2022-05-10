@@ -8,12 +8,12 @@ public class AleskyController : MonoBehaviour
     //Estados do personagem
     [Space]
     [Header ("Player States")]
-
+    
     public static bool _idle = false;
     public static bool _crouching = false;
     public static bool _walking = false;
     public static bool _throwing = false;
-    public static bool _holdingThrow = false;
+    public static bool _holdingThrow = false; //not working
     public static bool _sprinting = false;
 
     [Space]

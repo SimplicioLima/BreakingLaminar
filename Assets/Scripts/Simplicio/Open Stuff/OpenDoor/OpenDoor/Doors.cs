@@ -11,7 +11,7 @@ public class Doors : MonoBehaviour
     [SerializeField] private Animator anim;
 
     [SerializeField] private GameObject OpenClose;
-    [SerializeField] private Camera cam;
+    private Camera cam;
     [SerializeField] private int distance = 10;
 
     [SerializeField] private Text PanelText;
