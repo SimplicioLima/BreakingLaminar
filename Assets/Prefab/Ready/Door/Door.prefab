@@ -1969,7 +1969,7 @@ GameObject:
   - component: {fileID: 4709217388601857556}
   - component: {fileID: 1492108681860940643}
   - component: {fileID: 5703368321293516873}
-  - component: {fileID: 6656414896297390868}
+  - component: {fileID: 8882976468600177705}
   m_Layer: 0
   m_Name: Door_Frame1
   m_TagString: Untagged
@@ -2040,8 +2040,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6656414896297390868
-BoxCollider:
+--- !u!64 &8882976468600177705
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2049,10 +2049,11 @@ BoxCollider:
   m_GameObject: {fileID: 6656414896297390871}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.024063965, y: 0.15165047, z: 0.10934233}
-  m_Center: {x: 0.0024736119, y: 0.014177736, z: -0.0072672614}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7031477997444435699, guid: c6fd61fba4ea171489e7b3cbf770d646, type: 3}
 --- !u!1 &6711927754974699065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,7 +2276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 2506656330670472590}
   OpenClose: {fileID: 0}
-  cam: {fileID: 0}
   distance: 6
   PanelText: {fileID: 0}
   mat:
