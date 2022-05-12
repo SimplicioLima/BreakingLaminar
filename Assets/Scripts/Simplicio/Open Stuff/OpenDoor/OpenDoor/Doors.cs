@@ -15,8 +15,8 @@ public class Doors : MonoBehaviour
     [SerializeField] private int distance = 10;
 
     //[SerializeField] private Text PanelText;
-    //private string OpenText = "Press E to open";
-    //private string CloseText = "Press E to close";
+    private string OpenText = "Press E to open";
+    private string CloseText = "Press E to close";
     [SerializeField] private List<Material> mat = new List<Material>();
     [SerializeField] private List<GameObject> screens = new List<GameObject>();
 
@@ -41,7 +41,7 @@ public class Doors : MonoBehaviour
             if (hit.transform.position == this.gameObject.transform.position)
             {
                 //OpenClose.SetActive(true);
-                //SetMessage();
+                SetMessage();
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     _isOpen = !_isOpen;
@@ -61,13 +61,13 @@ public class Doors : MonoBehaviour
             }
             else
             {
-                //SetMessage();
+                SetMessage();
                 //OpenClose.SetActive(false);
             }
         }
         else
         {
-            //SetMessage();
+            SetMessage();
             //OpenClose.SetActive(false);
         }
     }

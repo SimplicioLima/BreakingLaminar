@@ -16,12 +16,13 @@ public class OpenCloseDrawers : MonoBehaviour
     private string OpenText = "Press E to open";
     private string CloseText = "Press E to close";
     //private bool _triggerMessage = false;
-    [SerializeField] private Camera cam;
+    private Camera cam;
     [SerializeField] private int distance = 10;
 
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        cam = Camera.main;
     }
 
     void Update()

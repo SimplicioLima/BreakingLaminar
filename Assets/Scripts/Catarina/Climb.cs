@@ -11,7 +11,7 @@ public class Climb : MonoBehaviour
 
     [Header("Can i? :")]
     public bool goUp = false;
-    [SerializeField] private int UpperLevel = 0;
+    [SerializeField] private int UpperLevel = 1;
     public bool goDown = false;
     [SerializeField] private int LowerLevel = 0;
 

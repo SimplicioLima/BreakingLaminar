@@ -19,7 +19,7 @@ public class PickupObject : MonoBehaviour
         {
             if (hit.transform.tag == "Collectible")
             {
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     _lookAtTarget = hit.collider.gameObject.GetComponent<ItemObject>();
                     _lookAtTarget.OnHandlePickupItem();
