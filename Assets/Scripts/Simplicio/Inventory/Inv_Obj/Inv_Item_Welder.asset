@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Inv_Item_Welder
   m_EditorClassIdentifier: 
   id: 2
-  displayName: Portable Welder
+  displayName: Welder
   icon: {fileID: 21300000, guid: f481f78ab6c1f0b489b7e4c0edbbfc1e, type: 3}
   prefab: {fileID: 8089990096509692178, guid: 841438392f32d6c4487d1daf96796f29, type: 3}
+  canThrow: 0

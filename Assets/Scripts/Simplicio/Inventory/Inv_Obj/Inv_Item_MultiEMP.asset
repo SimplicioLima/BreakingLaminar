@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   displayName: High Range EMP
-  icon: {fileID: 21300000, guid: a894b3f759d8b414db9982c04f5fa487, type: 3}
+  icon: {fileID: 21300000, guid: 5c0f51fba5e8a81439c5a37f07b9c099, type: 3}
   prefab: {fileID: 8764719670996784773, guid: e9163c2a42c70114c88c9afc455cdd72, type: 3}
   canThrow: 1

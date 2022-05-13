@@ -38,7 +38,10 @@ public class ItemObject : MonoBehaviour
         {
             for (int i = 0; i < requirement.amount; i++)
             {
-                InventorySystem.current.Remove(requirement.itemData);
+                if (requirement.itemData.displayName != "Single Emp")
+                {
+                    InventorySystem.current.Remove(requirement.itemData);
+                }
             }
         }
         return true;

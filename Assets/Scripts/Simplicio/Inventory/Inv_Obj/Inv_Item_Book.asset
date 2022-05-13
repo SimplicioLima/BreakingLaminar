@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b0bf7be29dd7d459583894a7081f99, type: 3}
+  m_Name: Inv_Item_Book
+  m_EditorClassIdentifier: 
+  id: 9
+  displayName: Book
+  icon: {fileID: 21300000, guid: 506dbd26872f2d546a98a066903cb43d, type: 3}
+  prefab: {fileID: 5343223541768175816, guid: d6b771d3c4d675d46a0f438db53097b2, type: 3}
+  canThrow: 1

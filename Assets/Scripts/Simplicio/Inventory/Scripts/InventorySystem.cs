@@ -9,7 +9,7 @@ public class InventorySystem : MonoBehaviour
     public static InventorySystem current { get; private set; }
 
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
-    public List<InventoryItem> inventory;
+    public List<InventoryItem> inventory = new List<InventoryItem>();
 
     public delegate void OnInventoryInventoryChanged(); //declaro delegate
     public event OnInventoryInventoryChanged onInventoryChangedEvent; //crio evento
@@ -27,7 +27,7 @@ public class InventorySystem : MonoBehaviour
             current = this;
         }
 
-        inventory = new List<InventoryItem>();
+        //inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
 
         DontDestroyOnLoad(gameObject);
