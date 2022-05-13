@@ -3204,6 +3204,7 @@ GameObject:
   - component: {fileID: 4743724773330398043}
   - component: {fileID: 4743724773330398040}
   - component: {fileID: 8835481247045042608}
+  - component: {fileID: 1717269792960285120}
   m_Layer: 6
   m_Name: Single Emp
   m_TagString: Collectible
@@ -3296,6 +3297,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e9d598f0c36934abe4e05fe3dc5df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1717269792960285120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4743724773330398041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c59aa3b4e16e074aa6282298a7d955e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabUi: {fileID: 2680935668714525037, guid: 668022a912ce54847a7087cb704354f3, type: 3}
+  distancia: 8
 --- !u!1 &4909515333384602342
 GameObject:
   m_ObjectHideFlags: 0

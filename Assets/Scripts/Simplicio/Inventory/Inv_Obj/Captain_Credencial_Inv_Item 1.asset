@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57b0bf7be29dd7d459583894a7081f99, type: 3}
-  m_Name: Credencial_Inv_Item
+  m_Name: Captain_Credencial_Inv_Item 1
   m_EditorClassIdentifier: 
-  id: 12
-  displayName: Basic Credencial
+  id: 13
+  displayName: Captain Credencial
   icon: {fileID: 21300000, guid: a364a3784fdf86a4888c312a4d57d2f0, type: 3}
   prefab: {fileID: 5224698286804082072, guid: d2ac160f54f481d4dbcdd817b68d3985, type: 3}
   canThrow: 0

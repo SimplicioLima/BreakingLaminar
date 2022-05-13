@@ -38,7 +38,7 @@ public class ItemObject : MonoBehaviour
         {
             for (int i = 0; i < requirement.amount; i++)
             {
-                if (requirement.itemData.displayName != "Single Emp")
+                if (requirement.itemData.displayName != "Welder")
                 {
                     InventorySystem.current.Remove(requirement.itemData);
                 }

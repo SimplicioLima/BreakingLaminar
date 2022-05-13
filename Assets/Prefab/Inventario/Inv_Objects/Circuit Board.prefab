@@ -4739,6 +4739,7 @@ GameObject:
   - component: {fileID: 5210435322515364911}
   - component: {fileID: 7541451611596203981}
   - component: {fileID: -1716147445938690573}
+  - component: {fileID: 5153388372528504808}
   m_Layer: 0
   m_Name: Circuit Board
   m_TagString: Collectible
@@ -4878,6 +4879,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5153388372528504808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6591284842412661500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c59aa3b4e16e074aa6282298a7d955e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabUi: {fileID: 2680935668714525037, guid: 668022a912ce54847a7087cb704354f3, type: 3}
+  distancia: 8
 --- !u!1 &6644490576754595273
 GameObject:
   m_ObjectHideFlags: 0
