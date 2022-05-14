@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
     private int id = 0;
     private bool _hasThrowObj = false;
 
+    //Credencials
+    public bool haveBasicAccess = false;
+    public bool haveCaptainAccess = false;
+
+
     void Start()
     {
         if (current != null && current != this)
@@ -45,15 +50,15 @@ public class GameManager : MonoBehaviour
     {
         CctvDeativate(); //Desativar as cctvs           Letra Z
         ActivateInv(); //Abrir e fechar o inventario    Letra T
-        PickTrowableFromInv(); //inv obj Throw          Letra Q
+        PickTrowableFromInv(); //inv obj Throw          Letra Y
+        VerefyCredencials(); //verefica credenciais
     }
 
+    #region Inventory
     private void PickTrowableFromInv()
     {
         if (Input.GetKeyDown(KeyCode.Y)) OnClickObjectToThrow();
     }
-
-    #region Inventory
 
     public bool CanShoot()
     {
@@ -145,6 +150,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region CCTVS
     public void CctvDeativate()
     {
         if (Input.GetKeyDown(KeyCode.Z))
@@ -153,4 +159,25 @@ public class GameManager : MonoBehaviour
             if (inDebug) Debug.Log("CCTVController.camerasOn :" + CCTVController.camerasOn);
         }
     }
+    #endregion
+
+    private void VerefyCredencials()
+    {
+        if (!haveBasicAccess || !haveCaptainAccess)
+        {
+            foreach (var item in InventorySystem.current.inventory)
+            {
+                if (item.data.displayName == "Basic Credencial")
+                {
+                    haveBasicAccess = true;
+                }
+
+                if (item.data.displayName == "Captain Credencial")
+                {
+                    haveCaptainAccess = true;
+                }
+            }
+        }
+    }
+
 }
