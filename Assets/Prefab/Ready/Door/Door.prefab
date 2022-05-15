@@ -2274,16 +2274,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b06aee63c8ad84197a7f28ab87e5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicAccess: 1
+  captainAccess: 0
   anim: {fileID: 2506656330670472590}
-  OpenClose: {fileID: 0}
   distance: 6
-  PanelText: {fileID: 0}
   mat:
   - {fileID: 2100000, guid: 0a756de9c5a2c9648b957098059b9a74, type: 2}
   - {fileID: 2100000, guid: 5093d9b5d5f7fa44cbef2840d8ff6a08, type: 2}
   screens:
   - {fileID: 6926612470190191511}
   - {fileID: 6926612470031701938}
+  uiMessage: {fileID: 0}
 --- !u!1 &6926612469732732336
 GameObject:
   m_ObjectHideFlags: 0

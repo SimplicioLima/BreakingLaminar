@@ -24,7 +24,7 @@ public class Climb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(activeUI)
+        if(activeUI && MissionController.current.mission2_Base)//Por a missao que se pretenda que ele possa sair do top level
         {
             //Go up
             if (goUp && Input.GetKeyDown(KeyCode.Alpha1))

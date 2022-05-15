@@ -25,6 +25,8 @@ public class Doors : MonoBehaviour
     private Camera cam;
     private int distancia = 6;
 
+    public bool doorsUnlock = false;
+
     void Start()
     {
         cam = Camera.main;
@@ -38,6 +40,7 @@ public class Doors : MonoBehaviour
         {
             ShowMessage();
         }
+        if(GameManager.current.cctvOff == true) doorsUnlock = true;
     }
 
     private void OpenDoor()
@@ -46,9 +49,10 @@ public class Doors : MonoBehaviour
         
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
+
             if (hit.transform.position == this.gameObject.transform.position)
             {
-                if (GameManager.current.haveCaptainAccess == true && captainAccess == true)
+                if (doorsUnlock && GameManager.current.haveCaptainAccess == true && captainAccess == true)
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
@@ -67,7 +71,7 @@ public class Doors : MonoBehaviour
                         }
                     }
                 }
-                else if(GameManager.current.haveBasicAccess == true && basicAccess == true)
+                else if(doorsUnlock && GameManager.current.haveBasicAccess == true && basicAccess == true)
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
@@ -91,11 +95,12 @@ public class Doors : MonoBehaviour
                     ShowMessage();
                 }
             }
+            else uiMessage.gameObject.SetActive(false);
         }
     }
 
     //se funcionar escrever igual para mostar "press E para interact"
-    private  void ShowMessage()
+    private async void ShowMessage()
     {
         float dist = Vector3.Distance(this.transform.position, Camera.main.transform.position);
 
@@ -118,5 +123,7 @@ public class Doors : MonoBehaviour
         {
             uiMessage.gameObject.SetActive(false);
         }
+        await Task.Delay(2000);
+        uiMessage.gameObject.SetActive(false);
     }
 }

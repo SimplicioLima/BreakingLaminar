@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57b0bf7be29dd7d459583894a7081f99, type: 3}
-  m_Name: Key_Inv_Item
+  m_Name: KeyMission1_Inv_Item
   m_EditorClassIdentifier: 
   id: 11
-  displayName: Key
+  displayName: Key_Mission1
   icon: {fileID: 0}
-  prefab: {fileID: 7307561023927844744, guid: 5f09631574c211c41b605ac15c96d9d9, type: 3}
+  prefab: {fileID: 4408463458310509381, guid: 5f09631574c211c41b605ac15c96d9d9, type: 3}
   canThrow: 0
