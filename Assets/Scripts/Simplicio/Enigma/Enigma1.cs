@@ -10,7 +10,8 @@ public class Enigma1 : MonoBehaviour
     [SerializeField] private List<GameObject> Cubes = new List<GameObject>();
 
     [SerializeField] private List<Material> cubeColors = new List<Material>();
-    [SerializeField] private Camera cam;
+    
+    private Camera cam;
     [SerializeField] private float distance;
     private bool solved = false;
     [SerializeField] private Animator anim;
