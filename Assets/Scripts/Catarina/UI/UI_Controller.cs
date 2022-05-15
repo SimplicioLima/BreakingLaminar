@@ -17,9 +17,9 @@ public class UI_Controller : MonoBehaviour
     public Toggle fullscreenToggle, vsyncToggle;
     public List<ResItem> resolutions = new List<ResItem>();
     int selectedResolution;
-    public TMP_Text resolutionLabel;
+    public Text resolutionLabel;
     public AudioMixer theMixer;
-    public TMP_Text masterLabel, musicLabel, sfxLabel;
+    public Text masterLabel, musicLabel, sfxLabel;
     public Slider masterSlider, musicSlider, sfxSlider;
     //private Volume m_volume;
     //VolumeProfile volumeProfile;
