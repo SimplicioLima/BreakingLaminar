@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
 
     //Camera mission;
     [HideInInspector] public bool cctvOff = false;
+    [HideInInspector] public bool turnCamOff = true;
 
+    public GameObject player;
     [Header("Inventory Canvas")]
     [Space]
     //Inventory
@@ -28,16 +30,6 @@ public class GameManager : MonoBehaviour
     //Credencials
     [HideInInspector] public bool haveBasicAccess = false;
     [HideInInspector] public bool haveCaptainAccess = false;
-
-    [Header("Missions Canvas")]
-    [Space]
-    //Missions
-    public GameObject MissionCanvas; 
-    public Toggle currentMission;
-    public Text toggleCurrent;
-    public Toggle nextMission;
-    public Text toggleNext;
-
 
     void Start()
     {
@@ -65,7 +57,6 @@ public class GameManager : MonoBehaviour
         ActivateInv(); //Abrir e fechar o inventario    Letra T
         PickTrowableFromInv(); //inv obj Throw          Letra Y
         VerefyCredencials(); //verefica credenciais
-        ShowMissionToComplete();
         MissionController.current.VerefyWhatCanIdo();
     }
 
@@ -171,7 +162,8 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            CCTVController.ChangeValue(false);
+            turnCamOff = false;
+            CCTVController.ChangeValue(turnCamOff);
             cctvOff = true;
             if (inDebug) Debug.Log("CCTVController.camerasOn :" + CCTVController.camerasOn);
         }
@@ -200,25 +192,4 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    private async void ShowMissionToComplete()
-    {
-        int id = 0;
-        foreach (var item in MissionController.current.missionsComplete)
-        {
-            if (item.Value == false && id == 0)
-            {
-                toggleCurrent.text = item.Key;
-                currentMission.isOn = false;
-
-                id++;
-            }
-            else
-            {
-                toggleNext.text = item.Key;
-                nextMission.isOn = false;
-                break;
-            }
-        }
-        await Task.Delay(2000);
-    }
 }

@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MissionController : MonoBehaviour
 {
+    [SerializeField] private bool inDebug = true;
     public static bool MissionComplete = false;
     public static MissionController current { get; private set; }
 
     [HideInInspector] public Dictionary<string, string> missionsDiscription = new Dictionary<string, string>();
-    [HideInInspector] public Dictionary<string, bool> missionsComplete = new Dictionary<string, bool>();
+    //[HideInInspector] public Dictionary<string, bool> missionsComplete = new Dictionary<string, bool>();
     [HideInInspector] public List<string> missionName;
     [HideInInspector] public List<string> discription;
 
@@ -18,6 +20,12 @@ public class MissionController : MonoBehaviour
     public bool mission1_Key = false;
     public bool mission2_Base = false;
     public bool mission3_Cam = false;
+    public bool mission4_Cargo = false;
+    public bool mission5_Emp = false;
+    public bool mission6_Server = false;
+    public bool mission7_DoorKeys = false;
+    public bool mission8_OpenServer = false;
+    public bool mission9_KARENoff = false;
 
     //public List<bool> missionSequence = new List<bool>();
     public List<GameObject> missionObj = new List<GameObject>();
@@ -87,7 +95,7 @@ public class MissionController : MonoBehaviour
         for (int i = 0; i < missionName.Count; i++)
         {
             missionsDiscription.Add(missionName[i].ToString(), discription[i].ToString());
-            missionsComplete.Add(missionName[i].ToString(), false);
+            //missionsComplete.Add(missionName[i].ToString(), false);
         }
     }
     #endregion
@@ -99,6 +107,7 @@ public class MissionController : MonoBehaviour
 
     public void VerefyWhatCanIdo()
     {
+        //Mission 1
         if (mission1_Key == false)
         {
             if (missionObj[0] != null && currentMission == missionName[0]) missionObj[0].tag = "Collectible";
@@ -113,6 +122,7 @@ public class MissionController : MonoBehaviour
                 }
             }
         }
+        //Mission 2
         else if (mission2_Base == false && mission1_Key == true) //missao 2 obj apartir do [2]
         {
             if (missionObj[1] != null && currentMission == missionName[1]) missionObj[2].tag = "Collectible";
@@ -125,13 +135,74 @@ public class MissionController : MonoBehaviour
                 }
             }
         }
+        //Mission 3
         else if (mission3_Cam == false && mission2_Base == true)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if(GameManager.current.turnCamOff == false)
             {
                 mission3_Cam = true;
                 GameManager.current.cctvOff = true;
             }
+            
+        }
+        //Mission 4
+        else if (mission4_Cargo == false && mission2_Base == true)
+        {
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            if (sceneIndex == 2 && missionObj[5].gameObject.GetComponent<Doors>()._isOpen == true)
+            {
+                mission4_Cargo = true;
+            }
+        }
+        //Mission 5
+        else if (mission5_Emp== false && mission2_Base == true)
+        {
+            foreach (var item in InventorySystem.current.inventory)
+            {
+                if (item.data.id == 6 || item.data.id == 7)
+                {
+                    mission5_Emp = true;
+                }
+            }
+        }
+        //Mission 6
+        else if (mission6_Server == false && mission2_Base == true)
+        {
+            missionObj[4].gameObject.GetComponent<CheckServerDoor>().UnlockTrigger = true;
+            //if (inDebug) Debug.Log("Door Checked: " + missionObj[4].gameObject.GetComponent<CheckServerDoor>().UnlockTrigger);
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            //if (inDebug) Debug.Log("Scene: " + sceneIndex);
+            if (sceneIndex == 2 && missionObj[4].gameObject.GetComponent<CheckServerDoor>().doorFound == true)
+            {
+                mission6_Server = true;
+            }
+        }
+        //Mission 7
+        else if (mission7_DoorKeys == false && mission2_Base == true)
+        {
+            foreach (var item in InventorySystem.current.inventory)
+            {
+                if (item.data.id == 14 && item.stackSize == 3)
+                {
+                    mission7_DoorKeys = true;
+                }
+            }
+        }
+        //Mission 8
+        else if (mission8_OpenServer == false && mission2_Base == true)
+        {
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            if (sceneIndex == 1 && missionObj[5].gameObject.GetComponent<Doors>()._isOpen == true)
+            {
+                mission8_OpenServer = true;
+            }
+        }
+        //Mission 9
+        else if (mission9_KARENoff == false && mission2_Base == true)
+        {
+            //
+
+            //GameOver
         }
     }
 }

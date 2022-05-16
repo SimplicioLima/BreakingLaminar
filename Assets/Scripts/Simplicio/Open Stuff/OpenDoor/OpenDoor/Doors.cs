@@ -8,7 +8,7 @@ using System;
 public class Doors : MonoBehaviour
 {
     //States
-    private bool _isOpen = false;
+    [HideInInspector] public bool _isOpen = false;
 
     [SerializeField] private bool basicAccess = false;
     [SerializeField] private bool captainAccess = false;
@@ -26,6 +26,7 @@ public class Doors : MonoBehaviour
     private int distancia = 6;
 
     public bool doorsUnlock = false;
+    public bool mission7 = false;
 
     void Start()
     {
@@ -50,7 +51,7 @@ public class Doors : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
 
-            if (hit.transform.position == this.gameObject.transform.position)
+            if (hit.transform.position == this.gameObject.transform.position && !mission7)
             {
                 if (doorsUnlock && GameManager.current.haveCaptainAccess == true && captainAccess == true)
                 {
@@ -71,7 +72,52 @@ public class Doors : MonoBehaviour
                         }
                     }
                 }
-                else if(doorsUnlock && GameManager.current.haveBasicAccess == true && basicAccess == true)
+                else if (doorsUnlock && GameManager.current.haveBasicAccess == true && basicAccess == true)
+                {
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        _isOpen = !_isOpen;
+                        //SetMessage();
+                        anim.SetBool("isOpen", _isOpen);
+                        if (_isOpen)
+                        {
+                            screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
+                            screens[1].transform.GetComponent<MeshRenderer>().material = mat[1];
+                        }
+                        else
+                        {
+                            screens[0].transform.GetComponent<MeshRenderer>().material = mat[0];
+                            screens[1].transform.GetComponent<MeshRenderer>().material = mat[0];
+                        }
+                    }
+                }
+                else
+                {
+                    ShowMessage();
+                }
+            }
+            else if (hit.transform.position == this.gameObject.transform.position && MissionController.current.mission7_DoorKeys)
+            {
+                if (doorsUnlock && GameManager.current.haveCaptainAccess == true && captainAccess == true)
+                {
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        _isOpen = !_isOpen;
+                        //SetMessage();
+                        anim.SetBool("isOpen", _isOpen);
+                        if (_isOpen)
+                        {
+                            screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
+                            screens[1].transform.GetComponent<MeshRenderer>().material = mat[1];
+                        }
+                        else
+                        {
+                            screens[0].transform.GetComponent<MeshRenderer>().material = mat[0];
+                            screens[1].transform.GetComponent<MeshRenderer>().material = mat[0];
+                        }
+                    }
+                }
+                else if (doorsUnlock && GameManager.current.haveBasicAccess == true && basicAccess == true)
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
