@@ -20,9 +20,15 @@ TagManager:
   - Water
   - UI
   - Projectile
+<<<<<<< Updated upstream
   - Wall
   - Floor
   - 
+=======
+  - Floor
+  - 'Obstacle '
+  - Small Obstacle
+>>>>>>> Stashed changes
   - 
   - 
   - 
