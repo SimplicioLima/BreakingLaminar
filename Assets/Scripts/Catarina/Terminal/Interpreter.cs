@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Interpreter : MonoBehaviour
 {
-    public GameObject door;
+    public GameObject objectToDelete;
     bool open = false;
     List<string> response = new List<string>();
+
+    void Start()
+    {
+        objectToDelete.SetActive(true);
+    }
+
     public List<string> Interpret(string userInput)
     {
         response.Clear();
@@ -29,6 +35,7 @@ public class Interpreter : MonoBehaviour
         {
             response.Add("door closed");
             open = false;
+            objectToDelete.SetActive(false);
             
             return response;
         }
@@ -46,9 +53,6 @@ public class Interpreter : MonoBehaviour
 
     void Update()
     {
-        if(open)
-            door.transform.Rotate(new Vector3(0, 90, 0), Space.Self);
-        else if(!open)
-            door.transform.Rotate(new Vector3(0, 0, 0), Space.Self);
+        
     }
 }
