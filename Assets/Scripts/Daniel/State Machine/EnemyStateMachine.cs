@@ -12,13 +12,12 @@ public class EnemyStateMachine : MonoBehaviour
     float stoppingDistance;
     float turningDistance;
     float sensorLength;
-    float sensorRotateAngle;
+    float avoidingDistance;
     Vector3 sensorAdderVector;
     int currentIndex;
     bool isPlayerVisible;
     bool followingPath;
     bool avoidingObstacle;
-    PathHolder path;
     Vector3[] wayPoints;
     [SerializeField] LayerMask obstacleMask;
     [SerializeField] LayerMask smallObstacleMask;
@@ -26,7 +25,8 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] Transform pathHolder;
     [SerializeField] Transform enemy;
     Transform player;
-    Coroutine patrolCoroutine = null;
+    Colision collision;
+
 
     //State Machine variables
     EnemyBaseState currentState;
@@ -36,10 +36,8 @@ public class EnemyStateMachine : MonoBehaviour
 
 
 
-    public PathHolder Path { get { return path; } set { path = value; } }
     public EnemyBaseState CurrentState { get { return currentState; } set { currentState = value; } }
     public Vector3[] Waypoints { get { return wayPoints; } set { wayPoints = value; } }
-    public Coroutine PatrolCoroutine { get { return patrolCoroutine; } set { patrolCoroutine = value; } }
     public int Speed { get { return speed; } }
     public int TurnSpeed { get { return turnSpeed; } }
     public int ViewDistance { get { return viewDistance; } }
@@ -48,16 +46,17 @@ public class EnemyStateMachine : MonoBehaviour
     public float StoppingDistance { get { return stoppingDistance; } set { stoppingDistance = value; } }
     public float TurningDistance { get { return turningDistance; } }
     public float SensorLength { get { return sensorLength; } }
-    public float SensorRotateAngle { get { return sensorRotateAngle; } }
+    public float AvoidDistance { get { return avoidingDistance; } set { avoidingDistance = value; } }
     public Vector3 SensorAdderVector { get { return sensorAdderVector; } }
     public LayerMask ObstacleMask { get { return obstacleMask; } }
-    public LayerMask SmallObstacleMask { get{ return smallObstacleMask; } }
+    public LayerMask SmallObstacleMask { get { return smallObstacleMask; } }
     public Transform PathHolder { get { return pathHolder; } }
     public Transform Player { get { return player; } }
     public Transform Enemy { get { return enemy; } set { enemy = value; } }
+    public Colision Collision { get { return collision; } set { collision = value; } }
     public bool IsPlayerVisible { get { return isPlayerVisible; } }
     public bool FollowingPath { get { return followingPath; } set { followingPath = value; } }
-    public bool AvoidingObstacle {get { return avoidingObstacle; } set { avoidingObstacle = value; } }
+    public bool AvoidingObstacle { get { return avoidingObstacle; } set { avoidingObstacle = value; } }
 
 
 
@@ -71,9 +70,8 @@ public class EnemyStateMachine : MonoBehaviour
         turningDistance = 5f;
         sensorLength = 4f;
         sensorAdderVector = new Vector3(0, 0.2f, 0.3f);
-        sensorRotateAngle = 30f;
+        avoidingDistance = 1f;
         currentIndex = 0;
-
 
         states = new EnemyStateFactory(this);
         wayPoints = GeneratePath();
@@ -83,11 +81,16 @@ public class EnemyStateMachine : MonoBehaviour
 
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
         isPlayerVisible = CanSeePlayer();
-        Debug.Log(IsPlayerVisible);
+    }
+
+    private void FixedUpdate()
+    {
         currentState.UpdateState();
     }
 
@@ -109,18 +112,18 @@ public class EnemyStateMachine : MonoBehaviour
 
     bool CanSeePlayer()
     {
-        Collider[] rangeCheck = Physics.OverlapSphere(transform.position, viewDistance, playerMask);
+        Collider[] rangeCheck = Physics.OverlapSphere(enemy.position, viewDistance, playerMask);
 
         if (rangeCheck.Length != 0)
         {
             Transform target = rangeCheck[0].transform;
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            Vector3 directionToTarget = (target.position - enemy.position).normalized;
 
             if (Vector3.Angle(enemy.forward, directionToTarget) < viewAngle / 2f)
             {
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                float distanceToTarget = Vector3.Distance(enemy.position, target.position);
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
+                if (!Physics.Raycast(enemy.position, directionToTarget, distanceToTarget, obstacleMask))
                     return true;
                 else
                     return false;
@@ -131,6 +134,11 @@ public class EnemyStateMachine : MonoBehaviour
         else
             return false;
     }
+
+
+
+
+
 
 
     private void OnDrawGizmos()
@@ -147,5 +155,6 @@ public class EnemyStateMachine : MonoBehaviour
 
     }
 
-
 }
+
+

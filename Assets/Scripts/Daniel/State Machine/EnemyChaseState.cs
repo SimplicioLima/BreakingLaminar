@@ -15,8 +15,7 @@ public class EnemyChaseState : EnemyBaseState
     public override void EnterState()
     {
         Debug.Log("Chasing Player!");
-        //_ctx.StartCoroutine(Sensor());
-        _ctx.StartCoroutine(Follow());
+        _ctx.StartCoroutine(FollowPlayer(_ctx.Player.position));
 
     }
 
@@ -27,6 +26,10 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void UpdateState()
     {
+        if (!_ctx.IsPlayerVisible)
+        {
+            SwitchState(_factory.Patrol());
+        }
         if (Vector3.Distance(_ctx.Enemy.position, _ctx.Player.position) < Mathf.Pow(minDistanceToGameLost, 2f))
         {
             Debug.Log("Game Over!");
@@ -37,87 +40,43 @@ public class EnemyChaseState : EnemyBaseState
     }
 
 
-    IEnumerator Sensor()
+    IEnumerator CheckVision()
     {
+        Vector3 sensorPosition;
         RaycastHit hit;
-        Vector3 sensorStartPosition = _ctx.Enemy.position;
-        sensorStartPosition += _ctx.Enemy.forward * _ctx.SensorAdderVector.z;
-        sensorStartPosition += _ctx.Enemy.up * _ctx.SensorAdderVector.y;
 
+        sensorPosition = _ctx.Enemy.position + _ctx.Enemy.forward;
 
-
-        //center sensor
-        if (Physics.Raycast(sensorStartPosition, _ctx.Enemy.forward, out hit, _ctx.SensorLength))
+        if (Physics.Raycast(sensorPosition, _ctx.Enemy.forward, out hit, _ctx.SensorLength))
         {
-            if (hit.collider.CompareTag("Small Obstacle"))
-            {
-                _ctx.AvoidingObstacle = true;
-            }
+            _ctx.AvoidDistance = (hit.normal.x < 0) ? (-1f) : 1f;
         }
-
-        //center right sensor
-        sensorStartPosition += Vector3.Scale(_ctx.Enemy.right, _ctx.SensorAdderVector);
-        if (Physics.Raycast(sensorStartPosition, _ctx.Enemy.forward, out hit, _ctx.SensorLength))
-        {
-            if (hit.collider.CompareTag("Small Obstacle"))
-            {
-                _ctx.AvoidingObstacle = true;
-            }
-        }
-
-        //right sensor
-        else if (Physics.Raycast(sensorStartPosition, Quaternion.AngleAxis(_ctx.SensorRotateAngle, _ctx.Enemy.up) * _ctx.Enemy.forward, out hit, _ctx.SensorLength))
-        {
-            if (hit.collider.CompareTag("Small Obstacle"))
-            {
-                _ctx.AvoidingObstacle = true;
-            }
-        }
-
-        //left center sensor
-        sensorStartPosition -= Vector3.Scale(_ctx.Enemy.right, _ctx.SensorAdderVector) * 2;
-        if (Physics.Raycast(sensorStartPosition, _ctx.Enemy.forward, out hit, _ctx.SensorLength))
-        {
-            if (hit.collider.CompareTag("Small Obstacle"))
-            {
-                _ctx.AvoidingObstacle = true;
-            }
-        }
-
-        //left sensor
-        else if (Physics.Raycast(sensorStartPosition, Quaternion.AngleAxis(-_ctx.SensorRotateAngle, _ctx.Enemy.up) * _ctx.Enemy.forward, out hit, _ctx.SensorLength))
-        {
-            if (hit.collider.CompareTag("Small Obstacle"))
-            {
-                _ctx.AvoidingObstacle = true;
-            }
-        }
-
-
-        if (_ctx.AvoidingObstacle)
-        {
-            _ctx.Enemy.rotation *= Quaternion.Euler(new Vector3(0, _ctx.TurnSpeed * Time.deltaTime, 0));
-        }
-
         yield return null;
-
 
     }
 
 
-
-    IEnumerator Follow()
+    IEnumerator FollowPlayer(Vector3 lookTarget)
     {
-        Quaternion lookRotation = Quaternion.LookRotation(_ctx.Player.position - _ctx.Enemy.position);
-        _ctx.Enemy.rotation = Quaternion.Lerp(_ctx.Enemy.rotation, lookRotation, _ctx.TurnSpeed * Time.deltaTime);
+        float angle = 0;
+        Vector3 directionToTarget = (lookTarget - _ctx.Enemy.position).normalized;
+        float targetAngle = Mathf.Atan2(directionToTarget.x, directionToTarget.z) * Mathf.Rad2Deg;
 
-        while (_ctx.IsPlayerVisible)
+        while (Mathf.Abs(Mathf.DeltaAngle(_ctx.Enemy.eulerAngles.y, targetAngle)) > 0.05f)
         {
-            lookRotation = Quaternion.LookRotation(_ctx.Player.position - _ctx.Enemy.position);
-            _ctx.Enemy.rotation = Quaternion.Lerp(_ctx.Enemy.rotation, lookRotation, _ctx.TurnSpeed * Time.deltaTime);
+            angle = Mathf.MoveTowardsAngle(_ctx.Enemy.eulerAngles.y, targetAngle, _ctx.TurnSpeed * Time.fixedDeltaTime);
+            _ctx.Enemy.eulerAngles = Vector3.up * angle;
+            yield return null;
+        }
+
+
+        while (true)
+        {
+            yield return _ctx.StartCoroutine(CheckVision());
+            angle = Mathf.MoveTowardsAngle(_ctx.Enemy.eulerAngles.y, targetAngle, _ctx.AvoidDistance * _ctx.TurnSpeed * Time.deltaTime);
+            _ctx.Enemy.eulerAngles = Vector3.up * angle;
             _ctx.Enemy.position = Vector3.MoveTowards(_ctx.Enemy.position, _ctx.Player.position, _ctx.Speed * Time.deltaTime);
         }
-        yield return null;
 
     }
 

@@ -37,7 +37,7 @@ public class EnemyPatrolState : EnemyBaseState
 
         while (Mathf.Abs(Mathf.DeltaAngle(_ctx.Enemy.eulerAngles.y, targetAngle)) > 0.05f)
         {
-            float angle = Mathf.MoveTowardsAngle(_ctx.Enemy.eulerAngles.y, targetAngle, _ctx.TurnSpeed * Time.deltaTime);
+            float angle = Mathf.MoveTowardsAngle(_ctx.Enemy.eulerAngles.y, targetAngle, _ctx.TurnSpeed * Time.fixedDeltaTime);
             _ctx.Enemy.eulerAngles = Vector3.up * angle;
             yield return null;
         }
