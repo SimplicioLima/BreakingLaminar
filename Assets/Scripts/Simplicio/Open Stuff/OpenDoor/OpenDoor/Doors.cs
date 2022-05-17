@@ -49,7 +49,7 @@ public class Doors : MonoBehaviour
             ShowMessage();
         }
         if(GameManager.current.cctvOff == true) doorsUnlock = true;
-
+        
         SoundOn();
     }
 
@@ -196,7 +196,5 @@ public class Doors : MonoBehaviour
         {
             uiMessage.gameObject.SetActive(false);
         }
-        await Task.Delay(2000);
-        uiMessage.gameObject.SetActive(false);
     }
 }

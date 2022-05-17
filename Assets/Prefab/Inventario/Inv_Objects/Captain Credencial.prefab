@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6147701162945416514}
   - component: {fileID: 7133383189830107879}
   - component: {fileID: 4979337961008133677}
-  - component: {fileID: 6215755598360607593}
   - component: {fileID: 2382842705230980217}
   - component: {fileID: 799322972388699588}
   - component: {fileID: -3146072739955450431}
+  - component: {fileID: 1210580769452212059}
   m_Layer: 0
   m_Name: Captain Credencial
   m_TagString: Collectible
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6215755598360607593
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6780966446545393656}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: 2a590b4dc1c4f0841ae21d9931345ea3, type: 3}
 --- !u!54 &2382842705230980217
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,3 +130,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabUi: {fileID: 2680935668714525037, guid: 668022a912ce54847a7087cb704354f3, type: 3}
   distancia: 8
+--- !u!65 &1210580769452212059
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780966446545393656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00066257006, y: 0.0010367222, z: 0.000026884662}
+  m_Center: {x: -0.00001670279, y: 0.000004337261, z: 0.00000024747882}

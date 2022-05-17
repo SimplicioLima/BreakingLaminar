@@ -39,7 +39,7 @@ public class Enigma1 : MonoBehaviour
         {
             if (hit.transform.tag == "EnigmaCube")
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (inDebug) Debug.Log("Enter on E" + hit.collider.gameObject.name);
                     foreach (var item in Cubes)

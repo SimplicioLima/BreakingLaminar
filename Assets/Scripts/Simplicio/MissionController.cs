@@ -134,13 +134,14 @@ public class MissionController : MonoBehaviour
         //Mission 2
         else if (mission2_Base == false && mission1_Key == true) //missao 2 obj apartir do [2]
         {
-            if (missionObj[1] != null && currentMission == missionName[1]) missionObj[2].tag = "Collectible";
+            if (missionObj[1] != null && currentMission == missionName[1]) missionObj[1].tag = "Collectible";
 
             foreach (var item in InventorySystem.current.inventory)
             {
                 if (item.data.id == 13)
                 {
                     mission2_Base = true;
+                    currentMission = missionName[2];
                 }
             }
         }
@@ -151,6 +152,7 @@ public class MissionController : MonoBehaviour
             {
                 mission3_Cam = true;
                 GameManager.current.cctvOff = true;
+                currentMission = missionName[3];
             }
             
         }
@@ -161,6 +163,7 @@ public class MissionController : MonoBehaviour
             if (sceneIndex == 2 && missionObj[5].gameObject.GetComponent<Doors>()._isOpen == true)
             {
                 mission4_Cargo = true;
+                currentMission = missionName[4];
             }
         }
         //Mission 5
@@ -171,6 +174,7 @@ public class MissionController : MonoBehaviour
                 if (item.data.id == 6 || item.data.id == 7)
                 {
                     mission5_Emp = true;
+                    currentMission = missionName[5];
                 }
             }
         }
@@ -184,6 +188,7 @@ public class MissionController : MonoBehaviour
             if (sceneIndex == 2 && missionObj[4].gameObject.GetComponent<CheckServerDoor>().doorFound == true)
             {
                 mission6_Server = true;
+                currentMission = missionName[6];
             }
         }
         //Mission 7
@@ -194,6 +199,7 @@ public class MissionController : MonoBehaviour
                 if (item.data.id == 14 && item.stackSize == 3)
                 {
                     mission7_DoorKeys = true;
+                    currentMission = missionName[7];
                 }
             }
         }
@@ -204,6 +210,7 @@ public class MissionController : MonoBehaviour
             if (sceneIndex == 2 && missionObj[5].gameObject.GetComponent<Doors>()._isOpen == true)
             {
                 mission8_OpenServer = true;
+                currentMission = missionName[8];
             }
         }
         //Mission 9

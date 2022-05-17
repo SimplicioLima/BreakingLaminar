@@ -18,7 +18,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8403606711523708232
 Transform:
@@ -130,7 +130,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2014287072551315832
 Transform:
@@ -242,7 +242,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1896245508127578156
 Transform:
@@ -354,7 +354,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &930667849974308426
 Transform:
@@ -466,7 +466,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &930667850191499659
 Transform:
@@ -578,7 +578,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &930667851000524903
 Transform:
@@ -690,7 +690,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &930667851020471952
 Transform:
@@ -798,7 +798,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &930667851714393172
 Transform:
@@ -857,7 +857,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &930667851725182710
 Transform:
@@ -969,7 +969,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3850355044820864603
 Transform:
@@ -1081,7 +1081,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5133030022761304779
 Transform:
@@ -1193,7 +1193,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2479807114545622126
 Transform:
@@ -1305,7 +1305,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6462197661902007022
 Transform:
@@ -1417,7 +1417,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3445447667720861931
 Transform:
@@ -1529,7 +1529,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3902156187219204904
 Transform:
@@ -1641,7 +1641,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5812887202928386539
 Transform:
@@ -1753,7 +1753,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2602165967687894855
 Transform:
@@ -1865,7 +1865,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6502932909872069726
 Transform:
@@ -1977,7 +1977,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3250065247268391675
 Transform:
@@ -2089,7 +2089,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3700839121540576432
 Transform:
@@ -2201,7 +2201,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6891561963772564967
 Transform:
@@ -2313,7 +2313,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 61bcea22404bda2469670dd9255037db, type: 2}
   - {fileID: -7919312941845107719, guid: d00633f1fe46e8943835cc0e38fcf8d3, type: 3}
   - {fileID: 2100000, guid: a24037aa2dae5b145b048dcaf948032a, type: 2}
-  cam: {fileID: 0}
   distance: 10
   anim: {fileID: 0}
 --- !u!64 &5536143882520446389
@@ -2347,7 +2346,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2123678726463527210
 Transform:
@@ -2444,7 +2443,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4352418040634872163
 Transform:
@@ -2556,7 +2555,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2024363760232668735
 Transform:
@@ -2667,7 +2666,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &86766882333532306
 Transform:
@@ -2764,7 +2763,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3616727304010571224
 Transform:
@@ -2876,7 +2875,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6116386082494330657
 Transform:
@@ -2988,7 +2987,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2529271605754472549
 Transform:
@@ -3100,7 +3099,7 @@ GameObject:
   m_TagString: EnigmaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7898784106108345291
 Transform:

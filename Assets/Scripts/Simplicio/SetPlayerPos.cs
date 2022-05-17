@@ -6,19 +6,21 @@ using UnityEngine.SceneManagement;
 public class SetPlayerPos : MonoBehaviour
 {
     private bool level1 = false;
-    void Start()
+    private bool enterOnce = false;
+
+    void Update()
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (sceneIndex == 0 && level1)
+        if (sceneIndex == 0 && level1 && !enterOnce)
         {
             GameManager.current.player.transform.position = this.transform.position;
         }
-        else if (sceneIndex == 1)
+        else if (sceneIndex == 1 && !enterOnce)
         {
             GameManager.current.player.transform.position = this.transform.position;
             level1 = true;
         }
-        else if(sceneIndex == 2)
+        else if(sceneIndex == 2 && !enterOnce)
         {
             GameManager.current.player.transform.position = this.transform.position;
         }

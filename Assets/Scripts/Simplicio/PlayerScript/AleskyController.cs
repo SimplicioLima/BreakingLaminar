@@ -40,7 +40,7 @@ public class AleskyController : MonoBehaviour
     {
         //Mouse info
         Cursor.lockState = CursorLockMode.Locked;
-
+        
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
     }
