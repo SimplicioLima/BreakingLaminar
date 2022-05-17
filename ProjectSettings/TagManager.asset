@@ -4,31 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Drawer
-  - Enemy
   - Collectible
-  - Fire
-  - Wall
   - Portal
-  - Door
-  - EnigmaCube
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Projectile
-<<<<<<< Updated upstream
-  - Wall
   - Floor
   - 
-=======
-  - Floor
-  - 'Obstacle '
-  - Small Obstacle
->>>>>>> Stashed changes
+  - 
+  - 
   - 
   - 
   - 
