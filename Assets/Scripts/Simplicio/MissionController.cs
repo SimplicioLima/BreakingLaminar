@@ -27,7 +27,7 @@ public class MissionController : MonoBehaviour
     public bool mission8_OpenServer = false;
     public bool mission9_KARENoff = false;
 
-    //public List<bool> missionSequence = new List<bool>();
+    public List<bool> missionsSequence = new List<bool>();
     public List<GameObject> missionObj = new List<GameObject>();
 
     void Start()
@@ -41,6 +41,7 @@ public class MissionController : MonoBehaviour
             current = this;
         }
 
+        NumberOfMissions();
         SetMissionsNames();
 
         currentMission = missionName[0]; //iniciar a mission inicial;
@@ -49,6 +50,19 @@ public class MissionController : MonoBehaviour
     }
 
     #region Set Missions
+    private void NumberOfMissions()
+    {
+        missionsSequence.Add(mission1_Key);
+        missionsSequence.Add(mission2_Base);
+        missionsSequence.Add(mission3_Cam);
+        missionsSequence.Add(mission4_Cargo);
+        missionsSequence.Add(mission5_Emp);
+        missionsSequence.Add(mission6_Server);
+        missionsSequence.Add(mission7_DoorKeys);
+        missionsSequence.Add(mission8_OpenServer);
+        missionsSequence.Add(mission9_KARENoff);
+    }
+
     //Atribuir nome e descriçao a cada missao
     private void SetMissionsNames()
     {
@@ -99,11 +113,6 @@ public class MissionController : MonoBehaviour
         }
     }
     #endregion
-
-    private void NumberOfMissions() 
-    {
-
-    }
 
     public void VerefyWhatCanIdo()
     {
@@ -192,7 +201,7 @@ public class MissionController : MonoBehaviour
         else if (mission8_OpenServer == false && mission2_Base == true)
         {
             int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            if (sceneIndex == 1 && missionObj[5].gameObject.GetComponent<Doors>()._isOpen == true)
+            if (sceneIndex == 2 && missionObj[5].gameObject.GetComponent<Doors>()._isOpen == true)
             {
                 mission8_OpenServer = true;
             }
@@ -204,31 +213,5 @@ public class MissionController : MonoBehaviour
 
             //GameOver
         }
-    }
-}
-
-
-namespace mission
-{
-    public class Mission : MonoBehaviour
-    {
-        public string mission;
-        public string discription;
-
-        public Mission previous;
-        public Mission next;
-
-        public bool completed = false;
-        public bool current = false;
-        public bool requirement = false;
-
-        void Start()
-        {
-            if (previous != null)
-            {
-
-            }
-        }
-
     }
 }

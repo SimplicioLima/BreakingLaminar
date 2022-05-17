@@ -6,6 +6,7 @@ using UnityEngine;
 public class OpenCloseDrawers : MonoBehaviour
 {
     //States
+    [SerializeField] private bool inDebug = true;
     private bool _isOpen = false;
 
     [SerializeField] private Animator anim;

@@ -7,6 +7,11 @@ using System;
 
 public class Doors : MonoBehaviour
 {
+    //Sound
+    private AudioSource m_MyAudioSource;
+    //Detect when you use the toggle, ensures music isn’t played multiple times
+    bool _playSound;
+
     //States
     [HideInInspector] public bool _isOpen = false;
 
@@ -32,6 +37,8 @@ public class Doors : MonoBehaviour
     {
         cam = Camera.main;
         uiMessage.gameObject.SetActive(false);
+        m_MyAudioSource = GetComponent<AudioSource>();
+        _playSound = false;
     }
 
     void Update()
@@ -42,6 +49,8 @@ public class Doors : MonoBehaviour
             ShowMessage();
         }
         if(GameManager.current.cctvOff == true) doorsUnlock = true;
+
+        SoundOn();
     }
 
     private void OpenDoor()
@@ -60,6 +69,8 @@ public class Doors : MonoBehaviour
                         _isOpen = !_isOpen;
                         //SetMessage();
                         anim.SetBool("isOpen", _isOpen);
+                        _playSound = true;
+
                         if (_isOpen)
                         {
                             screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
@@ -79,6 +90,7 @@ public class Doors : MonoBehaviour
                         _isOpen = !_isOpen;
                         //SetMessage();
                         anim.SetBool("isOpen", _isOpen);
+                        _playSound = true;
                         if (_isOpen)
                         {
                             screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
@@ -105,6 +117,7 @@ public class Doors : MonoBehaviour
                         _isOpen = !_isOpen;
                         //SetMessage();
                         anim.SetBool("isOpen", _isOpen);
+                        _playSound = true;
                         if (_isOpen)
                         {
                             screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
@@ -124,6 +137,7 @@ public class Doors : MonoBehaviour
                         _isOpen = !_isOpen;
                         //SetMessage();
                         anim.SetBool("isOpen", _isOpen);
+                        _playSound = true;
                         if (_isOpen)
                         {
                             screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
@@ -142,6 +156,19 @@ public class Doors : MonoBehaviour
                 }
             }
             else uiMessage.gameObject.SetActive(false);
+        }
+    }
+
+    private void SoundOn()
+    {
+        if (_playSound == true)
+        {
+            //Play the audio you attach to the AudioSource component
+            m_MyAudioSource.Play(1400);
+            //Ensure audio doesn’t play more than once
+            Task.Delay(1000);
+            //m_MyAudioSource.Stop();
+            _playSound = false;
         }
     }
 

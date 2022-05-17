@@ -342,7 +342,6 @@ GameObject:
   - component: {fileID: 2351274377844389012}
   - component: {fileID: 2351274377842724372}
   - component: {fileID: 2351274377841448949}
-  - component: {fileID: 860497683818933590}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -639,21 +638,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &860497683818933590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2351274377841448948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2e02156d684cb14488795fd4f434ad5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inDebug: 1
-  cam: {fileID: 2351274377414047726}
-  distance: 10
 --- !u!1 &2351274377841448950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,7 +1034,6 @@ GameObject:
   - component: {fileID: 2941689902140137303}
   - component: {fileID: 2941689902140137301}
   - component: {fileID: 2351274377051148581}
-  - component: {fileID: 2941689902140137305}
   m_Layer: 0
   m_Name: Aleksy
   m_TagString: Player
@@ -1146,20 +1129,6 @@ MonoBehaviour:
   fpsCamera: {fileID: 2351274377414047726}
   spawnPrefab: {fileID: 2351274377684088871}
   force: 8000
---- !u!136 &2941689902140137305
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2941689902140137300}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2941689902140137302
 GameObject:
   m_ObjectHideFlags: 0

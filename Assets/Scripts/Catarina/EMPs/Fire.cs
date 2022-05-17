@@ -8,7 +8,7 @@ public class Fire : MonoBehaviour
     //Debuging
     [SerializeField] private bool inDebug = true;
     //private GameObject projectilePrefab;
-    [SerializeField] private Camera fpsCamera;
+    [HideInInspector] private Camera fpsCamera;
     [SerializeField] private Transform spawnPrefab;
 
     [SerializeField] private float force = 8000;
@@ -17,6 +17,7 @@ public class Fire : MonoBehaviour
     void Update()
     {
         if(dontShoot) Shoot();
+        fpsCamera = Camera.main;
     }
 
     public void Shoot()
@@ -27,7 +28,8 @@ public class Fire : MonoBehaviour
             projectilePrefab.GetComponent<Rigidbody>().isKinematic = false;
             projectilePrefab.GetComponent<Rigidbody>().useGravity = true;
             GameObject projectile = Instantiate(projectilePrefab, spawnPrefab.position, fpsCamera.transform.rotation);
-            projectile.GetComponent<Rigidbody>().AddForce(fpsCamera.transform.forward * force, ForceMode.Force);
+            Vector3 dirForce = new Vector3(fpsCamera.transform.forward.x, 0.5f, fpsCamera.transform.forward.z);
+            projectile.GetComponent<Rigidbody>().AddForce(dirForce * force, ForceMode.Force);
 
             GameManager.current.RemoveFireObjFromInv();
         }

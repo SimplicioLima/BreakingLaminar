@@ -10,6 +10,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool inDebug = true;
     public static GameManager current { get; private set; }
 
+    //Audio
+    [Header("Audio")]
+    [Space]
+    private AudioSource m_MyAudioSource;
+    private bool _playSound;
+    public AudioClip changeObjectSound;
+    public AudioClip throwObjectSound;
+
     //Camera mission;
     [HideInInspector] public bool cctvOff = false;
     [HideInInspector] public bool turnCamOff = true;
@@ -44,6 +52,10 @@ public class GameManager : MonoBehaviour
         
         DontDestroyOnLoad(gameObject);
 
+        //Audio
+        m_MyAudioSource = GetComponent<AudioSource>();
+        _playSound = false;
+
         //Inventory
         _invCanvas.SetActive(false);
 
@@ -58,19 +70,33 @@ public class GameManager : MonoBehaviour
         PickTrowableFromInv(); //inv obj Throw          Letra Y
         VerefyCredencials(); //verefica credenciais
         MissionController.current.VerefyWhatCanIdo();
+        SoundOn();
     }
 
 
     #region Inventory
     private void PickTrowableFromInv()
     {
-        if (Input.GetKeyDown(KeyCode.Y)) OnClickObjectToThrow();
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            m_MyAudioSource.PlayOneShot(changeObjectSound);
+            OnClickObjectToThrow();
+        }
     }
 
     public bool CanShoot()
     {
         if (currentHand != null && currentHand.gameObject != null)
         {
+            if (_playSound == true)
+            {
+                //Play the audio you attach to the AudioSource component
+                m_MyAudioSource.PlayOneShot(throwObjectSound);
+                //Ensure audio doesn’t play more than once
+                Task.Delay(1000);
+                //m_MyAudioSource.Stop();
+                _playSound = false;
+            }
             return true;
         }
         return false;
@@ -93,7 +119,7 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        
+        _playSound = true;
     }
 
     //Obj from inv to Hand
@@ -192,4 +218,16 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private void SoundOn()
+    {
+        if (_playSound == true)
+        {
+            //Play the audio you attach to the AudioSource component
+            m_MyAudioSource.PlayOneShot(throwObjectSound);
+            //Ensure audio doesn’t play more than once
+            Task.Delay(1000);
+            //m_MyAudioSource.Stop();
+            _playSound = false;
+        }
+    }
 }
