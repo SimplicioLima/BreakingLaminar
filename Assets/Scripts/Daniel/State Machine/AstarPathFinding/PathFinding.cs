@@ -44,7 +44,7 @@ public class PathFinding : MonoBehaviour
                 if (!currentNode.walkable || closedSet.Contains(neighbourNode))
                     continue;
 
-                int movementCost = currentNode.gCost + CalculateCostToMove(currentNode, neighbourNode);
+                int movementCost = currentNode.gCost + CalculateCostToMove(currentNode, neighbourNode) + neighbourNode.movementPenalty;
 
                 if (movementCost < neighbourNode.gCost || !openSet.Contains(neighbourNode))
                 {
@@ -124,4 +124,8 @@ public class PathFinding : MonoBehaviour
         //diagonal moves cost 14 "points"; sqrt(2) 
         return 14 * distanceX + 10 * (distanceY - distanceX);
     }
+
+
+
+
 }

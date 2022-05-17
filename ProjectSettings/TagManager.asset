@@ -5,17 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Collectible
-  - Portal
+  - Obstacle
+  - Small Obstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Floor
-  - 
-  - 
+  - Small Obstacle
+  - Obstacle
   - 
   - 
   - 

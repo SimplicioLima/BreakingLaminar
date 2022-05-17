@@ -27,4 +27,9 @@ public class EnemyStateFactory
         return new EnemyPlayerSoundState(context,this); 
     }
 
+    public EnemyWinState GameLost()
+    {
+        return new EnemyWinState(context, this);
+    }
+
 }

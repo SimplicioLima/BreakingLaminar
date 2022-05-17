@@ -32,7 +32,7 @@ public struct Line
 
         if (gradientPerpendicular == 0)
             gradient = verticalLineGradient;
-        else
+        else 
             gradient = -1 / gradientPerpendicular;
 
 

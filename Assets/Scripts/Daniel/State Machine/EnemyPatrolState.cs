@@ -17,7 +17,7 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void ExitState()
     {
-        _ctx.StopCoroutine(FollowPath(_ctx.Waypoints));
+        _ctx.StopAllCoroutines();
     }
 
     public override void UpdateState()
@@ -51,7 +51,7 @@ public class EnemyPatrolState : EnemyBaseState
         Vector3 targetWayPoint = waypoints[_ctx.CurrentIndex++];
         _ctx.Enemy.LookAt(targetWayPoint);
 
-        while (!_ctx.IsPlayerVisible)
+        while (true)
         {
             _ctx.Enemy.position = Vector3.MoveTowards(_ctx.Enemy.position, targetWayPoint, _ctx.Speed * Time.deltaTime);
             if (_ctx.Enemy.position == targetWayPoint)

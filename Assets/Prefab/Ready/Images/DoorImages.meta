@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 9c493da4e1c70a744af8f3bce33ef228
+<<<<<<< Updated upstream:Assets/Prefab/Ready/Images/DoorImages.meta
+guid: 187b79e18d0096949befd2962a07d5a5
+=======
+guid: 3e5818c1a610fdc4b8951d4aa9eced8d
+>>>>>>> Stashed changes:Assets/Scripts/Daniel/State Machine/ObstacleAvoidance.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -11,12 +11,17 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] float viewAngle;
     float stoppingDistance;
     float turningDistance;
+    float sensorLength;
+    float sensorRotateAngle;
+    Vector3 sensorAdderVector;
     int currentIndex;
     bool isPlayerVisible;
     bool followingPath;
-    Path path;
+    bool avoidingObstacle;
+    PathHolder path;
     Vector3[] wayPoints;
     [SerializeField] LayerMask obstacleMask;
+    [SerializeField] LayerMask smallObstacleMask;
     [SerializeField] LayerMask playerMask;
     [SerializeField] Transform pathHolder;
     [SerializeField] Transform enemy;
@@ -31,7 +36,7 @@ public class EnemyStateMachine : MonoBehaviour
 
 
 
-    public Path Path { get { return path; } set { path = value; } }
+    public PathHolder Path { get { return path; } set { path = value; } }
     public EnemyBaseState CurrentState { get { return currentState; } set { currentState = value; } }
     public Vector3[] Waypoints { get { return wayPoints; } set { wayPoints = value; } }
     public Coroutine PatrolCoroutine { get { return patrolCoroutine; } set { patrolCoroutine = value; } }
@@ -42,12 +47,17 @@ public class EnemyStateMachine : MonoBehaviour
     public float ViewAngle { get { return viewAngle; } }
     public float StoppingDistance { get { return stoppingDistance; } set { stoppingDistance = value; } }
     public float TurningDistance { get { return turningDistance; } }
+    public float SensorLength { get { return sensorLength; } }
+    public float SensorRotateAngle { get { return sensorRotateAngle; } }
+    public Vector3 SensorAdderVector { get { return sensorAdderVector; } }
     public LayerMask ObstacleMask { get { return obstacleMask; } }
+    public LayerMask SmallObstacleMask { get{ return smallObstacleMask; } }
     public Transform PathHolder { get { return pathHolder; } }
     public Transform Player { get { return player; } }
     public Transform Enemy { get { return enemy; } set { enemy = value; } }
     public bool IsPlayerVisible { get { return isPlayerVisible; } }
     public bool FollowingPath { get { return followingPath; } set { followingPath = value; } }
+    public bool AvoidingObstacle {get { return avoidingObstacle; } set { avoidingObstacle = value; } }
 
 
 
@@ -57,16 +67,19 @@ public class EnemyStateMachine : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         isPlayerVisible = false;
         followingPath = false;
-        stoppingDistance = 10f;
-        turningDistance = 3f;
+        stoppingDistance = 5f;
+        turningDistance = 5f;
+        sensorLength = 4f;
+        sensorAdderVector = new Vector3(0, 0.2f, 0.3f);
+        sensorRotateAngle = 30f;
         currentIndex = 0;
-
 
 
         states = new EnemyStateFactory(this);
         wayPoints = GeneratePath();
         currentState = states.Patrol();
         currentState.EnterState();
+
 
     }
 
