@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractWithTerminal : MonoBehaviour
+public class InteractWithBook : MonoBehaviour
 {
     public GameObject normalCanvas;
-    public GameObject puzzleCanvas;
+    public GameObject bookCanvas;
     public GameObject interactUI;
     public GameObject fpsController;
     public Camera temporaryCamera;
@@ -17,34 +17,31 @@ public class InteractWithTerminal : MonoBehaviour
         activeUI = false;
         interactUI.SetActive(false);
         visible = false;
+        temporaryCamera.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if(activeUI)
         {
             interactUI.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-
+                visible = true;
                 normalCanvas.SetActive(false);
-                puzzleCanvas.SetActive(true);
+                bookCanvas.SetActive(true);
                 fpsController.SetActive(false);
                 temporaryCamera.gameObject.SetActive(true);
+               
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                
+                visible = false;
                 normalCanvas.SetActive(true);
-                puzzleCanvas.SetActive(false);
+                bookCanvas.SetActive(false);
                 fpsController.SetActive(true);
                 temporaryCamera.gameObject.SetActive(false);
                 
@@ -53,6 +50,18 @@ public class InteractWithTerminal : MonoBehaviour
         else
         {
             interactUI.SetActive(false);
+        }
+
+        if(visible == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if(visible == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            
         }
     }
 

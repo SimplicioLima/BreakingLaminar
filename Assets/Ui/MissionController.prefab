@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4929719894227645845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4929719894227645931}
+  - component: {fileID: 4929719894227645844}
+  m_Layer: 0
+  m_Name: MissionController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4929719894227645931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929719894227645845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.018841743, y: 37.72667, z: -118.087105}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4929719894227645844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929719894227645845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7236f03630b00ee458a45fd249a2a4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inDebug: 1
+  missionName: []
+  discription: []
+  currentMission: 
+  mission1_Key: 0
+  mission2_Base: 0
+  mission3_Cam: 0
+  mission4_Cargo: 0
+  mission5_Emp: 0
+  mission6_Server: 0
+  mission7_DoorKeys: 0
+  mission8_OpenServer: 0
+  mission9_KARENoff: 0
+  missionsSequence: 
+  missionObj:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
