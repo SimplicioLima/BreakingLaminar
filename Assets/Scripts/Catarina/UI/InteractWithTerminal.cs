@@ -7,7 +7,7 @@ public class InteractWithTerminal : MonoBehaviour
     public GameObject normalCanvas;
     public GameObject puzzleCanvas;
     public GameObject interactUI;
-    public GameObject fpsController;
+    [HideInInspector] public GameObject fpsController;
     public Camera temporaryCamera;
     private bool activeUI;
     bool visible;
@@ -17,6 +17,7 @@ public class InteractWithTerminal : MonoBehaviour
         activeUI = false;
         interactUI.SetActive(false);
         visible = false;
+        fpsController = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -45,9 +46,9 @@ public class InteractWithTerminal : MonoBehaviour
                 
                 normalCanvas.SetActive(true);
                 puzzleCanvas.SetActive(false);
+                fpsController.transform.position = this.transform.position;
                 fpsController.SetActive(true);
                 temporaryCamera.gameObject.SetActive(false);
-                
             }
         }
         else

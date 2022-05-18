@@ -7,6 +7,10 @@ TagManager:
   - Collectible
   - Obstacle
   - Small Obstacle
+  - EnigmaCube
+  - Door
+  - Portal
+  - Enemy
   layers:
   - Default
   - TransparentFX

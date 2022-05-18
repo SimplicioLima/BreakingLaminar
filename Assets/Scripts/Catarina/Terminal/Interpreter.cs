@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interpreter : MonoBehaviour
 {
-    public GameObject objectToDelete;
+    //public GameObject objectToDelete;
     bool open = false;
     List<string> response = new List<string>();
 
     void Start()
     {
-        objectToDelete.SetActive(true);
+        //objectToDelete.SetActive(true);
     }
 
     public List<string> Interpret(string userInput)
@@ -48,12 +49,21 @@ public class Interpreter : MonoBehaviour
             response.Add("Karen is a highly developed artificial intelligence, built to facilitate de lifes of our brave army.");
             return response;
         }
-        if(args[0] == "off-karen-admin")
+        if(args[0] == "off-karen-admin" && MissionController.current.mission8_OpenServer)
         {
             response.Add("Karen off.");
+            GameManager.current.KarenOff = true;
             return response;
         }
-        else{
+        if (args[0] == "off-camera-admin" && SceneManager.GetActiveScene().buildIndex == 1 && MissionController.current.mission2_Base)
+        {
+            response.Add("Cameras off.");
+            //
+            GameManager.current.CctvDeativate();
+            return response;
+        }
+        else
+        {
             response.Add("command not recognized.");
 
             return response;

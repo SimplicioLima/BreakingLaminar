@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool haveBasicAccess = false;
     [HideInInspector] public bool haveCaptainAccess = false;
 
+    public bool KarenOff = false;
+    public bool Die = false;
+    bool win = false;
+
     void Start()
     {
         if (current != null && current != this)
@@ -65,12 +70,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CctvDeativate(); //Desativar as cctvs           Letra Z
+        //CctvDeativate(); //Desativar as cctvs           Letra Z
         ActivateInv(); //Abrir e fechar o inventario    Letra T
         PickTrowableFromInv(); //inv obj Throw          Letra Y
         VerefyCredencials(); //verefica credenciais
         MissionController.current.VerefyWhatCanIdo();
         SoundOn();
+        Victory();
     }
 
 
@@ -186,13 +192,13 @@ public class GameManager : MonoBehaviour
     #region CCTVS
     public void CctvDeativate()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            turnCamOff = false;
-            CCTVController.ChangeValue(turnCamOff);
-            cctvOff = true;
-            if (inDebug) Debug.Log("CCTVController.camerasOn :" + CCTVController.camerasOn);
-        }
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        turnCamOff = false;
+        CCTVController.ChangeValue(turnCamOff);
+        cctvOff = true;
+        if (inDebug) Debug.Log("CCTVController.camerasOn :" + CCTVController.camerasOn);
+        //}
     }
     #endregion
 
@@ -229,5 +235,34 @@ public class GameManager : MonoBehaviour
             //m_MyAudioSource.Stop();
             _playSound = false;
         }
+    }
+
+    public void Victory()
+    {
+        //if (inDebug) Debug.Log("" + MissionController.current.missionsSequence.Count);
+        if(MissionController.current.mission9_KARENoff == true)
+        {
+            win = true;
+        }
+
+        if (win == true)
+        {
+            Debug.Log("You Won");
+        }
+        else if(Die)
+        {
+            //message player died
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //respawn player
+                SceneManager.LoadScene(0);
+                GameObject respawn = GameObject.FindWithTag("Respawn");
+                player.transform.position = respawn.transform.position;
+            }
+            //
+        }
+        //Iniciate CutScene
+
+        Application.Quit();
     }
 }

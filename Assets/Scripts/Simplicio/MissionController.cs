@@ -217,7 +217,7 @@ public class MissionController : MonoBehaviour
         else if (mission9_KARENoff == false && mission2_Base == true)
         {
             //
-
+            if (GameManager.current.KarenOff) mission9_KARENoff = true;
             //GameOver
         }
     }

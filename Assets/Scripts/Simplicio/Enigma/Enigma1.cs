@@ -34,6 +34,7 @@ public class Enigma1 : MonoBehaviour
 
     private void ChangeCubeColor()
     {
+        cam = Camera.main;
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
