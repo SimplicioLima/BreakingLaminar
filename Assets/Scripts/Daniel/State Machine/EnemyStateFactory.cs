@@ -29,6 +29,7 @@ public class EnemyStateFactory
 
     public EnemyWinState GameLost()
     {
+        GameManager.current.Die = true;
         return new EnemyWinState(context, this);
     }
 

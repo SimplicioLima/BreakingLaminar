@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool cctvOff = false;
     [HideInInspector] public bool turnCamOff = true;
 
-    public GameObject player;
+    [HideInInspector] public GameObject player;
     [Header("Inventory Canvas")]
     [Space]
     //Inventory
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         }
         
         DontDestroyOnLoad(gameObject);
-
+        player = GameObject.FindWithTag("Player");
         //Audio
         m_MyAudioSource = GetComponent<AudioSource>();
         _playSound = false;
@@ -254,7 +254,10 @@ public class GameManager : MonoBehaviour
         }
         else if(Die)
         {
+            win = false;
+
             gameOverScreen.SetActive(true);
+
             //message player died
             if (Input.GetKeyDown(KeyCode.Space))
             {

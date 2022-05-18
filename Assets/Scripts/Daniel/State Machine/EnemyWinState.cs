@@ -11,6 +11,7 @@ public class EnemyWinState : EnemyBaseState
     public override void EnterState()
     {
         GameManager.current.Die = true;
+        Time.timeScale = 0;
     }
 
     public override void ExitState()
