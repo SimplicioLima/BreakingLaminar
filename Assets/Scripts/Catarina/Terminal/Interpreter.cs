@@ -21,7 +21,7 @@ public class Interpreter : MonoBehaviour
 
         if(args[0] == "help")
         {
-            response.Add("if you want to use the terminal, type \"boop\" ");
+            response.Add("Check out the information book to know how to handle the terminal");
 
             return response;
         }
@@ -31,17 +31,26 @@ public class Interpreter : MonoBehaviour
             open = true;
             return response;
         }
-        if(args[0] == "close-door")
+        if(args[0] == "access-server")
         {
-            response.Add("door closed");
-            open = false;
-            objectToDelete.SetActive(false);
+            response.Add("Insert server password");
             
             return response;
         }
-        if(args[0] == "deactivate-lights")
+        if(args[0] == "1234")
         {
-            response.Add("Insert room number and code.");
+            response.Add("server accessed");
+            
+            return response;
+        }
+        if(args[0] == "nerak-info")
+        {
+            response.Add("Karen is a highly developed artificial intelligence, built to facilitate de lifes of our brave army.");
+            return response;
+        }
+        if(args[0] == "off-karen-admin")
+        {
+            response.Add("Karen off.");
             return response;
         }
         else{

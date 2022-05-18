@@ -176,6 +176,8 @@ public class UI_Controller : MonoBehaviour
     {
         pauseGroup.SetActive(false);
         optionsMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void SetMasterVolume()
