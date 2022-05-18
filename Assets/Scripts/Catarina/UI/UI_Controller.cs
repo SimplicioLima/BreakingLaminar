@@ -24,9 +24,11 @@ public class UI_Controller : MonoBehaviour
     //private Volume m_volume;
     //VolumeProfile volumeProfile;
     public Camera mainCamera;
+    public GameObject loadingScreen;
 
     void Start()
     {
+        loadingScreen.gameObject.SetActive(false);
         gameUI.SetActive(true);
 
         fullscreenToggle.isOn = Screen.fullScreen;
@@ -94,20 +96,17 @@ public class UI_Controller : MonoBehaviour
             {
                 Time.timeScale = 0;
                 AudioListener.pause = true;
-                
+                gameUI.SetActive(false);
             }
             else
             {
                 Time.timeScale = 1;
                 AudioListener.pause = false;
+                gameUI.SetActive(true);
             }
 
         }
-
-        if(isPaused)
-            gameUI.SetActive(false);
-        else
-            gameUI.SetActive(true);
+            
     }
 
     public void ResLeft()
@@ -162,6 +161,7 @@ public class UI_Controller : MonoBehaviour
         isPaused = false;
 
         pauseGroup.SetActive(false);
+        gameUI.SetActive(true);
         
         AudioListener.pause = false;
 
@@ -174,8 +174,6 @@ public class UI_Controller : MonoBehaviour
     {
         pauseGroup.SetActive(false);
         optionsMenu.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     public void SetMasterVolume()
@@ -212,6 +210,7 @@ public class UI_Controller : MonoBehaviour
 
     public void ContinueToHQ()
     {
+        loadingScreen.gameObject.SetActive(true);
         SceneManager.LoadScene(8);
     }
 }

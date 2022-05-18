@@ -32,7 +32,7 @@ public class MainMenu_UI : MonoBehaviour
     public void LoadLevel()
     {
         HideMenu();
-        loadGame.ShowLoadingScreen();
+        showLoad();
         scenesToLoad.Add(SceneManager.LoadSceneAsync(0));
         StartCoroutine(loadGame.LoadSomeLevel(0));
     }

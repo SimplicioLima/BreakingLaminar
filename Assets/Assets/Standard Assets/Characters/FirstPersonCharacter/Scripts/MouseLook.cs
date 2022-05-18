@@ -16,6 +16,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float smoothTime = 5f;
         public bool lockCursor = true;
 
+        public GameObject pauseGroup;
+        public GameObject optionsGroup;
+
 
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
@@ -74,13 +77,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void InternalLockUpdate()
         {
-            if(Input.GetKeyUp(KeyCode.Escape))
+            if(Input.GetKeyUp(KeyCode.Escape) && (pauseGroup.active || optionsGroup.active))
             {
                 m_cursorIsLocked = false;
             }
-            else if(Input.GetMouseButtonUp(0))
+            else if(!pauseGroup.active || !optionsGroup.active)
             {
-                m_cursorIsLocked = true;
+                if(Input.GetMouseButtonUp(2))
+                    m_cursorIsLocked = true;
+                
             }
 
             if (m_cursorIsLocked)
