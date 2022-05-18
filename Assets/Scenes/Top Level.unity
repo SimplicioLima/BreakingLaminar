@@ -13372,7 +13372,7 @@ MonoBehaviour:
     m_Bits: 128
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   pathHolder: {fileID: 1023960797}
   enemy: {fileID: 902450225}
 --- !u!136 &902450222
@@ -27345,7 +27345,7 @@ MonoBehaviour:
     m_Bits: 128
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   pathHolder: {fileID: 1963233980}
   enemy: {fileID: 1879880171}
 --- !u!136 &1879880168

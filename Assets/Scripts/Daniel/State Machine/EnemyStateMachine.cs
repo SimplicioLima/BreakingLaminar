@@ -87,12 +87,9 @@ public class EnemyStateMachine : MonoBehaviour
     void Update()
     {
         isPlayerVisible = CanSeePlayer();
-    }
-
-    private void FixedUpdate()
-    {
         currentState.UpdateState();
     }
+
 
 
     Vector3[] GeneratePath()
@@ -104,7 +101,7 @@ public class EnemyStateMachine : MonoBehaviour
         for (int i = 0; i < tempPath.Length; i++)
         {
             tempPath[i] = pathHolder.GetChild(i).position;
-            tempPath[i] = new Vector3(tempPath[i].x, 1, tempPath[i].z);
+            tempPath[i] = new Vector3(tempPath[i].x, enemy.position.y, tempPath[i].z);
         }
         return tempPath;
     }
