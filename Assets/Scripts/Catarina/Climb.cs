@@ -6,6 +6,7 @@ public class Climb : MonoBehaviour
 {
     [SerializeField] private GameObject UiGoUp;
     [SerializeField] private GameObject UiGoDown;
+    public GameObject loadingScreen;
 
     private bool activeUI;
 
@@ -33,6 +34,7 @@ public class Climb : MonoBehaviour
                 {
                     if (goUp) UiGoUp.SetActive(false);
                     if (goDown) UiGoDown.SetActive(false);
+                    showLoad();
                     SceneManager.LoadScene(UpperLevel);
                 }
             }
@@ -43,10 +45,16 @@ public class Climb : MonoBehaviour
                 {
                     if (goUp) UiGoUp.SetActive(false);
                     if (goDown) UiGoDown.SetActive(false);
+                    showLoad();
                     SceneManager.LoadScene(LowerLevel);
                 }
             }
         }
+    }
+
+    public void showLoad()
+    {
+        loadingScreen.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider collider)
