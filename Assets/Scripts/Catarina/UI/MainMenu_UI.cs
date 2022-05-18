@@ -21,7 +21,7 @@ public class MainMenu_UI : MonoBehaviour
 
     public void Credits()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(4);
     }
 
     public void ExitBtnClick()
