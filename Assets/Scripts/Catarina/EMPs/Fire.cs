@@ -27,7 +27,7 @@ public class Fire : MonoBehaviour
             GameObject projectilePrefab = GameManager.current.ChangeFireObject();
             projectilePrefab.GetComponent<Rigidbody>().isKinematic = false;
             projectilePrefab.GetComponent<Rigidbody>().useGravity = true;
-            Vector3 posObj = new Vector3(spawnPrefab.position.x, spawnPrefab.position.y + 1, spawnPrefab.position.x);
+            Vector3 posObj = new Vector3(spawnPrefab.position.x, spawnPrefab.position.y + 2, spawnPrefab.position.x);
             GameObject projectile = Instantiate(projectilePrefab, spawnPrefab.position, fpsCamera.transform.rotation);
             Vector3 dirForce = new Vector3(fpsCamera.transform.forward.x, 0.5f, fpsCamera.transform.forward.z);
             projectile.GetComponent<Rigidbody>().AddForce(dirForce * force, ForceMode.Force);

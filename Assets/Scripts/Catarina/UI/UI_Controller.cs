@@ -24,11 +24,9 @@ public class UI_Controller : MonoBehaviour
     //private Volume m_volume;
     //VolumeProfile volumeProfile;
     public Camera mainCamera;
-    public GameObject loadingScreen;
 
     void Start()
     {
-        loadingScreen.gameObject.SetActive(false);
         gameUI.SetActive(true);
 
         fullscreenToggle.isOn = Screen.fullScreen;
@@ -214,7 +212,6 @@ public class UI_Controller : MonoBehaviour
 
     public void ContinueToHQ()
     {
-        loadingScreen.gameObject.SetActive(true);
         SceneManager.LoadScene(8);
     }
 }

@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public AudioClip changeObjectSound;
     public AudioClip throwObjectSound;
 
+    public GameObject gameOverScreen;
+
     //Camera mission;
     [HideInInspector] public bool cctvOff = false;
     [HideInInspector] public bool turnCamOff = true;
@@ -248,9 +250,11 @@ public class GameManager : MonoBehaviour
         if (win == true)
         {
             Debug.Log("You Won");
+            //cutscene
         }
         else if(Die)
         {
+            gameOverScreen.SetActive(true);
             //message player died
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -258,11 +262,13 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(0);
                 GameObject respawn = GameObject.FindWithTag("Respawn");
                 player.transform.position = respawn.transform.position;
+                Die = false;
+                gameOverScreen.SetActive(false);
             }
             //
         }
         //Iniciate CutScene
 
-        Application.Quit();
+        //Application.Quit();
     }
 }

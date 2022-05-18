@@ -478,13 +478,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1902064524}
     m_Modifications:
+    - target: {fileID: 8911096710908280569, guid: b952ce94fe8d40443842d0bfa82e0c23, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4956338
+      objectReference: {fileID: 0}
     - target: {fileID: 8911096711381835848, guid: b952ce94fe8d40443842d0bfa82e0c23, type: 3}
       propertyPath: m_Name
       value: LoadingScreen
       objectReference: {fileID: 0}
     - target: {fileID: 8911096711381835848, guid: b952ce94fe8d40443842d0bfa82e0c23, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8911096711381835849, guid: b952ce94fe8d40443842d0bfa82e0c23, type: 3}
       propertyPath: m_Pivot.x
@@ -570,7 +574,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5920603208059805953, guid: b952ce94fe8d40443842d0bfa82e0c23, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b952ce94fe8d40443842d0bfa82e0c23, type: 3}
 --- !u!1001 &932785651406016180
 PrefabInstance:
@@ -639,6 +644,10 @@ PrefabInstance:
     - target: {fileID: 1942599125208545766, guid: 0f302d7221287ed4a9a947764b01e4ca, type: 3}
       propertyPath: m_Name
       value: GameOverScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942599125208545766, guid: 0f302d7221287ed4a9a947764b01e4ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1942599125208545767, guid: 0f302d7221287ed4a9a947764b01e4ca, type: 3}
       propertyPath: m_Pivot.x
