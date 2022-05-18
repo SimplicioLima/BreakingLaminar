@@ -1625,7 +1625,7 @@ Transform:
   - {fileID: 2067248630}
   - {fileID: 1202077004}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &51774554
 PrefabInstance:
@@ -3344,8 +3344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8bf9a2dbb3c43409d8b77abd610752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  turnSpeed: 20
+  speed: 5
+  turnSpeed: 50
   viewDistance: 4
   viewAngle: 90
   obstacleMask:
@@ -3435,7 +3435,7 @@ Transform:
   m_Children:
   - {fileID: 1831359978}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131653063
 GameObject:
@@ -5258,7 +5258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &246860702
 Transform:
   m_ObjectHideFlags: 0
@@ -5279,7 +5279,7 @@ Transform:
   - {fileID: 1848674750}
   - {fileID: 752718502}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &252545986
 GameObject:
@@ -10067,8 +10067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8bf9a2dbb3c43409d8b77abd610752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  turnSpeed: 20
+  speed: 5
+  turnSpeed: 50
   viewDistance: 4
   viewAngle: 90
   obstacleMask:
@@ -10158,7 +10158,7 @@ Transform:
   m_Children:
   - {fileID: 1631479190}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &452615922
 GameObject:
@@ -19052,7 +19052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &831908424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19155,7 +19155,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832563668 stripped
 GameObject:
@@ -19616,8 +19616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8bf9a2dbb3c43409d8b77abd610752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  turnSpeed: 20
+  speed: 5
+  turnSpeed: 50
   viewDistance: 4
   viewAngle: 90
   obstacleMask:
@@ -19707,7 +19707,7 @@ Transform:
   m_Children:
   - {fileID: 1152708663}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &870481285
 GameObject:
@@ -27423,7 +27423,7 @@ Transform:
   - {fileID: 1026627554}
   - {fileID: 1718546285}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1307604336
 PrefabInstance:
@@ -30015,7 +30015,7 @@ Transform:
   - {fileID: 286185633}
   - {fileID: 632267061}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1398144559
 PrefabInstance:
@@ -34018,8 +34018,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8bf9a2dbb3c43409d8b77abd610752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  turnSpeed: 20
+  speed: 5
+  turnSpeed: 50
   viewDistance: 4
   viewAngle: 90
   obstacleMask:
@@ -34109,7 +34109,7 @@ Transform:
   m_Children:
   - {fileID: 172052281}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1612431568
 GameObject:
@@ -37567,7 +37567,7 @@ Transform:
   - {fileID: 966887873}
   - {fileID: 1437310953}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1759141545 stripped
 Transform:
@@ -37951,7 +37951,7 @@ Transform:
   - {fileID: 1017131922}
   - {fileID: 1635248411}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1769966458
 GameObject:
@@ -38689,6 +38689,7 @@ Transform:
   m_LocalPosition: {x: 1.5854895, y: 86.77067, z: 30.409548}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 831908428}
   - {fileID: 246860702}
   - {fileID: 1856093391}
   - {fileID: 1766455660}
@@ -38702,7 +38703,6 @@ Transform:
   - {fileID: 1397855032}
   - {fileID: 128848242}
   - {fileID: 2116970373}
-  - {fileID: 831908428}
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39892,8 +39892,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8bf9a2dbb3c43409d8b77abd610752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  turnSpeed: 20
+  speed: 5
+  turnSpeed: 50
   viewDistance: 4
   viewAngle: 90
   obstacleMask:
@@ -39983,7 +39983,7 @@ Transform:
   m_Children:
   - {fileID: 1672771687}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857155035 stripped
 GameObject:
@@ -45921,8 +45921,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8bf9a2dbb3c43409d8b77abd610752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  turnSpeed: 20
+  speed: 5
+  turnSpeed: 50
   viewDistance: 4
   viewAngle: 90
   obstacleMask:
@@ -46012,7 +46012,7 @@ Transform:
   m_Children:
   - {fileID: 1398484483}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &2108347582
 PrefabInstance:
@@ -46633,7 +46633,7 @@ Transform:
   - {fileID: 1354478348}
   - {fileID: 1911384857}
   m_Father: {fileID: 1797142056}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2118261072
 GameObject:

@@ -10,15 +10,12 @@ public class EnemyWinState : EnemyBaseState
 
     public override void EnterState()
     {
-        // ui stuff provavelmente ?
-
-
+        GameManager.current.Die = true;
     }
 
     public override void ExitState()
     {
         //talvez desnecessario neste contexto
-
     }
 
     public override void UpdateState()
