@@ -28,6 +28,13 @@ public class EnemyStateMachine : MonoBehaviour
     Colision collision;
 
 
+    //animation stuff
+    Animator anim;
+    bool isPatroling;
+
+
+
+
     //State Machine variables
     EnemyBaseState currentState;
     EnemyStateFactory states;
@@ -60,6 +67,8 @@ public class EnemyStateMachine : MonoBehaviour
 
 
 
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -74,8 +83,11 @@ public class EnemyStateMachine : MonoBehaviour
         currentIndex = 0;
 
         states = new EnemyStateFactory(this);
+
         wayPoints = GeneratePath();
+
         currentState = states.Patrol();
+        //anim.SetBool("isPatroling", true);
         currentState.EnterState();
 
 
@@ -101,7 +113,7 @@ public class EnemyStateMachine : MonoBehaviour
         for (int i = 0; i < tempPath.Length; i++)
         {
             tempPath[i] = pathHolder.GetChild(i).position;
-            tempPath[i] = new Vector3(tempPath[i].x, enemy.position.y, tempPath[i].z);
+            tempPath[i] = new Vector3(tempPath[i].x, enemy.position.y + 1.5f, tempPath[i].z);
         }
         return tempPath;
     }
@@ -121,15 +133,27 @@ public class EnemyStateMachine : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(enemy.position, target.position);
 
                 if (!Physics.Raycast(enemy.position, directionToTarget, distanceToTarget, obstacleMask))
+                {
+                    Debug.Log("I can see you!");
                     return true;
+                }
                 else
+                {
+                    Debug.Log("Object in the way!");
                     return false;
+                }
             }
             else
+            {
+                Debug.Log("Angles differ!");
                 return false;
+            }
         }
         else
+        {
+            Debug.Log("Not in range!");
             return false;
+        }
     }
 
 
@@ -149,8 +173,19 @@ public class EnemyStateMachine : MonoBehaviour
             previouspos = waypoint.position;
         }
         Gizmos.DrawLine(previouspos, startposition);
-
     }
+
+
+    public Vector3 DirectionFromAngle(float angleInDeg, bool angleIsGlobal)
+    {
+        if (!angleIsGlobal)
+        {
+            angleInDeg += enemy.eulerAngles.y;
+        }
+        return new Vector3(Mathf.Sin(angleInDeg) * Mathf.Deg2Rad, 0, Mathf.Cos(angleInDeg) * Mathf.Deg2Rad);
+    }
+
+
 
 }
 

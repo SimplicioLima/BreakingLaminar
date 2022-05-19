@@ -29,8 +29,14 @@ public class EnemyStateFactory
 
     public EnemyWinState GameLost()
     {
-        GameManager.current.Die = true;
+        //GameManager.current.Die = true;
         return new EnemyWinState(context, this);
+    }
+
+
+    public EnemyChaseToPatrolState ChaseToPatrol()
+    {
+        return new EnemyChaseToPatrolState(context, this);
     }
 
 }

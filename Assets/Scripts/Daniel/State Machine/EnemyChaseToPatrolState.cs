@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrolState : EnemyBaseState
+public class EnemyChaseToPatrolState : EnemyBaseState
 {
-    public EnemyPatrolState(EnemyStateMachine _context, EnemyStateFactory _factory) :
-        base(_context, _factory)
+
+    public EnemyChaseToPatrolState(EnemyStateMachine _context, EnemyStateFactory _factory) :
+      base(_context, _factory)
     { }
 
 
     public override void EnterState()
     {
-        Debug.Log("Patroling!");
-        _ctx.StartCoroutine(FollowPath(_ctx.Waypoints));
+        Debug.Log("Restarting Path!");
+        _ctx.StartCoroutine(RestartPatrol(_ctx.Waypoints));
     }
 
     public override void ExitState()
@@ -22,11 +23,10 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void UpdateState()
     {
-        if (_ctx.IsPlayerVisible)
+        if (_ctx.Enemy.position == _ctx.Waypoints[_ctx.CurrentIndex])
         {
-            SwitchState(_factory.Chase());
+            SwitchState(_factory.Patrol());
         }
-
     }
 
     IEnumerator TurnToFace(Vector3 lookTarget)
@@ -43,26 +43,18 @@ public class EnemyPatrolState : EnemyBaseState
         }
     }
 
-
-    IEnumerator FollowPath(Vector3[] waypoints)
+    IEnumerator RestartPatrol(Vector3[] waypoints)
     {
-        _ctx.Enemy.position = waypoints[_ctx.CurrentIndex];
-
-        Vector3 targetWayPoint = waypoints[++_ctx.CurrentIndex];
-        _ctx.Enemy.LookAt(targetWayPoint);
+        Vector3 targetWayPoint = waypoints[_ctx.CurrentIndex];
+        yield return _ctx.StartCoroutine(TurnToFace(targetWayPoint));
 
         while (true)
         {
             _ctx.Enemy.position = Vector3.MoveTowards(_ctx.Enemy.position, targetWayPoint, _ctx.Speed * Time.deltaTime);
-            if (_ctx.Enemy.position == targetWayPoint)
-            {
-                _ctx.CurrentIndex = (_ctx.CurrentIndex + 1) % waypoints.Length;
-                targetWayPoint = waypoints[_ctx.CurrentIndex];
-                yield return new WaitForSeconds(0.5f);
-                yield return _ctx.StartCoroutine(TurnToFace(targetWayPoint));
-
-            }
             yield return null;
         }
     }
+
+
+
 }

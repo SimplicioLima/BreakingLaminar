@@ -9,7 +9,7 @@ public class EnemyChaseState : EnemyBaseState
     { }
 
 
-    const float minDistanceToGameLost = 2f;
+    float minDistanceToGameLost = Mathf.Sqrt(3f);
 
 
     public override void EnterState()
@@ -26,15 +26,13 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void UpdateState()
     {
-        if (!_ctx.IsPlayerVisible)
-        {
-            SwitchState(_factory.Patrol());
-        }
         if (Vector3.Distance(_ctx.Enemy.position, _ctx.Player.position) < Mathf.Pow(minDistanceToGameLost, 2f))
         {
-            Debug.Log("Game Over!");
-            _ctx.StopAllCoroutines();
             SwitchState(_factory.GameLost());
+        }
+        if (!_ctx.IsPlayerVisible)
+        {
+            SwitchState(_factory.ChaseToPatrol());
         }
 
     }
@@ -52,7 +50,6 @@ public class EnemyChaseState : EnemyBaseState
             _ctx.AvoidDistance = (hit.normal.x < 0) ? (-1f) : 1f;
         }
         yield return null;
-
     }
 
 
@@ -64,7 +61,7 @@ public class EnemyChaseState : EnemyBaseState
 
         while (Mathf.Abs(Mathf.DeltaAngle(_ctx.Enemy.eulerAngles.y, targetAngle)) > 0.05f)
         {
-            angle = Mathf.MoveTowardsAngle(_ctx.Enemy.eulerAngles.y, targetAngle, _ctx.TurnSpeed * Time.fixedDeltaTime);
+            angle = Mathf.MoveTowardsAngle(_ctx.Enemy.eulerAngles.y, targetAngle, _ctx.TurnSpeed * Time.deltaTime);
             _ctx.Enemy.eulerAngles = Vector3.up * angle;
             yield return null;
         }
@@ -72,10 +69,10 @@ public class EnemyChaseState : EnemyBaseState
 
         while (true)
         {
-            yield return _ctx.StartCoroutine(CheckVision());
             angle = Mathf.MoveTowardsAngle(_ctx.Enemy.eulerAngles.y, targetAngle, _ctx.AvoidDistance * _ctx.TurnSpeed * Time.deltaTime);
             _ctx.Enemy.eulerAngles = Vector3.up * angle;
             _ctx.Enemy.position = Vector3.MoveTowards(_ctx.Enemy.position, _ctx.Player.position, _ctx.Speed * Time.deltaTime);
+            yield return null;
         }
 
     }

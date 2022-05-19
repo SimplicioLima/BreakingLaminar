@@ -10,6 +10,7 @@ public class EnemyWinState : EnemyBaseState
 
     public override void EnterState()
     {
+        Debug.Log("Game Over!");
         GameManager.current.Die = true;
         Time.timeScale = 0;
     }

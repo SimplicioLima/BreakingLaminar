@@ -27469,7 +27469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnSpeed: 50
-  viewDistance: 2
+  viewDistance: 15
   viewAngle: 90
   obstacleMask:
     serializedVersion: 2
@@ -41671,7 +41671,7 @@ GameObject:
   - component: {fileID: 2077071481891998558}
   m_Layer: 3
   m_Name: 2S_Uniform
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
