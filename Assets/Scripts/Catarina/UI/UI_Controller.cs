@@ -28,7 +28,8 @@ public class UI_Controller : MonoBehaviour
 
     void Start()
     {
-        loadingScreen.gameObject.SetActive(false);
+        mainCamera = Camera.main;
+        loadingScreen = GameObject.FindWithTag("loadScene");
         gameUI.SetActive(true);
 
         fullscreenToggle.isOn = Screen.fullScreen;
@@ -84,8 +85,9 @@ public class UI_Controller : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //Debug.Log(selectedResolution.ToString());
+    {        //Debug.Log(selectedResolution.ToString());
+        mainCamera = Camera.main;
+        loadingScreen = GameObject.FindWithTag("loadScene");
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -205,13 +207,14 @@ public class UI_Controller : MonoBehaviour
 
     public void ExitBtn()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void ContinueToHQ()
     {
         loadingScreen.gameObject.SetActive(true);
         SceneManager.LoadScene(8);
+        loadingScreen.gameObject.SetActive(false);
     }
 }
 

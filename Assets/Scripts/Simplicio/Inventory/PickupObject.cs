@@ -12,7 +12,7 @@ public class PickupObject : MonoBehaviour
 
     //private bool _islookAt = false;
     private ItemObject _lookAtTarget;
-    public Camera cam;
+    //public Camera cam;
     [SerializeField] private int distance = 10;
 
     private void Start()
@@ -25,7 +25,7 @@ public class PickupObject : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distance))
         {
             if (hit.transform.tag == "Collectible")
             {
@@ -34,6 +34,7 @@ public class PickupObject : MonoBehaviour
                     _lookAtTarget = hit.collider.gameObject.GetComponent<ItemObject>();
                     _playSound = true;
                     SoundOn();
+
                     _lookAtTarget.OnHandlePickupItem();
                 }
             }

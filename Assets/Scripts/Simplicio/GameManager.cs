@@ -262,7 +262,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //respawn player
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
                 GameObject respawn = GameObject.FindWithTag("Respawn");
                 player.transform.position = respawn.transform.position;
                 Die = false;

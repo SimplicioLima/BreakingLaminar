@@ -151,7 +151,7 @@ public class EnemyStateMachine : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not in range!");
+            //Debug.Log("Not in range!");
             return false;
         }
     }

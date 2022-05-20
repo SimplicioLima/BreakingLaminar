@@ -11,16 +11,16 @@ public class SetPlayerPos : MonoBehaviour
     void Update()
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (sceneIndex == 0 && level1 && !enterOnce)
+        if (sceneIndex == 1 && level1 && !enterOnce)
         {
             GameManager.current.player.transform.position = this.transform.position;
         }
-        else if (sceneIndex == 1 && !enterOnce)
+        else if (sceneIndex == 2 && !enterOnce)
         {
             GameManager.current.player.transform.position = this.transform.position;
             level1 = true;
         }
-        else if(sceneIndex == 2 && !enterOnce)
+        else if(sceneIndex == 3 && !enterOnce)
         {
             GameManager.current.player.transform.position = this.transform.position;
         }
