@@ -23,12 +23,13 @@ public class UI_Controller : MonoBehaviour
     public Slider masterSlider, musicSlider, sfxSlider;
     //private Volume m_volume;
     //VolumeProfile volumeProfile;
-    public Camera mainCamera;
+    [HideInInspector] public Camera mainCamera;
     public GameObject loadingScreen;
 
     void Start()
     {
-        loadingScreen.gameObject.SetActive(false);
+        mainCamera = Camera.main;
+        loadingScreen = GameObject.FindWithTag("loadingScreen");
         gameUI.SetActive(true);
 
         fullscreenToggle.isOn = Screen.fullScreen;
@@ -84,8 +85,8 @@ public class UI_Controller : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //Debug.Log(selectedResolution.ToString());
+    {        //Debug.Log(selectedResolution.ToString());
+        mainCamera = Camera.main;
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -205,13 +206,14 @@ public class UI_Controller : MonoBehaviour
 
     public void ExitBtn()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void ContinueToHQ()
     {
         loadingScreen.gameObject.SetActive(true);
         SceneManager.LoadScene(8);
+        loadingScreen.gameObject.SetActive(false);
     }
 }
 

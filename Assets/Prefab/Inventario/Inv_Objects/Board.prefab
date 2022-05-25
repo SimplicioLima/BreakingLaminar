@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 6637080782754874173}
   - component: {fileID: 5406912388135149724}
   - component: {fileID: 8777389004642549272}
-  - component: {fileID: 6833744965886644693}
   m_Layer: 0
   m_Name: Board
   m_TagString: Collectible
@@ -168,17 +167,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.094226226, y: 0.07285524, z: 0.010869154}
   m_Center: {x: -0.00044296106, y: 0.0012751885, z: 0.00053861475}
---- !u!114 &6833744965886644693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6402991652628662816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c59aa3b4e16e074aa6282298a7d955e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabUi: {fileID: 2680935668714525037, guid: 668022a912ce54847a7087cb704354f3, type: 3}
-  distancia: 8

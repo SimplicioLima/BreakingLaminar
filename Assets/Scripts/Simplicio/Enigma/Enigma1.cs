@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Enigma1 : MonoBehaviour
@@ -7,7 +8,7 @@ public class Enigma1 : MonoBehaviour
     public bool inDebug = true;
     [Header("Grid 5x5 max !")]
     [SerializeField] private bool gameOn = true;
-    [SerializeField] private List<GameObject> Cubes = new List<GameObject>();
+    public List<GameObject> Cubes = new List<GameObject>();
 
     [SerializeField] private List<Material> cubeColors = new List<Material>();
     
@@ -16,36 +17,30 @@ public class Enigma1 : MonoBehaviour
     private bool solved = false;
     [SerializeField] private Animator anim;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         cam = Camera.main;
-        //anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameOn) ChangeCubeColor();
-        //if (solved) anim.SetBool("isOpen", solved);
-        //else anim.SetBool("isOpen", solved);
-        if (solved) CCTVController.AtivateCam = true;
+        if(!solved) ChangeCubeColor();
+        else if (solved) CCTVController.AtivateCam = true;
     }
 
     private void ChangeCubeColor()
     {
-        cam = Camera.main;
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
+        if ( Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
         {
-            if (hit.transform.tag == "EnigmaCube")
+            if (hit.transform.CompareTag("EnigmaCube"))
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (inDebug) Debug.Log("Enter on E" + hit.collider.gameObject.name);
                     foreach (var item in Cubes)
                     {
-                        if(hit.collider.gameObject.transform.position == item.transform.position)
+                        if (hit.collider.gameObject.transform.position == item.transform.position)
                         {
                             if (hit.collider.gameObject.GetComponent<cubeInigma>().selected == true)
                             {
@@ -59,19 +54,14 @@ public class Enigma1 : MonoBehaviour
                             }
                         }
                     }
+                }
 
-                    //Botao de comfirmar
-                    if (hit.collider.name == "Vereficar")
-                    {
-                        solved = VerifyCondition();
-                        if (solved) anim.SetBool("isOpen", solved);
-                    }
-                    //Botao de resetar
-                    //if (hit.collider.name == "Resetar")
-                    //{
-                    //    EndAnim();
-                    //    anim.SetBool("isOpen", solved);
-                    //}
+
+                //Botao de comfirmar
+                if (hit.collider.name == "Vereficar")
+                {
+                    solved = VerifyCondition();
+                    if (solved) anim.SetBool("isOpen", solved);
                 }
             }
         }

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7532708892873075518}
   - component: {fileID: 2295372136478520366}
   - component: {fileID: 3881124421234359699}
-  - component: {fileID: -5048982318989596046}
   m_Layer: 0
   m_Name: Basic Credencial
   m_TagString: Collectible
@@ -130,17 +129,3 @@ MonoBehaviour:
   referenceItem: {fileID: 11400000, guid: 20003e1ed6d7ffc459f66891a3f6551a, type: 2}
   requirements: []
   removeRequirementsOnPickup: 0
---- !u!114 &-5048982318989596046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6976523415949903791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c59aa3b4e16e074aa6282298a7d955e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabUi: {fileID: 2680935668714525037, guid: 668022a912ce54847a7087cb704354f3, type: 3}
-  distancia: 8

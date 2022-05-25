@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 2040688695136644273}
   - component: {fileID: 811607167720165136}
   - component: {fileID: 4144950527820042644}
-  - component: {fileID: 2205647358818188889}
   m_Layer: 0
   m_Name: SingleEmpBoard
   m_TagString: Collectible
@@ -170,20 +169,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.094226226, y: 0.07285524, z: 0.010869154}
   m_Center: {x: -0.00044296106, y: 0.0012751885, z: 0.00053861475}
---- !u!114 &2205647358818188889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1770372853717427628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c59aa3b4e16e074aa6282298a7d955e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabUi: {fileID: 2680935668714525037, guid: 668022a912ce54847a7087cb704354f3, type: 3}
-  distancia: 8
 --- !u!1 &5289319793180575671
 GameObject:
   m_ObjectHideFlags: 0

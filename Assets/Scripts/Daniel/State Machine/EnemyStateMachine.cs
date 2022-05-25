@@ -80,7 +80,6 @@ public class EnemyStateMachine : MonoBehaviour
     void Update()
     {
         isPlayerVisible = PlayerVisible();
-        // obstacleHit = CheckCollisions();
         currentState.UpdateState();
     }
 
@@ -112,9 +111,8 @@ public class EnemyStateMachine : MonoBehaviour
                     return true;
         }
         return false;
-
-
     }
+
 
 
     public Vector3 DirectionFromAngle(float angleInDeg, bool isGlobal)

@@ -16,7 +16,7 @@ public class MainMenu_UI : MonoBehaviour
     public void NewGame()
     {
         loadingScreen.gameObject.SetActive(true);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void Credits()
@@ -33,8 +33,8 @@ public class MainMenu_UI : MonoBehaviour
     {
         HideMenu();
         showLoad();
-        scenesToLoad.Add(SceneManager.LoadSceneAsync(0));
-        StartCoroutine(loadGame.LoadSomeLevel(0));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync(1));
+        StartCoroutine(loadGame.LoadSomeLevel(1));
     }
 
     public void HideMenu()
