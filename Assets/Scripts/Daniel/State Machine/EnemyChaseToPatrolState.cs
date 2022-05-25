@@ -13,7 +13,9 @@ public class EnemyChaseToPatrolState : EnemyBaseState
     public override void EnterState()
     {
         Debug.Log("Restarting Path!");
-        _ctx.StartCoroutine(RestartPatrol(_ctx.Waypoints));
+        _ctx.Agent.stoppingDistance = _ctx.BaseStoppingDistance;
+        _ctx.StartCoroutine(RestartPathAgent());
+
     }
 
     public override void ExitState()
@@ -23,34 +25,21 @@ public class EnemyChaseToPatrolState : EnemyBaseState
 
     public override void UpdateState()
     {
-        if (_ctx.Enemy.position == _ctx.Waypoints[_ctx.CurrentIndex])
+        if (_ctx.PathRestarted)
         {
             SwitchState(_factory.Patrol());
         }
     }
 
-    IEnumerator TurnToFace(Vector3 lookTarget)
+    IEnumerator RestartPathAgent()
     {
-        Vector3 directionToTarget = (lookTarget - _ctx.Enemy.position).normalized;
-        float targetAngle = Mathf.Atan2(directionToTarget.x, directionToTarget.z) * Mathf.Rad2Deg;
-
-
-        while (Mathf.Abs(Mathf.DeltaAngle(_ctx.Enemy.eulerAngles.y, targetAngle)) > 0.05f)
-        {
-            float angle = Mathf.MoveTowardsAngle(_ctx.Enemy.eulerAngles.y, targetAngle, _ctx.TurnSpeed * Time.deltaTime);
-            _ctx.Enemy.eulerAngles = Vector3.up * angle;
-            yield return null;
-        }
-    }
-
-    IEnumerator RestartPatrol(Vector3[] waypoints)
-    {
-        Vector3 targetWayPoint = waypoints[_ctx.CurrentIndex];
-        yield return _ctx.StartCoroutine(TurnToFace(targetWayPoint));
+        Vector3 targetWaypoint = _ctx.Waypoints[--_ctx.CurrentIndex];
 
         while (true)
         {
-            _ctx.Enemy.position = Vector3.MoveTowards(_ctx.Enemy.position, targetWayPoint, _ctx.Speed * Time.deltaTime);
+            _ctx.Agent.SetDestination(targetWaypoint);
+            if (_ctx.Agent.remainingDistance < _ctx.Agent.stoppingDistance)
+                _ctx.PathRestarted = true;
             yield return null;
         }
     }

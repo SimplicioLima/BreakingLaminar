@@ -8,11 +8,15 @@ public class EnemyPatrolState : EnemyBaseState
         base(_context, _factory)
     { }
 
+    Vector3 targetWayPoint;
+
 
     public override void EnterState()
     {
         Debug.Log("Patroling!");
-        _ctx.StartCoroutine(FollowPath(_ctx.Waypoints));
+        _ctx.Agent.stoppingDistance = _ctx.BaseStoppingDistance;
+        targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
+        _ctx.StartCoroutine(FollowPathAgent());
     }
 
     public override void ExitState()
@@ -22,6 +26,14 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void UpdateState()
     {
+        if (_ctx.HasArrivedAtPathHolder)
+        {
+            _ctx.HasArrivedAtPathHolder = false;
+            _ctx.CurrentIndex = (_ctx.CurrentIndex + 1) % _ctx.Waypoints.Length;
+            targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
+            Debug.Log(_ctx.CurrentIndex);
+        }
+
         if (_ctx.IsPlayerVisible)
         {
             SwitchState(_factory.Chase());
@@ -29,38 +41,16 @@ public class EnemyPatrolState : EnemyBaseState
 
     }
 
-    IEnumerator TurnToFace(Vector3 lookTarget)
+    IEnumerator FollowPathAgent()
     {
-        Vector3 directionToTarget = (lookTarget - _ctx.Enemy.position).normalized;
-        float targetAngle = Mathf.Atan2(directionToTarget.x, directionToTarget.z) * Mathf.Rad2Deg;
-
-
-        while (Mathf.Abs(Mathf.DeltaAngle(_ctx.Enemy.eulerAngles.y, targetAngle)) > 0.05f)
-        {
-            float angle = Mathf.MoveTowardsAngle(_ctx.Enemy.eulerAngles.y, targetAngle, _ctx.TurnSpeed * Time.deltaTime);
-            _ctx.Enemy.eulerAngles = Vector3.up * angle;
-            yield return null;
-        }
-    }
-
-
-    IEnumerator FollowPath(Vector3[] waypoints)
-    {
-        _ctx.Enemy.position = waypoints[_ctx.CurrentIndex];
-
-        Vector3 targetWayPoint = waypoints[++_ctx.CurrentIndex];
-        _ctx.Enemy.LookAt(targetWayPoint);
-
         while (true)
         {
-            _ctx.Enemy.position = Vector3.MoveTowards(_ctx.Enemy.position, targetWayPoint, _ctx.Speed * Time.deltaTime);
-            if (_ctx.Enemy.position == targetWayPoint)
-            {
-                _ctx.CurrentIndex = (_ctx.CurrentIndex + 1) % waypoints.Length;
-                targetWayPoint = waypoints[_ctx.CurrentIndex];
-                yield return new WaitForSeconds(0.5f);
-                yield return _ctx.StartCoroutine(TurnToFace(targetWayPoint));
+            _ctx.Agent.SetDestination(targetWayPoint);
 
+            if (_ctx.Agent.remainingDistance < _ctx.Agent.stoppingDistance)
+            {
+                _ctx.HasArrivedAtPathHolder = true;
+                yield return null;
             }
             yield return null;
         }

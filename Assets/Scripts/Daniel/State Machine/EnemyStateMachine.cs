@@ -1,38 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class EnemyStateMachine : MonoBehaviour
 {
 
-    [SerializeField] int speed;
-    [SerializeField] int turnSpeed;
     [SerializeField] int viewDistance;
     [SerializeField] float viewAngle;
-    float stoppingDistance;
-    float turningDistance;
-    float sensorLength;
-    float avoidingDistance;
-    Vector3 sensorAdderVector;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] NavMeshSurface surface;
+    [SerializeField] LayerMask obstacleMask;
+    [SerializeField] Transform pathHolder;
     int currentIndex;
     bool isPlayerVisible;
-    bool followingPath;
-    bool avoidingObstacle;
+    bool pathRestarted;
+    bool hasArrivedAtPlayer;
+    bool hasArrivedAtPathHolder;
+    float baseStopingDistance;
+
     Vector3[] wayPoints;
-    [SerializeField] LayerMask obstacleMask;
-    [SerializeField] LayerMask smallObstacleMask;
-    [SerializeField] LayerMask playerMask;
-    [SerializeField] Transform pathHolder;
-    [SerializeField] Transform enemy;
     Transform player;
-    Colision collision;
 
 
     //animation stuff
     Animator anim;
     bool isPatroling;
-
-
 
 
     //State Machine variables
@@ -45,26 +37,18 @@ public class EnemyStateMachine : MonoBehaviour
 
     public EnemyBaseState CurrentState { get { return currentState; } set { currentState = value; } }
     public Vector3[] Waypoints { get { return wayPoints; } set { wayPoints = value; } }
-    public int Speed { get { return speed; } }
-    public int TurnSpeed { get { return turnSpeed; } }
     public int ViewDistance { get { return viewDistance; } }
     public int CurrentIndex { get { return currentIndex; } set { currentIndex = value; } }
     public float ViewAngle { get { return viewAngle; } }
-    public float StoppingDistance { get { return stoppingDistance; } set { stoppingDistance = value; } }
-    public float TurningDistance { get { return turningDistance; } }
-    public float SensorLength { get { return sensorLength; } }
-    public float AvoidDistance { get { return avoidingDistance; } set { avoidingDistance = value; } }
-    public Vector3 SensorAdderVector { get { return sensorAdderVector; } }
-    public LayerMask ObstacleMask { get { return obstacleMask; } }
-    public LayerMask SmallObstacleMask { get { return smallObstacleMask; } }
-    public Transform PathHolder { get { return pathHolder; } }
     public Transform Player { get { return player; } }
-    public Transform Enemy { get { return enemy; } set { enemy = value; } }
-    public Colision Collision { get { return collision; } set { collision = value; } }
     public bool IsPlayerVisible { get { return isPlayerVisible; } }
-    public bool FollowingPath { get { return followingPath; } set { followingPath = value; } }
-    public bool AvoidingObstacle { get { return avoidingObstacle; } set { avoidingObstacle = value; } }
+    public bool PathRestarted { get { return pathRestarted; } set { pathRestarted = value; } }
+    public bool HasArrivedAtPlayer { get { return hasArrivedAtPlayer; } set { hasArrivedAtPlayer = value; } }
+    public bool HasArrivedAtPathHolder { get { return hasArrivedAtPathHolder; } set { hasArrivedAtPathHolder = value; } }
+    public float BaseStoppingDistance { get { return baseStopingDistance; } }
 
+
+    public NavMeshAgent Agent { get { return agent; } set { agent = value; } }
 
 
 
@@ -73,21 +57,18 @@ public class EnemyStateMachine : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        isPlayerVisible = false;
-        followingPath = false;
-        stoppingDistance = 5f;
-        turningDistance = 5f;
-        sensorLength = 4f;
-        sensorAdderVector = new Vector3(0, 0.2f, 0.3f);
-        avoidingDistance = 1f;
-        currentIndex = 0;
+        baseStopingDistance = agent.stoppingDistance;
+
 
         states = new EnemyStateFactory(this);
 
         wayPoints = GeneratePath();
+        surface.BuildNavMesh();
 
+
+
+        transform.position = wayPoints[0];
         currentState = states.Patrol();
-        //anim.SetBool("isPatroling", true);
         currentState.EnterState();
 
 
@@ -98,7 +79,8 @@ public class EnemyStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isPlayerVisible = CanSeePlayer();
+        isPlayerVisible = PlayerVisible();
+        // obstacleHit = CheckCollisions();
         currentState.UpdateState();
     }
 
@@ -113,52 +95,36 @@ public class EnemyStateMachine : MonoBehaviour
         for (int i = 0; i < tempPath.Length; i++)
         {
             tempPath[i] = pathHolder.GetChild(i).position;
-            tempPath[i] = new Vector3(tempPath[i].x, enemy.position.y + 1.5f, tempPath[i].z);
+            tempPath[i] = new Vector3(tempPath[i].x, transform.position.y /*+ 1.5f*/, tempPath[i].z);
         }
         return tempPath;
     }
 
 
-    bool CanSeePlayer()
+    bool PlayerVisible()
     {
-        Collider[] rangeCheck = Physics.OverlapSphere(enemy.position, viewDistance, playerMask);
-
-        if (rangeCheck.Length != 0)
+        if (Vector3.Distance(transform.position, player.position) < viewDistance)
         {
-            Transform target = rangeCheck[0].transform;
-            Vector3 directionToTarget = (target.position - enemy.position).normalized;
-
-            if (Vector3.Angle(enemy.forward, directionToTarget) < viewAngle / 2f)
-            {
-                float distanceToTarget = Vector3.Distance(enemy.position, target.position);
-
-                if (!Physics.Raycast(enemy.position, directionToTarget, distanceToTarget, obstacleMask))
-                {
-                    Debug.Log("I can see you!");
+            Vector3 directionToPlayer = (player.position - transform.position).normalized;
+            float angle = Vector3.Angle(transform.forward, directionToPlayer);
+            if (angle < viewAngle / 2f)
+                if (!Physics.Linecast(transform.position, player.position, obstacleMask))
                     return true;
-                }
-                else
-                {
-                    Debug.Log("Object in the way!");
-                    return false;
-                }
-            }
-            else
-            {
-                Debug.Log("Angles differ!");
-                return false;
-            }
         }
-        else
-        {
-            Debug.Log("Not in range!");
-            return false;
-        }
+        return false;
+
+
     }
 
 
-
-
+    public Vector3 DirectionFromAngle(float angleInDeg, bool isGlobal)
+    {
+        if (!isGlobal)
+        {
+            angleInDeg += transform.eulerAngles.y;
+        }
+        return new Vector3(Mathf.Sin(angleInDeg * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDeg * Mathf.Deg2Rad));
+    }
 
 
 
@@ -174,18 +140,6 @@ public class EnemyStateMachine : MonoBehaviour
         }
         Gizmos.DrawLine(previouspos, startposition);
     }
-
-
-    public Vector3 DirectionFromAngle(float angleInDeg, bool angleIsGlobal)
-    {
-        if (!angleIsGlobal)
-        {
-            angleInDeg += enemy.eulerAngles.y;
-        }
-        return new Vector3(Mathf.Sin(angleInDeg) * Mathf.Deg2Rad, 0, Mathf.Cos(angleInDeg) * Mathf.Deg2Rad);
-    }
-
-
 
 }
 
