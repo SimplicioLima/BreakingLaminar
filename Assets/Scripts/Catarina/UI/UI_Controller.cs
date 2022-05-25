@@ -23,13 +23,13 @@ public class UI_Controller : MonoBehaviour
     public Slider masterSlider, musicSlider, sfxSlider;
     //private Volume m_volume;
     //VolumeProfile volumeProfile;
-    public Camera mainCamera;
+    [HideInInspector] public Camera mainCamera;
     public GameObject loadingScreen;
 
     void Start()
     {
         mainCamera = Camera.main;
-        loadingScreen = GameObject.FindWithTag("loadScene");
+        loadingScreen = GameObject.FindWithTag("loadingScreen");
         gameUI.SetActive(true);
 
         fullscreenToggle.isOn = Screen.fullScreen;
@@ -87,7 +87,6 @@ public class UI_Controller : MonoBehaviour
     void Update()
     {        //Debug.Log(selectedResolution.ToString());
         mainCamera = Camera.main;
-        loadingScreen = GameObject.FindWithTag("loadScene");
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

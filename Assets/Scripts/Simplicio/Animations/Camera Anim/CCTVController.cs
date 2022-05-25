@@ -44,6 +44,7 @@ public class CCTVController : MonoBehaviour
     {
         foreach (var item in screens)
         {
+            await Task.Delay(500);
             //Desativa a camera
             item.material = noSignal;
             await Task.Delay(500);

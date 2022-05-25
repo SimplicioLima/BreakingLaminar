@@ -55,7 +55,7 @@ public class Interpreter : MonoBehaviour
             GameManager.current.KarenOff = true;
             return response;
         }
-        if (args[0] == "off-camera-admin" && SceneManager.GetActiveScene().buildIndex == 1 && MissionController.current.mission2_Base)
+        if (args[0] == "off-camera-admin" && MissionController.current.mission2_Base)
         {
             response.Add("Cameras off.");
             //

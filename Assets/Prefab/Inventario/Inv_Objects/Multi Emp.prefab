@@ -5677,7 +5677,6 @@ GameObject:
   - component: {fileID: 6878834177817332436}
   - component: {fileID: 6878834177817332439}
   - component: {fileID: 5711555519662555150}
-  - component: {fileID: 5308339687040673871}
   m_Layer: 6
   m_Name: Multi Emp
   m_TagString: Collectible
@@ -5777,20 +5776,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
---- !u!114 &5308339687040673871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6878834177817332438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c59aa3b4e16e074aa6282298a7d955e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabUi: {fileID: 2680935668714525037, guid: 668022a912ce54847a7087cb704354f3, type: 3}
-  distancia: 8
 --- !u!1 &6913651279229034330
 GameObject:
   m_ObjectHideFlags: 0

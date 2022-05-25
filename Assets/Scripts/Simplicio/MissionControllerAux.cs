@@ -13,6 +13,5 @@ public class MissionControllerAux : MonoBehaviour
             MissionController.current.missionObj.Add(item);
         }
 
-        DontDestroyOnLoad(this);
     }
 }

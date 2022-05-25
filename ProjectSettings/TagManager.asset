@@ -11,7 +11,9 @@ TagManager:
   - Door
   - Portal
   - Enemy
-  - loadScene
+  - loadingScreen
+  - pauseCanvas
+  - optionCanvas
   layers:
   - Default
   - TransparentFX

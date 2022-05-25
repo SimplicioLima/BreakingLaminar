@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Threading.Tasks;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Doors : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Doors : MonoBehaviour
     bool _playSound;
 
     //States
-    [HideInInspector] public bool _isOpen = false;
+    public bool _isOpen = false;
 
     [SerializeField] private bool basicAccess = false;
     [SerializeField] private bool captainAccess = false;
@@ -32,7 +33,7 @@ public class Doors : MonoBehaviour
 
     public bool doorsUnlock = false;
     public bool mission7 = false;
-
+    private RaycastHit hit;
     void Start()
     {
         cam = Camera.main;
@@ -43,26 +44,22 @@ public class Doors : MonoBehaviour
 
     void Update()
     {
-        OpenDoor();
-        if(GameManager.current.haveBasicAccess == false || !GameManager.current.haveCaptainAccess == false)
-        {
-            ShowMessage();
-        }
-        if(GameManager.current.cctvOff == true) doorsUnlock = true;
-        
+        if(basicAccess && SceneManager.GetActiveScene().buildIndex == 1) OpenDoor();
+        else if (MissionController.current.mission3_Cam && SceneManager.GetActiveScene().buildIndex == 2) OpenDoor();
+        else if(SceneManager.GetActiveScene().buildIndex == 3) OpenDoor();
+
+        if (GameManager.current.cctvOff == true) doorsUnlock = true;
+
         SoundOn();
     }
 
     private void OpenDoor()
     {
-        RaycastHit hit;
-        
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
-
-            if (hit.transform.position == this.gameObject.transform.position && !mission7)
+            if (hit.transform.position == this.gameObject.transform.position && !MissionController.current.mission7_DoorKeys)
             {
-                if (doorsUnlock && GameManager.current.haveCaptainAccess == true && captainAccess == true)
+                if (GameManager.current.haveCaptainAccess == true && captainAccess == true)
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
@@ -83,7 +80,7 @@ public class Doors : MonoBehaviour
                         }
                     }
                 }
-                else if (doorsUnlock && GameManager.current.haveBasicAccess == true && basicAccess == true)
+                else if (GameManager.current.haveBasicAccess == true && basicAccess == true)
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
@@ -100,6 +97,26 @@ public class Doors : MonoBehaviour
                         {
                             screens[0].transform.GetComponent<MeshRenderer>().material = mat[0];
                             screens[1].transform.GetComponent<MeshRenderer>().material = mat[0];
+                        }
+                    }
+                    else if (doorsUnlock)
+                    {
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            _isOpen = !_isOpen;
+                            //SetMessage();
+                            anim.SetBool("isOpen", _isOpen);
+                            _playSound = true;
+                            if (_isOpen)
+                            {
+                                screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
+                                screens[1].transform.GetComponent<MeshRenderer>().material = mat[1];
+                            }
+                            else
+                            {
+                                screens[0].transform.GetComponent<MeshRenderer>().material = mat[0];
+                                screens[1].transform.GetComponent<MeshRenderer>().material = mat[0];
+                            }
                         }
                     }
                 }
@@ -110,49 +127,22 @@ public class Doors : MonoBehaviour
             }
             else if (hit.transform.position == this.gameObject.transform.position && MissionController.current.mission7_DoorKeys)
             {
-                if (doorsUnlock && GameManager.current.haveCaptainAccess == true && captainAccess == true)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (Input.GetKeyDown(KeyCode.E))
+                    _isOpen = !_isOpen;
+                    //SetMessage();
+                    anim.SetBool("isOpen", _isOpen);
+                    _playSound = true;
+                    if (_isOpen)
                     {
-                        _isOpen = !_isOpen;
-                        //SetMessage();
-                        anim.SetBool("isOpen", _isOpen);
-                        _playSound = true;
-                        if (_isOpen)
-                        {
-                            screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
-                            screens[1].transform.GetComponent<MeshRenderer>().material = mat[1];
-                        }
-                        else
-                        {
-                            screens[0].transform.GetComponent<MeshRenderer>().material = mat[0];
-                            screens[1].transform.GetComponent<MeshRenderer>().material = mat[0];
-                        }
+                        screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
+                        screens[1].transform.GetComponent<MeshRenderer>().material = mat[1];
                     }
-                }
-                else if (doorsUnlock && GameManager.current.haveBasicAccess == true && basicAccess == true)
-                {
-                    if (Input.GetKeyDown(KeyCode.E))
+                    else
                     {
-                        _isOpen = !_isOpen;
-                        //SetMessage();
-                        anim.SetBool("isOpen", _isOpen);
-                        _playSound = true;
-                        if (_isOpen)
-                        {
-                            screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
-                            screens[1].transform.GetComponent<MeshRenderer>().material = mat[1];
-                        }
-                        else
-                        {
-                            screens[0].transform.GetComponent<MeshRenderer>().material = mat[0];
-                            screens[1].transform.GetComponent<MeshRenderer>().material = mat[0];
-                        }
+                        screens[0].transform.GetComponent<MeshRenderer>().material = mat[0];
+                        screens[1].transform.GetComponent<MeshRenderer>().material = mat[0];
                     }
-                }
-                else
-                {
-                    ShowMessage();
                 }
             }
             else uiMessage.gameObject.SetActive(false);
@@ -164,7 +154,7 @@ public class Doors : MonoBehaviour
         if (_playSound == true)
         {
             //Play the audio you attach to the AudioSource component
-            m_MyAudioSource.Play(1400);
+            m_MyAudioSource.PlayDelayed(1400);
             //Ensure audio doesn’t play more than once
             Task.Delay(1000);
             //m_MyAudioSource.Stop();
@@ -175,26 +165,15 @@ public class Doors : MonoBehaviour
     //se funcionar escrever igual para mostar "press E para interact"
     private async void ShowMessage()
     {
-        float dist = Vector3.Distance(this.transform.position, Camera.main.transform.position);
-
-        //Change Message
-        if (!GameManager.current.haveBasicAccess && basicAccess)
+        await Task.Delay(500);
+        foreach (var item in InventorySystem.current.inventory)
         {
-            uiMessage.text = noBasicText;
-        }
-        else if (!GameManager.current.haveCaptainAccess && captainAccess)
-        {
-            uiMessage.text = noCaptainText;
-        }
-
-        //Verefy distance
-        if (dist < distancia)
-        {
-            uiMessage.gameObject.SetActive(true);
-        }
-        else
-        {
-            uiMessage.gameObject.SetActive(false);
+            if (item.data.id == 13)
+            {
+                captainAccess = true;
+                doorsUnlock = true;
+                basicAccess = true;
+            }
         }
     }
 }

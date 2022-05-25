@@ -19,7 +19,7 @@ public class OpenCloseDrawers : MonoBehaviour
     //private bool _triggerMessage = false;
     private Camera cam;
     [SerializeField] private int distance = 10;
-
+    private RaycastHit hit;
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
@@ -33,8 +33,6 @@ public class OpenCloseDrawers : MonoBehaviour
 
     private void OpenDoor()
     {
-        RaycastHit hit;
-
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
             if (hit.transform.position == this.gameObject.transform.position)
@@ -63,8 +61,8 @@ public class OpenCloseDrawers : MonoBehaviour
 
     private void SetMessage()
     {
-        if (_isOpen) PanelText.text = CloseText;
-        else PanelText.text = OpenText;
+        //if (_isOpen) PanelText.text = CloseText;
+        //else PanelText.text = OpenText;
     }
 }
     //private void OpenDoor()

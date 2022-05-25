@@ -12,31 +12,32 @@ public class Enigma1 : MonoBehaviour
 
     [SerializeField] private List<Material> cubeColors = new List<Material>();
     
-    //private Camera cam;
+    private Camera cam;
     [SerializeField] private float distance;
     private bool solved = false;
     [SerializeField] private Animator anim;
 
+    private void Start()
+    {
+        cam = Camera.main;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        ChangeCubeColor();
-        //if (solved) anim.SetBool("isOpen", solved);
-        //else anim.SetBool("isOpen", solved);
-        if (solved) CCTVController.AtivateCam = true;
+        if(!solved) ChangeCubeColor();
+        else if (solved) CCTVController.AtivateCam = true;
     }
 
     private void ChangeCubeColor()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distance))
+        if ( Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
         {
-            if (inDebug) Debug.Log("º-º" + hit.collider.gameObject.name);
-            if (hit.transform.tag == "EnigmaCube")
+            if (hit.transform.CompareTag("EnigmaCube"))
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (inDebug) Debug.Log("Enter on E" + hit.collider.gameObject.name);
                     foreach (var item in Cubes)
                     {
                         if (hit.collider.gameObject.transform.position == item.transform.position)
@@ -55,19 +56,13 @@ public class Enigma1 : MonoBehaviour
                     }
                 }
 
+
                 //Botao de comfirmar
                 if (hit.collider.name == "Vereficar")
                 {
                     solved = VerifyCondition();
                     if (solved) anim.SetBool("isOpen", solved);
                 }
-                //Botao de resetar
-                //if (hit.collider.name == "Resetar")
-                //{
-                //    EndAnim();
-                //    anim.SetBool("isOpen", solved);
-                //}
-
             }
         }
     }

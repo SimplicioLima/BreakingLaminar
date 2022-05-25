@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public AudioClip changeObjectSound;
     public AudioClip throwObjectSound;
 
-    public GameObject gameOverScreen;
 
     //Camera mission;
     [HideInInspector] public bool cctvOff = false;
@@ -196,10 +195,10 @@ public class GameManager : MonoBehaviour
     {
         //if (Input.GetKeyDown(KeyCode.Z))
         //{
-        turnCamOff = false;
-        CCTVController.ChangeValue(turnCamOff);
-        cctvOff = true;
-        if (inDebug) Debug.Log("CCTVController.camerasOn :" + CCTVController.camerasOn);
+            turnCamOff = false;
+            CCTVController.ChangeValue(turnCamOff);
+            cctvOff = true;
+            //if (inDebug) Debug.Log("CCTVController.camerasOn :" + CCTVController.camerasOn);
         //}
     }
     #endregion
@@ -256,7 +255,7 @@ public class GameManager : MonoBehaviour
         {
             win = false;
 
-            gameOverScreen.SetActive(true);
+            //gameOverScreen.SetActive(true);
 
             //message player died
             if (Input.GetKeyDown(KeyCode.Space))
@@ -266,7 +265,7 @@ public class GameManager : MonoBehaviour
                 GameObject respawn = GameObject.FindWithTag("Respawn");
                 player.transform.position = respawn.transform.position;
                 Die = false;
-                gameOverScreen.SetActive(false);
+                //gameOverScreen.SetActive(false);
             }
             //
         }

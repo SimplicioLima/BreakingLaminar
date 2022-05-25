@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 145165102862890303}
   - component: {fileID: 5891752293314319979}
   - component: {fileID: 3196586411212657630}
-  - component: {fileID: -3567181917284446566}
   m_Layer: 6
   m_Name: book3
   m_TagString: Collectible
@@ -130,17 +129,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4068373912626513877, guid: f52542350d328be4b9c319beee194a18, type: 3}
---- !u!114 &-3567181917284446566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5343223541768175816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c59aa3b4e16e074aa6282298a7d955e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabUi: {fileID: 2680935668714525037, guid: 668022a912ce54847a7087cb704354f3, type: 3}
-  distancia: 8

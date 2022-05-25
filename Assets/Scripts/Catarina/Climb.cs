@@ -6,7 +6,7 @@ public class Climb : MonoBehaviour
 {
     [SerializeField] private GameObject UiGoUp;
     [SerializeField] private GameObject UiGoDown;
-    public GameObject loadingScreen;
+    [HideInInspector] public GameObject loadingScreen;
 
     private bool activeUI;
 
@@ -27,6 +27,7 @@ public class Climb : MonoBehaviour
     {
         if(activeUI && MissionController.current.mission2_Base)//Por a missao que se pretenda que ele possa sair do top level
         {
+            loadingScreen = GameObject.FindWithTag("loadingScreen");
             //Go up
             if (goUp && Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -34,7 +35,7 @@ public class Climb : MonoBehaviour
                 {
                     if (goUp) UiGoUp.SetActive(false);
                     if (goDown) UiGoDown.SetActive(false);
-                    showLoad();
+                    //showLoad();
                     SceneManager.LoadScene(UpperLevel);
                 }
             }
@@ -45,7 +46,7 @@ public class Climb : MonoBehaviour
                 {
                     if (goUp) UiGoUp.SetActive(false);
                     if (goDown) UiGoDown.SetActive(false);
-                    showLoad();
+                    //showLoad();
                     SceneManager.LoadScene(LowerLevel);
                 }
             }

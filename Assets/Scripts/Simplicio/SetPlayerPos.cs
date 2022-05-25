@@ -7,23 +7,27 @@ public class SetPlayerPos : MonoBehaviour
 {
     private bool level1 = false;
     private bool enterOnce = false;
+    private bool enterOnce2 = false;
+    private GameObject fpsController;
 
+    private void Start()
+    {
+        fpsController = GameObject.FindWithTag("Player");
+    }
     void Update()
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (sceneIndex == 1 && level1 && !enterOnce)
         {
-            GameManager.current.player.transform.position = this.transform.position;
+            enterOnce2 = false;
+            fpsController.transform.position = this.transform.position;
         }
-        else if (sceneIndex == 2 && !enterOnce)
+        else if(sceneIndex == 2 && !enterOnce2)
         {
-            GameManager.current.player.transform.position = this.transform.position;
-            level1 = true;
+            enterOnce = false;
+            fpsController.transform.position = this.transform.position;
         }
-        else if(sceneIndex == 3 && !enterOnce)
-        {
-            GameManager.current.player.transform.position = this.transform.position;
-        }
+        
     }
     
 }
