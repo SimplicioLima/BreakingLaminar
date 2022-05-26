@@ -25,11 +25,13 @@ public class Fire : MonoBehaviour
         if (GameManager.current.CanShoot() && Input.GetKeyDown(KeyCode.F))
         {
             GameObject projectilePrefab = GameManager.current.ChangeFireObject();
-            projectilePrefab.GetComponent<Rigidbody>().isKinematic = false;
-            projectilePrefab.GetComponent<Rigidbody>().useGravity = true;
+            projectilePrefab.GetComponent<Rigidbody>().isKinematic = true;
+            projectilePrefab.GetComponent<Rigidbody>().useGravity = false;
             Vector3 posObj = new Vector3(spawnPrefab.position.x, spawnPrefab.position.y + 2, spawnPrefab.position.x);
             GameObject projectile = Instantiate(projectilePrefab, spawnPrefab.position, fpsCamera.transform.rotation);
-            Vector3 dirForce = new Vector3(fpsCamera.transform.forward.x, 0.5f, fpsCamera.transform.forward.z);
+            projectile.GetComponent<Rigidbody>().isKinematic = false;
+            projectile.GetComponent<Rigidbody>().useGravity = true;
+            Vector3 dirForce = new Vector3(fpsCamera.transform.forward.x, 0.6f, fpsCamera.transform.forward.z);
             projectile.GetComponent<Rigidbody>().AddForce(dirForce * force, ForceMode.Force);
 
             GameManager.current.RemoveFireObjFromInv();
