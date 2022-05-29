@@ -10,6 +10,7 @@ public class Doors : MonoBehaviour
 {
     //Sound
     private AudioSource m_MyAudioSource;
+    //[SerializeField] private AudioClip movingDoors;
     //Detect when you use the toggle, ensures music isn’t played multiple times
     bool _playSound;
 
@@ -38,7 +39,7 @@ public class Doors : MonoBehaviour
     {
         cam = Camera.main;
         uiMessage.gameObject.SetActive(false);
-        m_MyAudioSource = GetComponent<AudioSource>();
+        m_MyAudioSource = this.gameObject.GetComponent<AudioSource>();
         _playSound = false;
     }
 
@@ -154,10 +155,7 @@ public class Doors : MonoBehaviour
         if (_playSound == true)
         {
             //Play the audio you attach to the AudioSource component
-            m_MyAudioSource.PlayDelayed(1400);
-            //Ensure audio doesn’t play more than once
-            Task.Delay(1000);
-            //m_MyAudioSource.Stop();
+            m_MyAudioSource.Play();
             _playSound = false;
         }
     }
