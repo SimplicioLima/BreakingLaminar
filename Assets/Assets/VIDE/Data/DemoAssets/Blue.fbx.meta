@@ -1,180 +1,493 @@
 fileFormatVersion: 2
 guid: d7421de41d8295f458907417e8b03adc
-timeCreated: 1495370699
-licenseType: Store
 ModelImporter:
-  serializedVersion: 18
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: Body
-    100004: curve2
-    100006: curve4
-    100008: curve5
-    100010: curve6
-    100012: FootL
-    100014: FootL1
-    100016: HandL
-    100018: HandL1
-    100020: joint1
-    100022: joint10
-    100024: joint11
-    100026: joint12
-    100028: joint13
-    100030: joint2
-    100032: joint3
-    100034: joint39
-    100036: joint39 1
-    100038: joint4
-    100040: joint40
-    100042: joint40 1
-    100044: joint41
-    100046: joint41 1
-    100048: joint42
-    100050: joint42 1
-    100052: joint45
-    100054: joint45 1
-    100056: joint46
-    100058: joint46 1
-    100060: joint47
-    100062: joint47 1
-    100064: joint48
-    100066: joint48 1
-    100068: joint49
-    100070: joint49 1
-    100072: joint5
-    100074: joint50
-    100076: joint50 1
-    100078: joint51
-    100080: joint51 1
-    100082: joint52
-    100084: joint52 1
-    100086: joint53
-    100088: joint53 1
-    100090: joint54
-    100092: joint54 1
-    100094: joint55
-    100096: joint56
-    100098: joint57
-    100100: joint58
-    100102: joint59
-    100104: joint6
-    100106: joint60
-    100108: joint61
-    100110: joint62
-    100112: joint63
-    100114: joint64
-    100116: joint7
-    100118: joint8
-    100120: joint9
-    100122: Mesh
-    100124: nurbsCircle1
-    100126: Root
-    100128: Stuff
-    100130: transform5
-    100132: transform7
-    100134: transform7 1
-    100136: Blue
-    400000: //RootNode
-    400002: Body
-    400004: curve2
-    400006: curve4
-    400008: curve5
-    400010: curve6
-    400012: FootL
-    400014: FootL1
-    400016: HandL
-    400018: HandL1
-    400020: joint1
-    400022: joint10
-    400024: joint11
-    400026: joint12
-    400028: joint13
-    400030: joint2
-    400032: joint3
-    400034: joint39
-    400036: joint39 1
-    400038: joint4
-    400040: joint40
-    400042: joint40 1
-    400044: joint41
-    400046: joint41 1
-    400048: joint42
-    400050: joint42 1
-    400052: joint45
-    400054: joint45 1
-    400056: joint46
-    400058: joint46 1
-    400060: joint47
-    400062: joint47 1
-    400064: joint48
-    400066: joint48 1
-    400068: joint49
-    400070: joint49 1
-    400072: joint5
-    400074: joint50
-    400076: joint50 1
-    400078: joint51
-    400080: joint51 1
-    400082: joint52
-    400084: joint52 1
-    400086: joint53
-    400088: joint53 1
-    400090: joint54
-    400092: joint54 1
-    400094: joint55
-    400096: joint56
-    400098: joint57
-    400100: joint58
-    400102: joint59
-    400104: joint6
-    400106: joint60
-    400108: joint61
-    400110: joint62
-    400112: joint63
-    400114: joint64
-    400116: joint7
-    400118: joint8
-    400120: joint9
-    400122: Mesh
-    400124: nurbsCircle1
-    400126: Root
-    400128: Stuff
-    400130: transform5
-    400132: transform7
-    400134: transform7 1
-    400136: Blue
-    4300000: FootL
-    4300002: HandL
-    4300004: HandL1
-    4300006: FootL1
-    4300008: Body
-    7400000: Idle
-    7400002: Run
-    9500000: //RootNode
-    13700000: Body
-    13700002: FootL
-    13700004: FootL1
-    13700006: HandL
-    13700008: HandL1
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Body
+  - first:
+      1: 100004
+    second: curve2
+  - first:
+      1: 100006
+    second: curve4
+  - first:
+      1: 100008
+    second: curve5
+  - first:
+      1: 100010
+    second: curve6
+  - first:
+      1: 100012
+    second: FootL
+  - first:
+      1: 100014
+    second: FootL1
+  - first:
+      1: 100016
+    second: HandL
+  - first:
+      1: 100018
+    second: HandL1
+  - first:
+      1: 100020
+    second: joint1
+  - first:
+      1: 100022
+    second: joint10
+  - first:
+      1: 100024
+    second: joint11
+  - first:
+      1: 100026
+    second: joint12
+  - first:
+      1: 100028
+    second: joint13
+  - first:
+      1: 100030
+    second: joint2
+  - first:
+      1: 100032
+    second: joint3
+  - first:
+      1: 100034
+    second: joint39
+  - first:
+      1: 100036
+    second: joint39 1
+  - first:
+      1: 100038
+    second: joint4
+  - first:
+      1: 100040
+    second: joint40
+  - first:
+      1: 100042
+    second: joint40 1
+  - first:
+      1: 100044
+    second: joint41
+  - first:
+      1: 100046
+    second: joint41 1
+  - first:
+      1: 100048
+    second: joint42
+  - first:
+      1: 100050
+    second: joint42 1
+  - first:
+      1: 100052
+    second: joint45
+  - first:
+      1: 100054
+    second: joint45 1
+  - first:
+      1: 100056
+    second: joint46
+  - first:
+      1: 100058
+    second: joint46 1
+  - first:
+      1: 100060
+    second: joint47
+  - first:
+      1: 100062
+    second: joint47 1
+  - first:
+      1: 100064
+    second: joint48
+  - first:
+      1: 100066
+    second: joint48 1
+  - first:
+      1: 100068
+    second: joint49
+  - first:
+      1: 100070
+    second: joint49 1
+  - first:
+      1: 100072
+    second: joint5
+  - first:
+      1: 100074
+    second: joint50
+  - first:
+      1: 100076
+    second: joint50 1
+  - first:
+      1: 100078
+    second: joint51
+  - first:
+      1: 100080
+    second: joint51 1
+  - first:
+      1: 100082
+    second: joint52
+  - first:
+      1: 100084
+    second: joint52 1
+  - first:
+      1: 100086
+    second: joint53
+  - first:
+      1: 100088
+    second: joint53 1
+  - first:
+      1: 100090
+    second: joint54
+  - first:
+      1: 100092
+    second: joint54 1
+  - first:
+      1: 100094
+    second: joint55
+  - first:
+      1: 100096
+    second: joint56
+  - first:
+      1: 100098
+    second: joint57
+  - first:
+      1: 100100
+    second: joint58
+  - first:
+      1: 100102
+    second: joint59
+  - first:
+      1: 100104
+    second: joint6
+  - first:
+      1: 100106
+    second: joint60
+  - first:
+      1: 100108
+    second: joint61
+  - first:
+      1: 100110
+    second: joint62
+  - first:
+      1: 100112
+    second: joint63
+  - first:
+      1: 100114
+    second: joint64
+  - first:
+      1: 100116
+    second: joint7
+  - first:
+      1: 100118
+    second: joint8
+  - first:
+      1: 100120
+    second: joint9
+  - first:
+      1: 100122
+    second: Mesh
+  - first:
+      1: 100124
+    second: nurbsCircle1
+  - first:
+      1: 100126
+    second: Root
+  - first:
+      1: 100128
+    second: Stuff
+  - first:
+      1: 100130
+    second: transform5
+  - first:
+      1: 100132
+    second: transform7
+  - first:
+      1: 100134
+    second: transform7 1
+  - first:
+      1: 100136
+    second: Blue
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Body
+  - first:
+      4: 400004
+    second: curve2
+  - first:
+      4: 400006
+    second: curve4
+  - first:
+      4: 400008
+    second: curve5
+  - first:
+      4: 400010
+    second: curve6
+  - first:
+      4: 400012
+    second: FootL
+  - first:
+      4: 400014
+    second: FootL1
+  - first:
+      4: 400016
+    second: HandL
+  - first:
+      4: 400018
+    second: HandL1
+  - first:
+      4: 400020
+    second: joint1
+  - first:
+      4: 400022
+    second: joint10
+  - first:
+      4: 400024
+    second: joint11
+  - first:
+      4: 400026
+    second: joint12
+  - first:
+      4: 400028
+    second: joint13
+  - first:
+      4: 400030
+    second: joint2
+  - first:
+      4: 400032
+    second: joint3
+  - first:
+      4: 400034
+    second: joint39
+  - first:
+      4: 400036
+    second: joint39 1
+  - first:
+      4: 400038
+    second: joint4
+  - first:
+      4: 400040
+    second: joint40
+  - first:
+      4: 400042
+    second: joint40 1
+  - first:
+      4: 400044
+    second: joint41
+  - first:
+      4: 400046
+    second: joint41 1
+  - first:
+      4: 400048
+    second: joint42
+  - first:
+      4: 400050
+    second: joint42 1
+  - first:
+      4: 400052
+    second: joint45
+  - first:
+      4: 400054
+    second: joint45 1
+  - first:
+      4: 400056
+    second: joint46
+  - first:
+      4: 400058
+    second: joint46 1
+  - first:
+      4: 400060
+    second: joint47
+  - first:
+      4: 400062
+    second: joint47 1
+  - first:
+      4: 400064
+    second: joint48
+  - first:
+      4: 400066
+    second: joint48 1
+  - first:
+      4: 400068
+    second: joint49
+  - first:
+      4: 400070
+    second: joint49 1
+  - first:
+      4: 400072
+    second: joint5
+  - first:
+      4: 400074
+    second: joint50
+  - first:
+      4: 400076
+    second: joint50 1
+  - first:
+      4: 400078
+    second: joint51
+  - first:
+      4: 400080
+    second: joint51 1
+  - first:
+      4: 400082
+    second: joint52
+  - first:
+      4: 400084
+    second: joint52 1
+  - first:
+      4: 400086
+    second: joint53
+  - first:
+      4: 400088
+    second: joint53 1
+  - first:
+      4: 400090
+    second: joint54
+  - first:
+      4: 400092
+    second: joint54 1
+  - first:
+      4: 400094
+    second: joint55
+  - first:
+      4: 400096
+    second: joint56
+  - first:
+      4: 400098
+    second: joint57
+  - first:
+      4: 400100
+    second: joint58
+  - first:
+      4: 400102
+    second: joint59
+  - first:
+      4: 400104
+    second: joint6
+  - first:
+      4: 400106
+    second: joint60
+  - first:
+      4: 400108
+    second: joint61
+  - first:
+      4: 400110
+    second: joint62
+  - first:
+      4: 400112
+    second: joint63
+  - first:
+      4: 400114
+    second: joint64
+  - first:
+      4: 400116
+    second: joint7
+  - first:
+      4: 400118
+    second: joint8
+  - first:
+      4: 400120
+    second: joint9
+  - first:
+      4: 400122
+    second: Mesh
+  - first:
+      4: 400124
+    second: nurbsCircle1
+  - first:
+      4: 400126
+    second: Root
+  - first:
+      4: 400128
+    second: Stuff
+  - first:
+      4: 400130
+    second: transform5
+  - first:
+      4: 400132
+    second: transform7
+  - first:
+      4: 400134
+    second: transform7 1
+  - first:
+      4: 400136
+    second: Blue
+  - first:
+      43: 4300000
+    second: FootL
+  - first:
+      43: 4300002
+    second: HandL
+  - first:
+      43: 4300004
+    second: HandL1
+  - first:
+      43: 4300006
+    second: FootL1
+  - first:
+      43: 4300008
+    second: Body
+  - first:
+      74: 7400000
+    second: Idle
+  - first:
+      74: 7400002
+    second: Run
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Body
+  - first:
+      137: 13700002
+    second: FootL
+  - first:
+      137: 13700004
+    second: FootL1
+  - first:
+      137: 13700006
+    second: HandL
+  - first:
+      137: 13700008
+    second: HandL1
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Idle
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 119
       wrapMode: 0
@@ -182,6 +495,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
@@ -339,9 +653,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Run
       takeName: Take 001
+      internalID: 0
       firstFrame: 245
       lastFrame: 305
       wrapMode: 0
@@ -349,6 +665,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
@@ -506,44 +823,72 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 10
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 1
-    tangentImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
+    globalScale: 10
     rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -29,6 +29,17 @@ public class PickupObject : MonoBehaviour
         {
             if (hit.transform.tag == "Collectible")
             {
+                if(hit.collider.gameObject.GetComponent<Outline>() != true)
+                {
+                    var outline = hit.collider.gameObject.AddComponent<Outline>();
+                    //.GetComponent<GameObject>().gameObject.AddComponent<Outline>();
+
+                    outline.OutlineMode = Outline.Mode.OutlineAll;
+                    outline.OutlineColor = Color.yellow;
+                    outline.OutlineWidth = 5f;
+                }
+                
+
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     _lookAtTarget = hit.collider.gameObject.GetComponent<ItemObject>();
@@ -47,7 +58,7 @@ public class PickupObject : MonoBehaviour
         {
             //Play the audio you attach to the AudioSource component
             m_MyAudioSource.Play();
-            //Ensure audio doesn’t play more than once
+            //Ensure audio doesnï¿½t play more than once
             Task.Delay(1000);
             //m_MyAudioSource.Stop();
             _playSound = false;
