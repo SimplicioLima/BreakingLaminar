@@ -27,18 +27,25 @@ public class PickupObject : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distance))
         {
+            
             if (hit.transform.tag == "Collectible")
             {
                 if(hit.collider.gameObject.GetComponent<Outline>() != true)
                 {
                     var outline = hit.collider.gameObject.AddComponent<Outline>();
-                    //.GetComponent<GameObject>().gameObject.AddComponent<Outline>();
 
-                    outline.OutlineMode = Outline.Mode.OutlineAll;
-                    outline.OutlineColor = Color.yellow;
-                    outline.OutlineWidth = 5f;
+                    if (hit.transform.tag == "Collectible")
+                    {
+                        outline.OutlineMode = Outline.Mode.OutlineAll;
+                        outline.OutlineColor = Color.yellow;
+                        outline.OutlineWidth = 5f;
+                    }
+                    else if (hit.transform.tag != "Collectible")
+                        outline.OutlineMode = Outline.Mode.OutlineHidden;
+                    
+                    
                 }
-                
+                                
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -49,6 +56,8 @@ public class PickupObject : MonoBehaviour
                     _lookAtTarget.OnHandlePickupItem();
                 }
             }
+
+            
         }
     }
 
