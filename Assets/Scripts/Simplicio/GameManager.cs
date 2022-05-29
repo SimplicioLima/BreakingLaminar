@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private bool _playSound;
     public AudioClip changeObjectSound;
     public AudioClip throwObjectSound;
-
+    public AudioClip siren;
 
     //Camera mission;
     [HideInInspector] public bool cctvOff = false;
@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
     public bool KarenOff = false;
     public bool Die = false;
     bool win = false;
+
+
+    public bool karenAlerted = false;
+
 
     void Start()
     {
@@ -230,11 +234,23 @@ public class GameManager : MonoBehaviour
         if (_playSound == true)
         {
             //Play the audio you attach to the AudioSource component
+            //m_MyAudioSource.volume = 0.40F;
             m_MyAudioSource.PlayOneShot(throwObjectSound);
             //Ensure audio doesn’t play more than once
             Task.Delay(1000);
             //m_MyAudioSource.Stop();
             _playSound = false;
+        }
+
+        if (MissionController.current.mission3_Cam && !karenAlerted)
+        {
+            m_MyAudioSource.Play();
+            karenAlerted = true;
+        }
+        else if (!MissionController.current.mission3_Cam)
+        {
+            m_MyAudioSource.Stop();
+            karenAlerted = false;
         }
     }
 

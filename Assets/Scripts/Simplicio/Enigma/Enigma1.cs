@@ -25,8 +25,11 @@ public class Enigma1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!solved) ChangeCubeColor();
-        else if (solved) CCTVController.AtivateCam = true;
+        if (MissionController.current.mission2_Base)
+        {
+            if (!solved) ChangeCubeColor();
+            else if (solved) CCTVController.AtivateCam = true;
+        }
     }
 
     private void ChangeCubeColor()

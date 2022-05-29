@@ -51,7 +51,10 @@ public class AleskyController : MonoBehaviour
         float z = headHeight.position.z + headHeight.forward.z;
 
         cam.position = new Vector3(x, headHeight.position.y, z);
-
+        if(this.transform.position != new Vector3(0, 0.2f, 0))
+        {
+            this.transform.parent.localPosition = new Vector3(0, 0.2f, 0);
+        }
         //Movement();
 
         CheckPlayerState();
