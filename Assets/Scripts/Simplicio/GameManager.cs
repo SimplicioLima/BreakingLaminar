@@ -234,6 +234,7 @@ public class GameManager : MonoBehaviour
         if (_playSound == true)
         {
             //Play the audio you attach to the AudioSource component
+            //m_MyAudioSource.volume = 0.40F;
             m_MyAudioSource.PlayOneShot(throwObjectSound);
             //Ensure audio doesn’t play more than once
             Task.Delay(1000);
