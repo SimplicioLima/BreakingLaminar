@@ -14,6 +14,7 @@ TagManager:
   - loadingScreen
   - pauseCanvas
   - optionCanvas
+  - Interactible
   layers:
   - Default
   - TransparentFX
