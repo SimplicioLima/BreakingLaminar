@@ -35,6 +35,8 @@ public class Doors : MonoBehaviour
     public bool doorsUnlock = false;
     public bool mission7 = false;
     private RaycastHit hit;
+
+    [SerializeField] private GameObject scan;
     void Start()
     {
         cam = Camera.main;
@@ -54,7 +56,14 @@ public class Doors : MonoBehaviour
         SoundOn();
     }
 
-    private void OpenDoor()
+    private async void Scaning()
+    {
+        scan.gameObject.GetComponent<scanController>().ScanOnRed(true);
+        await Task.Delay(500);
+        scan.gameObject.GetComponent<scanController>().ScanOnRed(false);
+    }
+
+    private async void OpenDoor()
     {
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
@@ -85,10 +94,17 @@ public class Doors : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        //Scaning();
+                        scan.gameObject.GetComponent<scanController>().ScanOnRed(true);
+                        await Task.Delay(400);
+                        //scan.gameObject.GetComponent<scanController>().ScanOnRed(false);
+                        //
                         _isOpen = !_isOpen;
                         //SetMessage();
+
                         anim.SetBool("isOpen", _isOpen);
                         _playSound = true;
+                        
                         if (_isOpen)
                         {
                             screens[0].transform.GetComponent<MeshRenderer>().material = mat[1];
@@ -99,6 +115,11 @@ public class Doors : MonoBehaviour
                             screens[0].transform.GetComponent<MeshRenderer>().material = mat[0];
                             screens[1].transform.GetComponent<MeshRenderer>().material = mat[0];
                         }
+                        //Scaning();
+                        scan.gameObject.GetComponent<scanController>().ScanOnGreen(true);
+                        await Task.Delay(500);
+                        //scan.gameObject.GetComponent<scanController>().ScanOnGreen(false);
+                        //
                     }
                     else if (doorsUnlock)
                     {
