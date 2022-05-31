@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6039597447935649344}
   m_Layer: 5
   m_Name: TerminalImagem
-  m_TagString: Untagged
+  m_TagString: Interactible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   interactUI: {fileID: 0}
   fpsController: {fileID: 0}
   temporaryCamera: {fileID: 0}
+  distance: 2
 --- !u!65 &6039597447935649344
 BoxCollider:
   m_ObjectHideFlags: 0
