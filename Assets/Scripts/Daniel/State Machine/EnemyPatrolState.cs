@@ -46,8 +46,8 @@ public class EnemyPatrolState : EnemyBaseState
 
             if (_ctx.Agent.remainingDistance < _ctx.Agent.stoppingDistance)
             {
-                _ctx.CurrentIndex = (_ctx.CurrentIndex + 1) % _ctx.Waypoints.Length;
-                targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
+                _ctx.CurrentIndex = (_ctx.CurrentIndex + 2) % _ctx.Waypoints.Length;
+                targetWayPoint = _ctx.Waypoints[--_ctx.CurrentIndex];
                 yield return null;
             }
             yield return null;

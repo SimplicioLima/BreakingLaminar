@@ -63,12 +63,13 @@ public class EnemyStateMachine : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         baseStopingDistance = agent.stoppingDistance;
+        currentIndex = 0;
 
 
         states = new EnemyStateFactory(this);
 
         wayPoints = GeneratePath();
-        surface.BuildNavMesh();
+        surface.BuildNavMesh(); // build mesh at the start of game
 
 
 
@@ -84,13 +85,13 @@ public class EnemyStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(currentIndex);
         isPlayerVisible = PlayerVisible();
-        // obstacleHit = CheckCollisions();
         currentState.UpdateState();
     }
 
 
-
+    // generates path for enemies to travel
     Vector3[] GeneratePath()
     {
         Vector3[] tempPath;
@@ -105,7 +106,7 @@ public class EnemyStateMachine : MonoBehaviour
         return tempPath;
     }
 
-
+    // checks player visibility
     bool PlayerVisible()
     {
         if (Vector3.Distance(transform.position, player.position) < viewDistance)
@@ -117,11 +118,9 @@ public class EnemyStateMachine : MonoBehaviour
                     return true;
         }
         return false;
-
-
     }
 
-
+    //For editor stuff
     public Vector3 DirectionFromAngle(float angleInDeg, bool isGlobal)
     {
         if (!isGlobal)
@@ -132,7 +131,7 @@ public class EnemyStateMachine : MonoBehaviour
     }
 
 
-
+    // draw path in scene view
     private void OnDrawGizmos()
     {
         Vector3 startposition = pathHolder.GetChild(0).position;
