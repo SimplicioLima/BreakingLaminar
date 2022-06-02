@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class StickyBomb : MonoBehaviour
 {
+    public delegate IEnumerator DisableEnemy();
+    public static event DisableEnemy OnEnemyDisabled;
+    public static float waitForReEnable = 3f; 
+
+
+
     bool samePosition = false;
     private void OnCollisionEnter(Collision collision)
     {
@@ -13,14 +19,16 @@ public class StickyBomb : MonoBehaviour
         this.gameObject.GetComponent<Collider>().isTrigger = true;
 
         if(collision.transform.tag == "Enemy")
-        { 
+        {
             /*
             while(samePosition == true)
             {
                 gameObject.transform.Translate(collision.transform.forward);
             }*/
-            
-            //if(Input.GetKeyDown(KeyCode.G))
+
+            //if(Input.GetKeyDown(KeyCode.G))´´
+            OnEnemyDisabled();
+            EnemyStateMachine.HitByGrenade = true;
             SimpleMovement.move = false;
             StartCoroutine(SetFalse());
             
@@ -29,7 +37,7 @@ public class StickyBomb : MonoBehaviour
 
     IEnumerator SetFalse()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waitForReEnable);
         Destroy(gameObject);
         samePosition = false;
         SimpleMovement.move = true;

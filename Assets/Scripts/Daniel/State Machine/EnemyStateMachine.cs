@@ -16,7 +16,10 @@ public class EnemyStateMachine : MonoBehaviour
     bool pathRestarted;
     bool hasArrivedAtPlayer;
     bool hasArrivedAtPathHolder;
+    public static bool HitByGrenade;
     float baseStopingDistance;
+
+
 
     Vector3[] wayPoints;
     Transform player;
@@ -46,6 +49,8 @@ public class EnemyStateMachine : MonoBehaviour
     public bool HasArrivedAtPlayer { get { return hasArrivedAtPlayer; } set { hasArrivedAtPlayer = value; } }
     public bool HasArrivedAtPathHolder { get { return hasArrivedAtPathHolder; } set { hasArrivedAtPathHolder = value; } }
     public float BaseStoppingDistance { get { return baseStopingDistance; } }
+    public bool Disabled { get { return HitByGrenade; } set { HitByGrenade = value; } }
+
 
 
     public NavMeshAgent Agent { get { return agent; } set { agent = value; } }

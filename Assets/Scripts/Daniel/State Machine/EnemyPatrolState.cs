@@ -30,6 +30,10 @@ public class EnemyPatrolState : EnemyBaseState
         {
             SwitchState(_factory.Chase());
         }
+        if (_ctx.Disabled)
+        {
+            SwitchState(_factory.Disabled());
+        }
 
     }
 

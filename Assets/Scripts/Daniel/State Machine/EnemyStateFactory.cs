@@ -17,19 +17,13 @@ public class EnemyStateFactory
         return new EnemyPatrolState(context,this);
     }
 
-    public EnemyObjectSoundState OFSound()
+    public EnemyDisabledState Disabled()
     {
-        return new EnemyObjectSoundState(context,this);
-    }
-
-    public EnemyPlayerSoundState PFSound()
-    {
-        return new EnemyPlayerSoundState(context,this); 
+        return new EnemyDisabledState(context, this);
     }
 
     public EnemyWinState GameLost()
     {
-        //GameManager.current.Die = true;
         return new EnemyWinState(context, this);
     }
 

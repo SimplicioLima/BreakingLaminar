@@ -6,6 +6,12 @@ public class MultiStickyBomb : MonoBehaviour
 {
     public float radius = 2f;
 
+    public delegate IEnumerator DisableEnemyGroup();
+    public static event DisableEnemyGroup OnMultipleDisabled;
+    public static float waitForReEnable = 3f;
+
+
+
     void Start()
     {
 
@@ -13,12 +19,12 @@ public class MultiStickyBomb : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+
         // posteriormente adicionar o if sticky bomb -> else (objeto normal) dont do anything
         this.GetComponent<Rigidbody>().isKinematic = true; // to stick
         this.gameObject.GetComponent<Collider>().isTrigger = true;
@@ -27,8 +33,10 @@ public class MultiStickyBomb : MonoBehaviour
 
         foreach (var hitCollider in robotColliders)
         {
-            if(hitCollider.tag == "Enemy")
+            if (hitCollider.tag == "Enemy")
             {
+                OnMultipleDisabled();
+                EnemyStateMachine.HitByGrenade = true;
                 SimpleMovement.move = false;
                 StartCoroutine(SetFalse());
             }
@@ -37,10 +45,10 @@ public class MultiStickyBomb : MonoBehaviour
 
     IEnumerator SetFalse()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waitForReEnable);
         Destroy(gameObject);
         SimpleMovement.move = true;
 
-        
+
     }
 }
