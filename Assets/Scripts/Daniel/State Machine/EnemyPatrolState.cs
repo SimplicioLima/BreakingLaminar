@@ -8,9 +8,6 @@ public class EnemyPatrolState : EnemyBaseState
         base(_context, _factory)
     { }
 
-    Vector3 targetWayPoint;
-
-
     public override void EnterState()
     {
         Debug.Log("Patroling!");
@@ -34,21 +31,21 @@ public class EnemyPatrolState : EnemyBaseState
         {
             SwitchState(_factory.Disabled());
         }
-
     }
 
     IEnumerator FollowPathAgent()
     {
-        targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
+        Vector3 targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
         while (true)
         {
             _ctx.Agent.SetDestination(targetWayPoint);
 
-            if (_ctx.Agent.remainingDistance < _ctx.Agent.stoppingDistance)
+            if (_ctx.Agent.remainingDistance <= _ctx.Agent.stoppingDistance)
             {
-                _ctx.CurrentIndex = (_ctx.CurrentIndex + 2) % _ctx.Waypoints.Length;
-                targetWayPoint = _ctx.Waypoints[--_ctx.CurrentIndex];
-                yield return null;
+                Debug.Log("Old index: " + _ctx.CurrentIndex);
+                _ctx.CurrentIndex = (_ctx.CurrentIndex + 1) % _ctx.Waypoints.Length;
+                Debug.Log("New index: " + _ctx.CurrentIndex);
+                targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
             }
             yield return null;
         }
