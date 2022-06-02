@@ -15,7 +15,6 @@ public class EnemyPatrolState : EnemyBaseState
     {
         Debug.Log("Patroling!");
         _ctx.Agent.stoppingDistance = _ctx.BaseStoppingDistance;
-        targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
         _ctx.StartCoroutine(FollowPathAgent());
     }
 
@@ -26,13 +25,6 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void UpdateState()
     {
-        if (_ctx.HasArrivedAtPathHolder)
-        {
-            _ctx.HasArrivedAtPathHolder = false;
-            _ctx.CurrentIndex = (_ctx.CurrentIndex + 1) % _ctx.Waypoints.Length;
-            targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
-            Debug.Log(_ctx.CurrentIndex);
-        }
 
         if (_ctx.IsPlayerVisible)
         {
@@ -43,13 +35,15 @@ public class EnemyPatrolState : EnemyBaseState
 
     IEnumerator FollowPathAgent()
     {
+        targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
         while (true)
         {
             _ctx.Agent.SetDestination(targetWayPoint);
 
             if (_ctx.Agent.remainingDistance < _ctx.Agent.stoppingDistance)
             {
-                _ctx.HasArrivedAtPathHolder = true;
+                _ctx.CurrentIndex = (_ctx.CurrentIndex + 1) % _ctx.Waypoints.Length;
+                targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
                 yield return null;
             }
             yield return null;

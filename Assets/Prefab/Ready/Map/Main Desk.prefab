@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4155987398762800599}
   - component: {fileID: 573290786864815938}
   - component: {fileID: 8855505310127010020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4155987398762800599
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 1451929014805340052}
   - component: {fileID: 1451929014805340053}
   - component: {fileID: 1451929014805340050}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1451929014805340051
 Transform:
@@ -225,12 +225,12 @@ GameObject:
   - component: {fileID: 1451929015824626478}
   - component: {fileID: 1451929015824626479}
   - component: {fileID: 1451929015824626476}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1451929015824626477
 Transform:
@@ -355,12 +355,12 @@ GameObject:
   - component: {fileID: 1451929016548325067}
   - component: {fileID: 1451929016548325064}
   - component: {fileID: 1451929016548325065}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1451929016548325110
 Transform:
@@ -483,12 +483,12 @@ GameObject:
   - component: {fileID: 6960433607423599598}
   - component: {fileID: 1119015163535322506}
   - component: {fileID: 5077191658722670244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6960433607423599598
 Transform:
@@ -566,12 +566,12 @@ GameObject:
   - component: {fileID: 1296623015326577621}
   - component: {fileID: 3898552169043986207}
   - component: {fileID: 9048098245869429580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2761089573041601648
 Transform:
@@ -580,9 +580,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3250065090239375050}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -24.55087, y: 10.81, z: -193.76949}
-  m_LocalScale: {x: 903.07153, y: 14.382427, z: 259.1512}
+  m_LocalScale: {x: 703.906, y: 11.639854, z: 201.99739}
   m_Children:
   - {fileID: 3956046897132667200}
   m_Father: {fileID: 0}
@@ -660,12 +660,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3956046897132667200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Triple+monitor+display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3956046897132667200
 Transform:
@@ -699,12 +699,12 @@ GameObject:
   - component: {fileID: 2651587605833326976}
   - component: {fileID: 4528256044583092151}
   - component: {fileID: 2482608343501289192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2651587605833326976
 Transform:
@@ -781,12 +781,12 @@ GameObject:
   - component: {fileID: 8048464574392049522}
   - component: {fileID: 7819670589569409220}
   - component: {fileID: 3948757981763073056}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8048464574392049522
 Transform:
