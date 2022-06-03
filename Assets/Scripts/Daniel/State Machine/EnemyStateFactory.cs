@@ -27,10 +27,13 @@ public class EnemyStateFactory
         return new EnemyWinState(context, this);
     }
 
-
-    public EnemyChaseToPatrolState ChaseToPatrol()
+    public EnemyMultiDisabledState DisabledByMulti()
     {
-        return new EnemyChaseToPatrolState(context, this);
+        return new EnemyMultiDisabledState(context, this);
+    }
+    public EnemyRestartPatrolState RestartPatrol()
+    {
+        return new EnemyRestartPatrolState(context, this);
     }
 
 }

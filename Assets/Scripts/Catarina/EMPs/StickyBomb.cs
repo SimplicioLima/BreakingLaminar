@@ -10,7 +10,7 @@ public class StickyBomb : MonoBehaviour
 
 
 
-    bool samePosition = false;
+    //bool samePosition = false;
     private void OnCollisionEnter(Collision collision)
     {
         
@@ -28,9 +28,9 @@ public class StickyBomb : MonoBehaviour
 
             //if(Input.GetKeyDown(KeyCode.G))´´
             OnEnemyDisabled();
-            EnemyStateMachine.HitByGrenade = true;
-            SimpleMovement.move = false;
+            EnemyStateMachine.HitBySticky = true;
             StartCoroutine(SetFalse());
+            //SimpleMovement.move = false;
             
         }
     }
@@ -39,7 +39,8 @@ public class StickyBomb : MonoBehaviour
     {
         yield return new WaitForSeconds(waitForReEnable);
         Destroy(gameObject);
-        samePosition = false;
-        SimpleMovement.move = true;
+        EnemyStateMachine.HitBySticky = false;
+        //samePosition = false;
+        //SimpleMovement.move = true;
     }
 }

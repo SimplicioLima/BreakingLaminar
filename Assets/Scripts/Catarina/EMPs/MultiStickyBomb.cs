@@ -11,17 +11,6 @@ public class MultiStickyBomb : MonoBehaviour
     public static float waitForReEnable = 3f;
 
 
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -37,7 +26,7 @@ public class MultiStickyBomb : MonoBehaviour
             {
                 OnMultipleDisabled();
                 EnemyStateMachine.HitByGrenade = true;
-                SimpleMovement.move = false;
+                //SimpleMovement.move = false;
                 StartCoroutine(SetFalse());
             }
         }
@@ -46,8 +35,9 @@ public class MultiStickyBomb : MonoBehaviour
     IEnumerator SetFalse()
     {
         yield return new WaitForSeconds(waitForReEnable);
-        Destroy(gameObject);
-        SimpleMovement.move = true;
+        EnemyStateMachine.HitByGrenade = false;
+        //Destroy(gameObject);
+        //SimpleMovement.move = true;
 
 
     }

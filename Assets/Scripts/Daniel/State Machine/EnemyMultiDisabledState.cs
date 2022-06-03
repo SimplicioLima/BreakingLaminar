@@ -2,25 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDisabledState : EnemyBaseState
+public class EnemyMultiDisabledState : EnemyBaseState
 {
 
-    public EnemyDisabledState(EnemyStateMachine _context, EnemyStateFactory _factory) :
-       base(_context, _factory)
+
+    public EnemyMultiDisabledState(EnemyStateMachine _context, EnemyStateFactory _factory) :
+      base(_context, _factory)
     { }
-
-
-
-
     public override void EnterState()
     {
-        Debug.Log("Disabled!");
-        StickyBomb.OnEnemyDisabled += StopMovement;
+        MultiStickyBomb.OnMultipleDisabled += StopMovement;
     }
 
     public override void ExitState()
     {
         _ctx.StopAllCoroutines();
+
     }
 
     public override void UpdateState()
@@ -35,16 +32,13 @@ public class EnemyDisabledState : EnemyBaseState
         }
     }
 
-
     IEnumerator StopMovement()
     {
         _ctx.Agent.isStopped = true;
         yield return new WaitForSeconds(StickyBomb.waitForReEnable);
         _ctx.Agent.isStopped = false;
-        StickyBomb.OnEnemyDisabled -= StopMovement;
+        MultiStickyBomb.OnMultipleDisabled -= StopMovement;
+
     }
-
-
-
 
 }

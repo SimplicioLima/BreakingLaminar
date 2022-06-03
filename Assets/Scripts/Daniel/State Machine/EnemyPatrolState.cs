@@ -22,14 +22,17 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void UpdateState()
     {
-
         if (_ctx.IsPlayerVisible)
         {
             SwitchState(_factory.Chase());
         }
-        if (_ctx.Disabled)
+        if (_ctx.DisabledBySticky)
         {
             SwitchState(_factory.Disabled());
+        }
+        if (_ctx.DisabledByMulti)
+        {
+            SwitchState(_factory.DisabledByMulti());
         }
     }
 
@@ -40,14 +43,15 @@ public class EnemyPatrolState : EnemyBaseState
         {
             _ctx.Agent.SetDestination(targetWayPoint);
 
-            if (_ctx.Agent.remainingDistance <= _ctx.Agent.stoppingDistance)
+            if (_ctx.Agent.remainingDistance < _ctx.Agent.stoppingDistance)
             {
-                Debug.Log("Old index: " + _ctx.CurrentIndex);
                 _ctx.CurrentIndex = (_ctx.CurrentIndex + 1) % _ctx.Waypoints.Length;
-                Debug.Log("New index: " + _ctx.CurrentIndex);
                 targetWayPoint = _ctx.Waypoints[_ctx.CurrentIndex];
             }
             yield return null;
         }
     }
+
+
+
 }

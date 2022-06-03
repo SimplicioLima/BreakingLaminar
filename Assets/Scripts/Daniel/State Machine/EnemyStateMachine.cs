@@ -17,6 +17,7 @@ public class EnemyStateMachine : MonoBehaviour
     bool hasArrivedAtPlayer;
     bool hasArrivedAtPathHolder;
     public static bool HitByGrenade;
+    public static bool HitBySticky;
     float baseStopingDistance;
 
 
@@ -49,7 +50,8 @@ public class EnemyStateMachine : MonoBehaviour
     public bool HasArrivedAtPlayer { get { return hasArrivedAtPlayer; } set { hasArrivedAtPlayer = value; } }
     public bool HasArrivedAtPathHolder { get { return hasArrivedAtPathHolder; } set { hasArrivedAtPathHolder = value; } }
     public float BaseStoppingDistance { get { return baseStopingDistance; } }
-    public bool Disabled { get { return HitByGrenade; } set { HitByGrenade = value; } }
+    public bool DisabledByMulti { get { return HitByGrenade; } set { HitByGrenade = value; } }
+    public bool DisabledBySticky { get { return HitBySticky; } set { HitBySticky = value; } }
 
 
 
@@ -85,9 +87,11 @@ public class EnemyStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(currentIndex);
         isPlayerVisible = PlayerVisible();
         currentState.UpdateState();
     }
+
 
 
     // generates path for enemies to travel

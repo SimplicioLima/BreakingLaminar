@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChaseToPatrolState : EnemyBaseState
+public class EnemyRestartPatrolState : EnemyBaseState
 {
 
-    public EnemyChaseToPatrolState(EnemyStateMachine _context, EnemyStateFactory _factory) :
+    public EnemyRestartPatrolState(EnemyStateMachine _context, EnemyStateFactory _factory) :
       base(_context, _factory)
     { }
 

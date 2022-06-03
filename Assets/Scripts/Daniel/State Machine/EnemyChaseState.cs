@@ -33,11 +33,15 @@ public class EnemyChaseState : EnemyBaseState
         }
         if (!_ctx.IsPlayerVisible)
         {
-            SwitchState(_factory.ChaseToPatrol());
+            SwitchState(_factory.RestartPatrol());
         }
-        if (_ctx.Disabled)
+        if (_ctx.DisabledBySticky)
         {
             SwitchState(_factory.Disabled());
+        }
+        if (_ctx.DisabledByMulti)
+        {
+            SwitchState(_factory.DisabledByMulti());
         }
 
     }
