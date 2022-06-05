@@ -29137,7 +29137,7 @@ PrefabInstance:
     - target: {fileID: 6305505583537286985, guid: fbc4f514245f4254ca5884a4e5485ac4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -7879724854999721690, guid: af8f0bf2a5b1ecc4e846623c0d86d74c, type: 3}
+      objectReference: {fileID: 2100000, guid: 25ce83fe342bca6409f8532762b45afc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbc4f514245f4254ca5884a4e5485ac4, type: 3}
 --- !u!4 &1754535300 stripped
@@ -51350,6 +51350,7 @@ MonoBehaviour:
   doorsUnlock: 0
   mission7: 0
   scan: {fileID: 0}
+  scan1: {fileID: 0}
 --- !u!65 &2276665119009293810
 BoxCollider:
   m_ObjectHideFlags: 0

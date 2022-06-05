@@ -206,7 +206,7 @@ public class UI_Controller : MonoBehaviour
 
     public void ExitBtn()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void ContinueToHQ()
