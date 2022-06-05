@@ -37,6 +37,8 @@ public class Doors : MonoBehaviour
     private RaycastHit hit;
 
     [SerializeField] private GameObject scan;
+    [SerializeField] private GameObject scan1;
+
     void Start()
     {
         cam = Camera.main;
@@ -56,12 +58,6 @@ public class Doors : MonoBehaviour
         SoundOn();
     }
 
-    private async void Scaning()
-    {
-        scan.gameObject.GetComponent<scanController>().ScanOnRed(true);
-        await Task.Delay(500);
-        scan.gameObject.GetComponent<scanController>().ScanOnRed(false);
-    }
 
     private async void OpenDoor()
     {
@@ -95,7 +91,8 @@ public class Doors : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         //Scaning();
-                        scan.gameObject.GetComponent<scanController>().ScanOnRed(true);
+                        scan.gameObject.GetComponent<scanController>().ScanOnRed(true); 
+                        scan1.gameObject.GetComponent<scanController>().ScanOnRed(true);
                         await Task.Delay(400);
                         //scan.gameObject.GetComponent<scanController>().ScanOnRed(false);
                         //
@@ -117,9 +114,8 @@ public class Doors : MonoBehaviour
                         }
                         //Scaning();
                         scan.gameObject.GetComponent<scanController>().ScanOnGreen(true);
-                        await Task.Delay(500);
-                        //scan.gameObject.GetComponent<scanController>().ScanOnGreen(false);
-                        //
+                        scan1.gameObject.GetComponent<scanController>().ScanOnGreen(true);
+                        await Task.Delay(400);
                     }
                     else if (doorsUnlock)
                     {
