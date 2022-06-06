@@ -43931,7 +43931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71b3f11d76f78a3419bd82cf73195007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.07
+      value: 25.79
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71b3f11d76f78a3419bd82cf73195007, type: 3}
       propertyPath: m_LocalPosition.y
@@ -43939,7 +43939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71b3f11d76f78a3419bd82cf73195007, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 111.88
+      value: -119.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71b3f11d76f78a3419bd82cf73195007, type: 3}
       propertyPath: m_LocalRotation.w
@@ -79763,6 +79763,7 @@ GameObject:
   - component: {fileID: 4370737971320813157}
   - component: {fileID: 4370737971319278821}
   - component: {fileID: 4370737971317478660}
+  - component: {fileID: 4370737971317478662}
   m_Layer: 3
   m_Name: AleskyController
   m_TagString: Player
@@ -79770,6 +79771,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4370737971317478662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370737971317478661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ce34ba71cade04cbceb2fc3dbd44bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4370737971317901605
 Transform:
   m_ObjectHideFlags: 0
@@ -103678,11 +103691,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1920
+      value: 1985.2424
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1080
+      value: 1355.9067
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0014760827
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.001637573
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0014238528
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_LocalPosition.x
@@ -103694,7 +103719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -126.73149
+      value: -126.015
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_LocalRotation.w
@@ -103714,11 +103739,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 11.025879
+      value: 11.121
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25.779724
+      value: 25.2832
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

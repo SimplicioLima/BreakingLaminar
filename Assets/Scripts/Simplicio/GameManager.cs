@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     public bool KarenOff = false;
     public bool Die = false;
     bool win = false;
-
+    [SerializeField] private Transform spawn;
 
     public bool karenAlerted = false;
 
@@ -271,15 +271,12 @@ public class GameManager : MonoBehaviour
         {
             win = false;
 
-            //gameOverScreen.SetActive(true);
-
             //message player died
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //respawn player
                 SceneManager.LoadScene(1);
-                GameObject respawn = GameObject.FindWithTag("Respawn");
-                player.transform.position = respawn.transform.position;
+                player.transform.position = spawn.position;
                 Die = false;
                 //gameOverScreen.SetActive(false);
             }
