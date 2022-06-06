@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        BuildAudioManagerBySceneManager();
+        //BuildAudioManagerBySceneManager();
     }
 
     // Start is called before the first frame update
@@ -75,7 +75,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void BuildAudioManagerBySceneManager()
+    /*void BuildAudioManagerBySceneManager()
     {
         //airport ambient music
         if (SceneManager.GetActiveScene().buildIndex == 0 ||
@@ -107,7 +107,7 @@ public class AudioManager : MonoBehaviour
 
             PlaySoundByNameAmbient(ambientMusicByIndexScene[1].name);
         }
-    }
+    }*/
 
     void BuildAudioSourcesForTanks()
     {
