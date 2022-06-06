@@ -43981,6 +43981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hologram
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 71b3f11d76f78a3419bd82cf73195007, type: 3}
+      propertyPath: m_TagString
+      value: Hologram
+      objectReference: {fileID: 0}
     - target: {fileID: 1129496810705857465, guid: 71b3f11d76f78a3419bd82cf73195007, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
