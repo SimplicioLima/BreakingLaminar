@@ -82,6 +82,14 @@ public class GameManager : MonoBehaviour
         MissionController.current.VerefyWhatCanIdo();
         SoundOn();
         Victory();
+        if (Input.GetKeyDown(KeyCode.Alpha9) )
+        {
+            KarenOff = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            GameManager.current.CctvDeativate();
+        }
     }
 
 

@@ -10,7 +10,7 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Patroling!");
+        //Debug.Log("Patroling!");
         _ctx.Agent.stoppingDistance = _ctx.BaseStoppingDistance;
         _ctx.StartCoroutine(FollowPathAgent());
     }

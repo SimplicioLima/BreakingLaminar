@@ -16,39 +16,54 @@ public class Climb : MonoBehaviour
     public bool goDown = false;
     [SerializeField] private int LowerLevel = 0;
 
+    public GameObject player;
+    public Transform pos1;
+    public Transform pos2;
+    public Transform pos3;
+
+    public GameObject level2;
+    public GameObject level1;
+
     // Start is called before the first frame update
     void Start()
     {
-        activeUI = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(activeUI && MissionController.current.mission2_Base)//Por a missao que se pretenda que ele possa sair do top level
+        if(MissionController.current.mission3_Cam)//Por a missao que se pretenda que ele possa sair do top level
         {
-            loadingScreen = GameObject.FindWithTag("loadingScreen");
+            //loadingScreen = GameObject.FindWithTag("loadingScreen");
             //Go up
             if (goUp && Input.GetKeyDown(KeyCode.Alpha1))
             {
-                if (UpperLevel != SceneManager.sceneCountInBuildSettings)
-                {
-                    if (goUp) UiGoUp.SetActive(false);
-                    if (goDown) UiGoDown.SetActive(false);
-                    //showLoad();
-                    SceneManager.LoadScene(UpperLevel);
-                }
+                Debug.Log("IM HERE");
+                level2.SetActive(true);
+                player.transform.position = pos1.position;
+                level1.SetActive(false);
+                //if (UpperLevel != SceneManager.sceneCountInBuildSettings)
+                //{
+                //    if (goUp) UiGoUp.SetActive(false);
+                //    if (goDown) UiGoDown.SetActive(false);
+                //    //showLoad();
+                //    SceneManager.LoadScene(UpperLevel);
+                //}
             }
             //Go down
-            if (goDown &&Input.GetKeyDown(KeyCode.Alpha2))
+            if (goDown && Input.GetKeyDown(KeyCode.Alpha2))
             {
-                if (UpperLevel != SceneManager.sceneCountInBuildSettings)
-                {
-                    if (goUp) UiGoUp.SetActive(false);
-                    if (goDown) UiGoDown.SetActive(false);
-                    //showLoad();
-                    SceneManager.LoadScene(LowerLevel);
-                }
+                level1.SetActive(true);
+                player.transform.position = pos2.position;
+                level2.SetActive(false);
+                //if (UpperLevel != SceneManager.sceneCountInBuildSettings)
+                //{
+                //    if (goUp) UiGoUp.SetActive(false);
+                //    if (goDown) UiGoDown.SetActive(false);
+                //    //showLoad();
+                //    SceneManager.LoadScene(LowerLevel);
+                //}
             }
         }
     }
