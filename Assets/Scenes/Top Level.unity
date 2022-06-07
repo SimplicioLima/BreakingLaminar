@@ -17227,7 +17227,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 778119619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8ce34ba71cade04cbceb2fc3dbd44bd, type: 3}
+  m_Script: {fileID: 11500000, guid: ddd87f5d9f9768941898c524db864c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &783542008 stripped
@@ -67211,6 +67211,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 2489872908154234179}
     m_Modifications:
     - target: {fileID: 6039597447935649344, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
+      propertyPath: m_Size.z
+      value: 1953.371
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039597447935649344, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
+      propertyPath: m_Center.x
+      value: 23.893091
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039597447935649344, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
+      propertyPath: m_Center.z
+      value: -752.56354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039597447935649344, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -67260,7 +67272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 58.02469
+      value: 57.94
       objectReference: {fileID: 0}
     - target: {fileID: 6039597447935649350, guid: f3149e9476bbd174fa197147d398f4db, type: 3}
       propertyPath: m_LocalRotation.w
@@ -80618,7 +80630,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4370737971317478661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8ce34ba71cade04cbceb2fc3dbd44bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b670ffe1a7c36a4a8b2d985a72a1db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &4370737971317901605
