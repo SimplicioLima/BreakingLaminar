@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //respawn player
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(0);
                 player.transform.position = spawn.position;
                 Die = false;
                 //gameOverScreen.SetActive(false);
