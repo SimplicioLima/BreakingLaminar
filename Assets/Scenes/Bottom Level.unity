@@ -87613,7 +87613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238543355990682266, guid: ef4129113ee906b41b9c13fbae7d6932, type: 3}
       propertyPath: goUp
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8238543355990682266, guid: ef4129113ee906b41b9c13fbae7d6932, type: 3}
       propertyPath: UiGoUp

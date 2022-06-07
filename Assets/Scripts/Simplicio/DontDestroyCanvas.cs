@@ -5,9 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class DontDestroyCanvas : MonoBehaviour
 {
+    public static DontDestroyCanvas current { get; private set; }
     //Para evitar a perda dos obj
     void Start()
-    { 
-         DontDestroyOnLoad(gameObject);
+    {
+        if (current != null && current != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            current = this;
+        }
+        DontDestroyOnLoad(gameObject);
     }
 }

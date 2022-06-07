@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
     //Verefica credencial
     private void VerefyCredencials()
     {
-        if (!haveBasicAccess || !haveCaptainAccess)
+        if (!haveBasicAccess || !haveCaptainAccess && InventorySystem.current.inventory != null)
         {
             foreach (var item in InventorySystem.current.inventory)
             {
@@ -270,14 +270,15 @@ public class GameManager : MonoBehaviour
         else if(Die)
         {
             win = false;
-
+            Time.timeScale = 0;
             //message player died
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //respawn player
-                SceneManager.LoadScene(0);
-                player.transform.position = spawn.position;
                 Die = false;
+                player.transform.position = spawn.position;
+                Time.timeScale = 1;
+                SceneManager.LoadScene(1);
                 //gameOverScreen.SetActive(false);
             }
             //

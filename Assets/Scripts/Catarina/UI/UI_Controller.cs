@@ -28,6 +28,7 @@ public class UI_Controller : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         mainCamera = Camera.main;
         loadingScreen = GameObject.FindWithTag("loadingScreen");
         gameUI.SetActive(true);
