@@ -24,25 +24,22 @@ public class Climb : MonoBehaviour
     public GameObject level2;
     public GameObject level1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+
         if(MissionController.current.mission3_Cam)//Por a missao que se pretenda que ele possa sair do top level
         {
+            player = GameObject.FindWithTag("Player");
             //loadingScreen = GameObject.FindWithTag("loadingScreen");
             //Go up
             if (goUp && Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Debug.Log("IM HERE");
-                level2.SetActive(true);
+                level1.SetActive(true);
+                Debug.Log(player.transform.position);
                 player.transform.position = pos1.position;
-                level1.SetActive(false);
+                Debug.Log(player.transform.position + " +  pos1" + pos1.position);
+                level2.SetActive(false);
                 //if (UpperLevel != SceneManager.sceneCountInBuildSettings)
                 //{
                 //    if (goUp) UiGoUp.SetActive(false);
@@ -54,9 +51,13 @@ public class Climb : MonoBehaviour
             //Go down
             if (goDown && Input.GetKeyDown(KeyCode.Alpha2))
             {
-                level1.SetActive(true);
-                player.transform.position = pos2.position;
-                level2.SetActive(false);
+                Debug.Log("IM HERE");
+                level2.SetActive(true);
+                Debug.Log(player.transform.position);
+                player.transform.position = new Vector3(pos2.position.x, pos2.position.y, pos2.position.z);
+                Debug.Log(player.transform + " +  pos1" + pos1);
+                level1.SetActive(false);
+                Debug.Log("IM HERE");
                 //if (UpperLevel != SceneManager.sceneCountInBuildSettings)
                 //{
                 //    if (goUp) UiGoUp.SetActive(false);
