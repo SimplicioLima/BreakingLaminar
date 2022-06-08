@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class MissionController : MonoBehaviour
 {
@@ -27,7 +27,7 @@ public class MissionController : MonoBehaviour
     public bool mission8_OpenServer = false;
     public bool mission9_KARENoff = false;
 
-    public List<bool> missionsSequence = new List<bool>();
+    //public List<bool> missionsSequence = new List<bool>();
     public List<GameObject> missionObj = new List<GameObject>();
 
     void Start()
@@ -52,15 +52,15 @@ public class MissionController : MonoBehaviour
     #region Set Missions
     private void NumberOfMissions()
     {
-        missionsSequence.Add(mission1_Key);
-        missionsSequence.Add(mission2_Base);
-        missionsSequence.Add(mission3_Cam);
-        missionsSequence.Add(mission4_Cargo);
-        missionsSequence.Add(mission5_Emp);
-        missionsSequence.Add(mission6_Server);
-        missionsSequence.Add(mission7_DoorKeys);
-        missionsSequence.Add(mission8_OpenServer);
-        missionsSequence.Add(mission9_KARENoff);
+        //missionsSequence.Add(mission1_Key);
+        //missionsSequence.Add(mission2_Base);
+        //missionsSequence.Add(mission3_Cam);
+        //missionsSequence.Add(mission4_Cargo);
+        //missionsSequence.Add(mission5_Emp);
+        //missionsSequence.Add(mission6_Server);
+        //missionsSequence.Add(mission7_DoorKeys);
+        //missionsSequence.Add(mission8_OpenServer);
+        //missionsSequence.Add(mission9_KARENoff);
     }
 
     //Atribuir nome e descriçao a cada missao
@@ -134,8 +134,6 @@ public class MissionController : MonoBehaviour
         //Mission 2
         else if (mission2_Base == false && mission1_Key == true) //missao 2 obj apartir do [2]
         {
-            //if (missionObj[1] != null && currentMission == missionName[1]) missionObj[1].tag = "Collectible";
-
             foreach (var item in InventorySystem.current.inventory)
             {
                 if (item.data.id == 13)
@@ -159,15 +157,14 @@ public class MissionController : MonoBehaviour
         //Mission 4
         else if (mission4_Cargo == false && mission3_Cam == true)
         {
-            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            if (sceneIndex == 3 && missionObj[3].gameObject.GetComponent<Doors>()._isOpen == true)
+            if (missionObj[3].gameObject.activeSelf == true && missionObj[3].gameObject.GetComponent<Doors>()._isOpen == true)
             {
                 mission4_Cargo = true;
                 currentMission = missionName[4];
             }
         }
         //Mission 5
-        else if (mission5_Emp== false && mission4_Cargo == true)
+        else if (mission5_Emp == false && mission4_Cargo == true)
         {
             foreach (var item in InventorySystem.current.inventory)
             {
@@ -181,11 +178,9 @@ public class MissionController : MonoBehaviour
         //Mission 6
         else if (mission6_Server == false && mission5_Emp == true)
         {
-            missionObj[4].gameObject.GetComponent<CheckServerDoor>().UnlockTrigger = true;
-            //if (inDebug) Debug.Log("Door Checked: " + missionObj[4].gameObject.GetComponent<CheckServerDoor>().UnlockTrigger);
-            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            //if (inDebug) Debug.Log("Scene: " + sceneIndex);
-            if (sceneIndex == 3 && missionObj[4].gameObject.GetComponent<CheckServerDoor>().doorFound == true)
+            if( missionObj[4].gameObject.activeSelf == true) missionObj[4].gameObject.GetComponent<CheckServerDoor>().UnlockTrigger = true;
+            
+            if (missionObj[4].gameObject.activeSelf == true && missionObj[4].gameObject.GetComponent<CheckServerDoor>().doorFound == true)
             {
                 mission6_Server = true;
                 currentMission = missionName[6];

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public bool Die = false;
     bool win = false;
     [SerializeField] private Transform spawn;
+    [SerializeField] private List<GameObject> cardChecks;
 
     public bool karenAlerted = false;
 
@@ -90,8 +91,32 @@ public class GameManager : MonoBehaviour
         {
             GameManager.current.CctvDeativate();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            MissionController.current.mission4_Cargo = true;
+        }
+        
     }
 
+    public void CheckOnDoors()
+    {
+        foreach (var item in InventorySystem.current.inventory)
+        {
+            if (item.data.id == 12)
+            {
+                foreach (var x in cardChecks)
+                {
+                    x.gameObject.GetComponent<Doors>().doorsUnlock = true;
+                }
+            }
+        }
+    }
+
+    public void MovePlayer(Vector3 pos)
+    {
+        player.transform.position = pos;
+        CheckOnDoors();
+    }
 
     #region Inventory
     private void PickTrowableFromInv()
@@ -286,7 +311,8 @@ public class GameManager : MonoBehaviour
                 Die = false;
                 player.transform.position = spawn.position;
                 Time.timeScale = 1;
-                SceneManager.LoadScene(1);
+                
+                //SceneManager.LoadScene(1);
                 //gameOverScreen.SetActive(false);
             }
             //

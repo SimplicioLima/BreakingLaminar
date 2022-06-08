@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 public class Climb : MonoBehaviour
 {
     [SerializeField] private GameObject UiGoUp;
@@ -34,12 +34,15 @@ public class Climb : MonoBehaviour
             //Go up
             if (goUp && Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Debug.Log("IM HERE");
+                Debug.Log("IM HERE 1");
                 level1.SetActive(true);
-                Debug.Log(player.transform.position);
-                player.transform.position = pos1.position;
-                Debug.Log(player.transform.position + " +  pos1" + pos1.position);
-                level2.SetActive(false);
+                if (player.transform.position == pos1.position)
+                    level2.SetActive(false);
+                else
+                {
+                    GameManager.current.MovePlayer(pos1.position);
+                    level2.SetActive(false);
+                }
                 //if (UpperLevel != SceneManager.sceneCountInBuildSettings)
                 //{
                 //    if (goUp) UiGoUp.SetActive(false);
@@ -53,11 +56,13 @@ public class Climb : MonoBehaviour
             {
                 Debug.Log("IM HERE");
                 level2.SetActive(true);
-                Debug.Log(player.transform.position);
-                player.transform.position = new Vector3(pos2.position.x, pos2.position.y, pos2.position.z);
-                Debug.Log(player.transform + " +  pos1" + pos1);
-                level1.SetActive(false);
-                Debug.Log("IM HERE");
+                if (player.transform.position == pos2.position)
+                    level1.SetActive(false);
+                else
+                {
+                    GameManager.current.MovePlayer(pos2.position);
+                    level1.SetActive(false);
+                }
                 //if (UpperLevel != SceneManager.sceneCountInBuildSettings)
                 //{
                 //    if (goUp) UiGoUp.SetActive(false);

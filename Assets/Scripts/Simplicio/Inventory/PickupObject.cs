@@ -6,15 +6,15 @@ using UnityEngine;
 public class PickupObject : MonoBehaviour
 {
     public bool inDebug = false;
-    public Material normalMaterial;
-    public Material outlineMaskMaterial;
+    //public Material normalMaterial;
+    //public Material outlineMaskMaterial;
 
     private AudioSource m_MyAudioSource;
     private bool _playSound;
-    public GameObject hitObject;
+    //public GameObject hitObject;
     //private bool _islookAt = false;
     private ItemObject _lookAtTarget;
-    //public Camera cam;
+    public Camera cam;
     [SerializeField] private int distance = 10;
 
     private void Start()
@@ -27,13 +27,10 @@ public class PickupObject : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distance))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
-            
             if (hit.transform.tag == "Collectible")
             {
-                //hit.collider.gameObject.GetComponentInChildren<Renderer>().material.SetFloat("_Outline", 1.5f);
-                                
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     _lookAtTarget = hit.collider.gameObject.GetComponent<ItemObject>();

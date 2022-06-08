@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Threading.Tasks;
 using System;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class Doors : MonoBehaviour
 {
@@ -49,9 +49,7 @@ public class Doors : MonoBehaviour
 
     void Update()
     {
-        if(basicAccess && SceneManager.GetActiveScene().buildIndex == 1) OpenDoor();
-        else if (MissionController.current.mission3_Cam && SceneManager.GetActiveScene().buildIndex == 2) OpenDoor();
-        else if(SceneManager.GetActiveScene().buildIndex == 3) OpenDoor();
+        OpenDoor();
 
         if (GameManager.current.cctvOff == true) doorsUnlock = true;
 
@@ -59,7 +57,7 @@ public class Doors : MonoBehaviour
     }
 
 
-    private async void OpenDoor()
+    private void OpenDoor()
     {
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distance))
         {
@@ -93,7 +91,7 @@ public class Doors : MonoBehaviour
                         //Scaning();
                         scan.gameObject.GetComponent<scanController>().ScanOnRed(true); 
                         scan1.gameObject.GetComponent<scanController>().ScanOnRed(true);
-                        await Task.Delay(400);
+                        //await Task.Delay(400);
                         //scan.gameObject.GetComponent<scanController>().ScanOnRed(false);
                         //
                         _isOpen = !_isOpen;
@@ -115,7 +113,7 @@ public class Doors : MonoBehaviour
                         //Scaning();
                         scan.gameObject.GetComponent<scanController>().ScanOnGreen(true);
                         scan1.gameObject.GetComponent<scanController>().ScanOnGreen(true);
-                        await Task.Delay(400);
+                        //await Task.Delay(400);
                     }
                     else if (doorsUnlock)
                     {

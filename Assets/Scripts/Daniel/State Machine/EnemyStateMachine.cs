@@ -57,7 +57,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     public NavMeshAgent Agent { get { return agent; } set { agent = value; } }
 
-
+    bool enterOnce = false;
 
 
     // Start is called before the first frame update
@@ -66,12 +66,12 @@ public class EnemyStateMachine : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         baseStopingDistance = agent.stoppingDistance;
         currentIndex = 0;
-
+        surface.BuildNavMesh(); // build mesh at the start of game
 
         states = new EnemyStateFactory(this);
 
         wayPoints = GeneratePath();
-        surface.BuildNavMesh(); // build mesh at the start of game
+        
 
 
 
@@ -83,10 +83,10 @@ public class EnemyStateMachine : MonoBehaviour
     }
 
 
-
     // Update is called once per frame
     void Update()
     {
+        
         //Debug.Log(currentIndex);
         isPlayerVisible = PlayerVisible();
         currentState.UpdateState();
