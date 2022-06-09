@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 //using UnityEngine.SceneManagement;
 
@@ -52,12 +53,26 @@ public class Interpreter : MonoBehaviour
         if(args[0] == "off-karen-admin" && MissionController.current.mission8_OpenServer)
         {
             response.Add("Karen off.");
+            Task.Delay(400);
+            response.Add("Thanks, you have activated the nuclear warheads!");
+            Task.Delay(200);
+            response.Add("Humanity will end Today!");
             GameManager.current.KarenOff = true;
             return response;
         }
         if (args[0] == "off-camera-admin" && MissionController.current.mission2_Base)
         {
             response.Add("Cameras off.");
+            
+            //
+            GameManager.current.CctvDeativate();
+            return response;
+        }
+        if (args[0] == "GameOver" && MissionController.current.mission8_OpenServer)
+        {
+            response.Add("Thanks, you have activated the nuclear warheads!");
+            response.Add("Humanity will end Today!");
+
             //
             GameManager.current.CctvDeativate();
             return response;

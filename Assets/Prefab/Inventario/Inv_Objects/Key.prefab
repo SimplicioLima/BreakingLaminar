@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2736872929322353693}
   - component: {fileID: 5023991001690868120}
   - component: {fileID: 5108869087719183701}
-  - component: {fileID: 8491845431612273903}
   m_Layer: 0
   m_Name: Key
   m_TagString: Collectible
@@ -115,17 +114,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &8491845431612273903
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4408463458310509381}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5546940888850326318, guid: 4bb997fdc0eb215468e0ab3e6882f419, type: 3}
