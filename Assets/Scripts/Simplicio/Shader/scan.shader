@@ -6,7 +6,7 @@ Shader "Custom/scan"
         _NightTex ("Night", 2D) = "white" {}
         _HandTex ("Hand", 2D) = "white" {}
         _Light ("Night Lights", Range (1, 10)) = 1
-        _Color ("Color ", Color) = (1,0,0,1)
+        _Color ("Color ", Color) = (0,0,0,1)
     }
     SubShader
     {
@@ -52,7 +52,7 @@ Shader "Custom/scan"
         void surf (Input IN, inout SurfaceOutput o)
         {
             float3 dayResult = tex2D(_DayTex, IN.uv_DayTex);
-            float3 nightResult = tex2D(_NightTex, IN.uv_NightTex) * _Color;
+            float3 nightResult = tex2D(_NightTex, IN.uv_NightTex);
             float4 handresult = tex2D(_HandTex, IN.uv_HandTex);      
 
             if(handresult.a < 0.5f) {
